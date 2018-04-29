@@ -1,0 +1,44 @@
+.modal-back-cabeza{
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #8eb92a 0%, #72aa00 25%, #8eb92a 50%, #ffffff 97%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#8eb92a 0%,#72aa00 25%,#8eb92a 50%,#ffffff 97%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#8eb92a 0%,#72aa00 25%,#8eb92a 50%,#ffffff 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+.modal-back-pie {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 10%, #8eb92a 50%, #72aa00 97%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#ffffff 10%,#8eb92a 50%,#72aa00 97%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 10%,#8eb92a 50%,#72aa00 97%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
+}
+.modal-body-back{
+    background: url('../img/backgroundregistro7.png') no-repeat fixed center;
+}
+.icono-mexico{
+    background: url('../img/iconos/mexicoicon.jpg') no-repeat center;
+}
+.back-logo{
+    border-radius: 80px;
+    background: rgba(211,211,211,0.57);
+}
+.back-registro{
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background: rgba(244,244,244,0.7);
+}
+.back-head{
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background: rgba(244,244,244,0.7);
+}
+.boton-cerrar{
+    float: right;
+    color: white;
+    background-color: rgba(255,0,0,0.57);
+}
+.pull-centro-registro{
+    position: absolute;
+    left: 43%;
+    color:white;
+}
