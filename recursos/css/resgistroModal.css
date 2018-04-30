@@ -13,7 +13,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 );
 }
 .modal-body-back{
-    background: url('../img/backgroundregistro7.png') no-repeat fixed center;
+    background: url('../img/backgroundregistro7.png') fixed center;
 }
 .icono-mexico{
     background: url('../img/iconos/mexicoicon.jpg') no-repeat center;
@@ -38,7 +38,7 @@
     background-color: rgba(255,0,0,0.57);
 }
 .pull-centro-registro{
-    position: absolute;
+    position: fixed;
     left: 43%;
     color:white;
 }

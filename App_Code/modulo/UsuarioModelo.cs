@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Usuario
+/// Summary description for UsuarioModelo
 /// </summary>
-public class Usuario
+public class UsuarioModelo
 {
         public long Id_Usuario { get; set; }
         public string Nombre { get; set; }
@@ -19,6 +19,6 @@ public class Usuario
     //
     // TODO: Add constructor logic here
     //
-    public Usuario() {
+    public UsuarioModelo() {
     }
 }

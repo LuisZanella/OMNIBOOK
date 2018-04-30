@@ -1,0 +1,14 @@
+﻿.modal-body-back-contrasenia {
+    background: url('../img/recuperarcontrasenia.png') center;
+}
+.back-olvide-center {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background: rgba(255,255,255,0.67);
+}
+
+.back-olvide-top {
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    background: rgba(255,255,255,0.67);
+}
