@@ -1,4 +1,4 @@
-function ajax(pagina,fn,post,modulo){
+function ajax(pagina,fn,post){
     $.ajax({
         url: pagina+"/"+fn,
         data: post,

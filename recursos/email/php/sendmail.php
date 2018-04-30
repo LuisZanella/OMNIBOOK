@@ -11,13 +11,13 @@ include_once "phpmailer/class.phpmailer.php";
 try {
     $mail = new PHPMailer();
     $mail->setFrom($_POST["correo"], utf8_decode($_POST["nombre"]));
-    $mail->addAddress("info@grupobiointegra.com", '');
+    $mail->addAddress("luisnaruto.17@gmail.com", '');
     $mail->Subject = utf8_decode("Mensaje desde sitio: " .$_POST["asunto"]);
     $mail->msgHTML('
-        <p><strong>Nombre de cliente: </strong>' . $_POST["nombre"] . '</p>
-        <p><strong>Correo electrónico:</strong>' . $_POST["correo"] . '</p>
-        <p><strong>Asunto: </strong>' . $_POST["asunto"] . '</p>
-        <p><strong>Mensaje:</strong><br>' . $_POST["mensaje"] . '</p>');
+        <p><strong>Bienvenido: </strong>' . $_POST["nombre"] . '</p>
+        <p><strong>Usted se registro con: </strong>' . $_POST["correo"] . '</p>
+        <p><strong>Su nick es: </strong>' . $_POST["nick"] . '</p>
+        <p><strong>Mensaje: </strong><br>' . $_POST["mensaje"] . '</p>');
 
 
     if (!$mail->send()) {

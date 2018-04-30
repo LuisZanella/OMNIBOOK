@@ -160,27 +160,27 @@
                     <div class="modal-body back-registro">
                         <div class="center-block w-xxl w-auto-xs p-y-md ">
                             <div class="md-form-group float-label">
-                                <input name="usuario" type="text" class="md-input" required="">
+                                <input id="txtNombreRegistro" name="usuario" type="text" class="md-input" required="">
                                 <label>Nombre</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input name="nick" type="text" class="md-input" required="">
+                                <input id="txtNickRegistro" name="nick" type="text" class="md-input" required="">
                                 <label>Nick</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input name="correo" type="text" class="md-input" required="">
+                                <input id="txtCorreoRegistro" name="correo" type="text" class="md-input" required="">
                                 <label>Correo</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input name="password" type="password" class="md-input" required="">
+                                <input id="txtContraseniaRegistro" name="password" type="password" class="md-input" required="">
                                 <label>Contraseña</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input name="confirmPassword" type="password" class="md-input" required="">
+                                <input id="txtCContraseniaRegistro" name="confirmPassword" type="password" class="md-input" required="">
                                 <label>Confirmar Constraseña</label>
                             </div>
                             <div class="md-form-group ">
-                                <input name="fechaNacimiento" type="date" class="md-input" required="">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input" required="">
                                 <label>Fecha de Nacimiento</label>
                             </div>
                         </div>
@@ -188,7 +188,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="btnRegistrar()">Registrarme</button>
+                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary" data-dismiss="modal" onclick="btnRegistrar()">Registrarme</button>
                     </div>
                 </form>
             </div>
@@ -225,7 +225,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="btnRegistrar()">Enviar Correo</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="btnRestaurarContrasena()">Enviar Correo</button>
                     </div>
                 </form>
             </div>
