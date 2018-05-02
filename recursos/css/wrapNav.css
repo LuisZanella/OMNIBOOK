@@ -1,0 +1,67 @@
+﻿.navside {
+    border-top-right-radius: 10px;
+    background: #002400;
+    background: -moz-linear-gradient(top, #002400 0%, #005700 18%, #008a00 33%, #008a00 67%, #005700 83%, #002400 100%);
+    background: -webkit-linear-gradient(top, #002400 0%,#005700 18%,#008a00 33%,#008a00 67%,#005700 83%,#002400 100%);
+    background: linear-gradient(to bottom, #002400 0%,#005700 18%,#008a00 33%,#008a00 67%,#005700 83%,#002400 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002400', endColorstr='#002400',GradientType=0 );
+}
+.app-aside {
+    border-top-right-radius: 10px;
+
+}
+.app-aside .left {
+        width: auto;
+}
+body {
+    color: white;
+    background: black;
+}
+.btn {
+    color: black;
+}
+.dker {
+    background: green;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.b-l {
+    border-left: 1px solid #ddd;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #ddd;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: #ddd;
+}
+.nav-active-success .nav-link.active, .nav-active-success .nav > li.active > a {
+    color: rgba(255, 255, 255, 0.87) !important;
+    background-color: rgb(0, 0, 0) !important;
+}
+.box {
+    color:black;
+}
+.colorDegrade {
+    background: rgb(0,36,0);
+    background: -moz-linear-gradient(left, rgba(0,36,0,1) 1%, rgba(60,193,42,1) 51%, rgba(219,219,219,1) 100%);
+    background: -webkit-linear-gradient(left, rgba(0,36,0,1) 1%,rgba(60,193,42,1) 51%,rgba(219,219,219,1) 100%);
+    background: linear-gradient(to right, rgba(0,36,0,1) 1%,rgba(60,193,42,1) 51%,rgba(219,219,219,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002400', endColorstr='#dbdbdb',GradientType=1 );
+}
+.box {
+    border-radius: 5px;
+    background: #f2f5f6;
+    background: -moz-radial-gradient(center, ellipse cover, #f2f5f6 0%, #e3eaed 37%, #c8d7dc 100%);
+    background: -webkit-radial-gradient(center, ellipse cover, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%);
+    background: radial-gradient(ellipse at center, #f2f5f6 0%,#e3eaed 37%,#c8d7dc 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=1 );
+}
+.btn-info {
+    background: #cddc39;
+    border-color: #cddc39;
+}
+    .btn-info:hover {
+        color: #fff;
+        background-color: #006E2E;
+        border-color: #006E2E;
+    }
