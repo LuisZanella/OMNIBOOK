@@ -8,7 +8,7 @@ Id_Usuario INT IDENTITY (1,1) PRIMARY KEY,
 Nombre NVARCHAR(50) UNIQUE NOT NULL,
 Nick NVARCHAR(50) UNIQUE NOT NULL,
 Correo NVARCHAR(40) UNIQUE NOT NULL,
-Contrasenia NVARCHAR(20) NOT NULL,
+Contrasenia NVARCHAR(200) NOT NULL,
 Fecha_Nacimiento DATE,
 Verificacion_Clave NVARCHAR(300),
 Estatus BIT DEFAULT '0',
@@ -60,7 +60,7 @@ UPDATE Usuario SET Nick = @Variable
 WHERE Id_Usuario = @Id
 GO
 CREATE PROCEDURE [dbo].[sp_UpCorreo]
-@Variable NVARCHAR(50),
+@Variable NVARCHAR(40),
 @Id INT
 AS
 UPDATE Usuario SET Correo = @Variable 
