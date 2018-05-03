@@ -21,9 +21,9 @@ Biografia NVARCHAR(300),
 )
 GO
 CREATE TABLE Amistad(
+Id_Amistad INT PRIMARY KEY IDENTITY (1,1),
 Id_Usuario INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
 Id_Usuario_Dos INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL
-CONSTRAINT Id_Amistad PRIMARY KEY (Id_Usuario,Id_Usuario_Dos) IDENTITY (1,1)
 )
 GO
 
