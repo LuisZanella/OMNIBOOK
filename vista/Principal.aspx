@@ -1,33 +1,34 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Principal.aspx.cs" Inherits="Principal" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>OMNIBOOK</title>
-    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!--Icon-->
-    <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico">
+    <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico"/>
 
     <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="shortcut icon" sizes="196x196" href="../recursos/img/iconos/logo.ico">
-    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/animate.css/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/glyphicons/glyphicons.css">
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="../recursos/plugin/flatkit/assets/material-design-icons/material-design-icons.css">
-    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/bootstrap/dist/css/bootstrap.css">
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <link rel="shortcut icon" sizes="196x196" href="../recursos/img/iconos/logo.ico"/>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/animate.css/animate.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/glyphicons/glyphicons.css"/>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/material-design-icons/material-design-icons.css"/>
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/bootstrap/dist/css/bootstrap.css"/>
     <!-- build:css libs/flatkit/assets/styles/app.min.css -->
-    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/styles/app.css">
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/styles/app.css"/>
     <!-- endbuild -->
-    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/styles/font.css">
+    <link rel="stylesheet" type="text/css" href="../recursos/plugin/flatkit/assets/styles/font.css"/>
     <link rel="stylesheet" type="text/css"
-          href="../recursos/plugin/flatkit/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css">
+          href="../recursos/plugin/flatkit/libs/jquery/plugins/integration/bootstrap/3/dataTables.bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../recursos/css/olvideContraseniaModal.css" />
     <link href="../recursos/plugin/flatkit/assets/animate.css/animate.min.css" rel="stylesheet" />
     <!-- w3School-->
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <!-- css personalisados-->
     <link href="../recursos/css/wrapNav.css" rel="stylesheet" />
 </head>
@@ -142,12 +143,12 @@
                             <div class="b-b b m-v-sm"></div>
                         </li>
                         <li class="no-bg">
-                            <a>
+                            <asp:LinkButton ID="lnkCerrar" runat="server" OnClick="lnkCerrar_click">
                                 <span class="nav-icon">
                                     <i class="material-icons"></i>
                                 </span>
                                 <span class="nav-text">Cerrar Sesión</span>
-                            </a>
+                            </asp:LinkButton>
                         </li>
                     </ul>
                 </nav>

@@ -1,8 +1,9 @@
 function btnIniciarSesion() {
-    ajax('OmniService.asmx','iniciarSesion');
+    window.location.href = "Principal.aspx";
+    //ajax('OmniService.asmx','iniciarSesion');
 }
 function iniciarSesion(){
-
+   
 }
 function btnRegistrar() {
     var btnEnviar = $('#btnEnviarRegistro');
