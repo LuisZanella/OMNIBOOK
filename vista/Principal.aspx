@@ -143,12 +143,12 @@
                             <div class="b-b b m-v-sm"></div>
                         </li>
                         <li class="no-bg">
-                            <asp:LinkButton ID="lnkCerrar" runat="server" OnClick="lnkCerrar_click">
-                                <span class="nav-icon">
+                            <form id="form1" runat="server">
+                                    <span class="nav-icon">
                                     <i class="material-icons"></i>
-                                </span>
-                                <span class="nav-text">Cerrar Sesión</span>
-                            </asp:LinkButton>
+                                    </span>
+                                   <span><asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkCerrar_click" CssClass="nav-text">Cerrar Sesión</asp:LinkButton></span>
+                            </form>
                         </li>
                     </ul>
                 </nav>

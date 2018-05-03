@@ -166,4 +166,24 @@ CREATE PROCEDURE [dbo].[sp_LoginUser]
 @_Password NVARCHAR(200)
 AS
 	SELECT * FROM Usuario WHERE Nick = @_Nick AND Contrasenia = @_Password
+=======
+CREATE PROCEDURE [dbo].[sp_InComentario]
+@Id_Usuario INT,
+@Id_Publicacion INT,
+@Comentario NVARCHAR(260)
+AS
+	INSERT INTO Comentario(Id_Usuario, Id_Publicacion, Comentario) VALUES (@Id_Usuario, @Id_Publicacion, @Comentario)
+	DECLARE @lastCom INT
+	SET @lastCom = (SELECT MAX(Id_Comentario) FROM Comentario)
+	SELECT * FROM Comentario WHERE Id_Comentario = @lastCom
+GO
+
+CREATE PROCEDURE [dbo].[sp_InAmistad]
+@Id_Usuario INT,
+@Id_Usuario_Dos INT
+AS
+	INSERT INTO Amistad(Id_Usuario, Id_Usuario_Dos) VALUES (@Id_Usuario, @Id_Usuario_Dos)
+	DECLARE @lastAm INT
+	SET @lastAm = (SELECT MAX(Id_Amistad) FROM Amistad)
+	SELECT * FROM Amistad WHERE Id_Amistad = @lastAm
 GO

@@ -140,7 +140,7 @@ public class OmniService : System.Web.Services.WebService
                 _dtr.Read();
                 UsuarioModelo _user = new global::UsuarioModelo()
                 {
-                    Id_Usuario = long.Parse(_dtr["Id_User"].ToString())
+                    Id_Usuario = long.Parse(_dtr["Id_Usuario"].ToString())
                 };
                 HttpContext.Current.Session["Identificador"] = _user.Id_Usuario;
                 return _user;

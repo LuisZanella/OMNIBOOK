@@ -108,7 +108,7 @@ function registrarUsuario(response) {
     if (response.d > 0) {
         //se registro bien
         alert("Has sido registrado en Omnitrix!!");
-        window.location.href = "Principal.html";
+        window.location.href = "Principal.aspx";
     } else {
         //no se registro bien
         alert("Error al registrarte, trata mas tarde...");
