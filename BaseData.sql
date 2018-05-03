@@ -150,3 +150,16 @@ AS
 INSERT INTO Comentario(Id_Usuario, Id_Publicacion, Comentario)
 VALUES (@Id, @Id2, @Variable)
 GO
+CREATE PROCEDURE [dbo].[sp_InUsuario]
+@Nombre NVARCHAR(50),
+@Correo NVARCHAR(40),
+@Contrasenia NVARCHAR(200),
+@FechaNacimiento Date
+AS
+	INSERT INTO Usuario(Nombre, Correo, Contrasenia, Fecha_Nacimiento) VALUES(@Nombre, @Correo, @Contrasenia, @FechaNacimiento)
+	DECLARE @lastId INT
+	SET @lastId = (SELECT MAX(Id_Usuario) FROM Usuario)
+	SELECT * FROM Usuario WHERE Id_Usuario = @lastId
+GO
+
+

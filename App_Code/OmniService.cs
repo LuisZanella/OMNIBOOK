@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -26,6 +27,66 @@ public class OmniService : System.Web.Services.WebService
     public string HelloWorld()
     {
         return "Hello World";
+    }
+    [WebMethod]
+    public UsuarioModelo RegistrarUsuario(UsuarioModelo user)
+    {
+        SqlConexion _conexion = new SqlConexion();
+        List<SqlParameter> _Parametros = new List<SqlParameter>();
+        DataTableReader _dtr = null;
+
+        try
+        {
+            //Se abre conexion
+            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["Data Source=DESKTOP-B81C8RK;Initial Catalog=omnitrix;User ID=sa;Password=coche"].ToString());
+
+            //Se agregan´parametros a la lista List<SqlParameters>, con los valores para cada parametro
+            _Parametros.Add(new SqlParameter("@Nombre", user.Nombre));
+            _Parametros.Add(new SqlParameter("@Correo", user.Correo));
+            _Parametros.Add(new SqlParameter("@Contrasenia", user.Contrasenia));
+            _Parametros.Add(new SqlParameter("@FechaNacimiento", user.Fecha_Nacimiento));
+            _Parametros.Add(new SqlParameter("@Nick", user.Nick));
+            _conexion.PrepararProcedimiento("sp_InUsuario", _Parametros);
+
+            _dtr = _conexion.EjecutarTableReader();
+            if (_dtr.HasRows)
+            {
+                //Leer la informacion
+                _dtr.Read();
+                //Se crea un objeto de clase usuario
+                UsuarioModelo _user = new UsuarioModelo()
+                {
+                    Id_Usuario = int.Parse(_dtr["Id_Usuario"].ToString()),
+                    Nombre = _dtr["Nombre"].ToString(),
+                    Correo = _dtr["Correo"].ToString(),
+                    Fecha_Nacimiento = _dtr["Id_Usuario"].ToString(),
+                    Estatus = Boolean.Parse(_dtr["Estatus"].ToString())
+                };
+
+                //Se indica que se cierre la tabla
+                _dtr.Close();
+
+                //Creamos session con el id del usuario
+                HttpContext.Current.Session["Identificador"] = _user.Id_Usuario;
+                return _user;
+
+            }
+            else
+            {
+                throw new Exception("User not found");
+            }
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            _conexion.Desconectar();
+            _conexion = null;
+            _dtr = null;
+        }
     }
     [WebMethod(EnableSession = true)]
     public string Actualizar(string spNombre, string desNueva, int id)
