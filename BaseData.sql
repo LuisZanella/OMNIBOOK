@@ -115,3 +115,38 @@ AS
 UPDATE Comentario SET Comentario = @Variable 
 WHERE Id_Comentario = @Id
 GO
+CREATE PROCEDURE[dbo].[sp_InImg_Perfil]
+@Variable NVARCHAR(80)
+AS
+INSERT INTO Usuario(Imagen_Perfil)
+Values (@Variable)
+GO
+CREATE PROCEDURE[dbo].[sp_InImg_Portada]
+@Variable NVARCHAR(80)
+AS
+INSERT INTO Usuario(Imagen_Portada)
+Values (@Variable)
+GO
+CREATE PROCEDURE[dbo].[sp_InAmistad]
+@Id1 INT,
+@Id2 INT
+AS
+INSERT INTO Amistad(Id_Usuario, Id_Usuario_Dos)
+VALUES(@Id1, @Id2)
+GO
+CREATE PROCEDURE[dbo].[sp_InPublicacion]
+@Id INT,
+@Variable NVARCHAR(150),
+@Variable2 NVARCHAR(80)
+AS
+INSERT INTO Publicacion(Id_Usuario, Titulo, Imagen, Fecha_Publicacion)
+VALUES(@Id, @Variable, @Variable2, CURRENT_TIMESTAMP)
+GO
+CREATE PROCEDURE [dbo].[sp_InComentario]
+@Id INT,
+@Id2 INT,
+@Variable NVARCHAR(260)
+AS
+INSERT INTO Comentario(Id_Usuario, Id_Publicacion, Comentario)
+VALUES (@Id, @Id2, @Variable)
+GO
