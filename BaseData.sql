@@ -44,4 +44,32 @@ Comentario NVARCHAR(260)
 )
 GO
 
+CREATE PROCEDURE [dbo].[sp_UpNombre]
+@Variable NVARCHAR(50),
+@Id INT
+AS
+UPDATE Usuario SET Nombre = @Variable 
+WHERE Id_Usuario = @Id
+GO
 
+CREATE PROCEDURE [dbo].[sp_UpNick]
+@Variable NVARCHAR(50),
+@Id INT
+AS
+UPDATE Usuario SET Nick = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpCorreo]
+@Variable NVARCHAR(50),
+@Id INT
+AS
+UPDATE Usuario SET Correo = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpContrasenia]
+@Variable NVARCHAR(50),
+@Id INT
+AS
+UPDATE Usuario SET Contrasenia = @Variable 
+WHERE Id_Usuario = @Id
+GO
