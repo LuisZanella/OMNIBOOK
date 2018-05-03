@@ -67,9 +67,51 @@ UPDATE Usuario SET Correo = @Variable
 WHERE Id_Usuario = @Id
 GO
 CREATE PROCEDURE [dbo].[sp_UpContrasenia]
-@Variable NVARCHAR(50),
+@Variable NVARCHAR(200),
 @Id INT
 AS
 UPDATE Usuario SET Contrasenia = @Variable 
 WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpImagen_Perfil]
+@Variable NVARCHAR(80),
+@Id INT
+AS
+UPDATE Usuario SET Imagen_Perfil = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpImagen_Portada]
+@Variable NVARCHAR(80),
+@Id INT
+AS
+UPDATE Usuario SET Imagen_Portada = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpTelefono]
+@Variable NVARCHAR(20),
+@Id INT
+AS
+UPDATE Usuario SET Telefono = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpTelefono_Casa]
+@Variable NVARCHAR(20),
+@Id INT
+AS
+UPDATE Usuario SET Telefono_Casa = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpBiografia]
+@Variable NVARCHAR(300),
+@Id INT
+AS
+UPDATE Usuario SET Biografia = @Variable 
+WHERE Id_Usuario = @Id
+GO
+CREATE PROCEDURE [dbo].[sp_UpComentario]
+@Variable NVARCHAR(260),
+@Id INT
+AS
+UPDATE Comentario SET Comentario = @Variable 
+WHERE Id_Comentario = @Id
 GO

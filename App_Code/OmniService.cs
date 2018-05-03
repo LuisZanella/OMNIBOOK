@@ -26,5 +26,11 @@ public class OmniService : System.Web.Services.WebService
     {
         return "Hello World";
     }
+    [WebMethod]
+    public string Actualizar(string spNombre, string desNueva)
+    {
+            
+        return "actualizado";
+    }
 
 }
