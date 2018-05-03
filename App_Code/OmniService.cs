@@ -28,8 +28,8 @@ public class OmniService : System.Web.Services.WebService
     {
         return "Hello World";
     }
-    [WebMethod]
-    public UsuarioModelo RegistrarUsuario(UsuarioModelo user)
+    [WebMethod(EnableSession = true)]
+    public long registrarUsuario(UsuarioModelo user)
     {
         SqlConexion _conexion = new SqlConexion();
         List<SqlParameter> _Parametros = new List<SqlParameter>();
@@ -38,7 +38,7 @@ public class OmniService : System.Web.Services.WebService
         try
         {
             //Se abre conexion
-            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["Data Source=DESKTOP-B81C8RK;Initial Catalog=omnitrix;User ID=sa;Password=coche"].ToString());
+            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
 
             //Se agregan´parametros a la lista List<SqlParameters>, con los valores para cada parametro
             _Parametros.Add(new SqlParameter("@Nombre", user.Nombre));
@@ -59,7 +59,7 @@ public class OmniService : System.Web.Services.WebService
                     Id_Usuario = int.Parse(_dtr["Id_Usuario"].ToString()),
                     Nombre = _dtr["Nombre"].ToString(),
                     Correo = _dtr["Correo"].ToString(),
-                    Fecha_Nacimiento = _dtr["Id_Usuario"].ToString(),
+                    Fecha_Nacimiento = _dtr["Fecha_Nacimiento"].ToString(),
                     Estatus = Boolean.Parse(_dtr["Estatus"].ToString())
                 };
 
@@ -67,8 +67,9 @@ public class OmniService : System.Web.Services.WebService
                 _dtr.Close();
 
                 //Creamos session con el id del usuario
+
                 HttpContext.Current.Session["Identificador"] = _user.Id_Usuario;
-                return _user;
+                return _user.Id_Usuario;
 
             }
             else
@@ -88,6 +89,7 @@ public class OmniService : System.Web.Services.WebService
             _dtr = null;
         }
     }
+
     [WebMethod(EnableSession = true)]
     public string Actualizar(string spNombre, string desNueva, int id)
     {
@@ -117,5 +119,46 @@ public class OmniService : System.Web.Services.WebService
         }
 
     }
+    [WebMethod(EnableSession = true)]
+    public UsuarioModelo iniciarSesion(UsuarioModelo user)
+    {
+        SqlConexion _conexion = new SqlConexion();
+        List<SqlParameter> _Parametros = new List<SqlParameter>();
+        DataTableReader _dtr = null;
+        try
+        {
+            //Abrir conexion
+            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
+            // Se agregan parámetros a la lista List <SqlParameter>, con los valores para cada parametro que se obtienen de los atributos
+            // del objeto Pej.Objeto . Atributo_x
+            _Parametros.Add(new SqlParameter("@_Nick", user.Nick));
+            _Parametros.Add(new SqlParameter("@_Password", user.Contrasenia));
+            _conexion.PrepararProcedimiento("sp_LoginUser", _Parametros);
+            _dtr = _conexion.EjecutarTableReader();
+            if (_dtr.HasRows)
+            {
+                _dtr.Read();
+                UsuarioModelo _user = new global::UsuarioModelo()
+                {
+                    Id_Usuario = long.Parse(_dtr["Id_User"].ToString())
+                };
+                HttpContext.Current.Session["Identificador"] = _user.Id_Usuario;
+                return _user;
+            }
+            else
+                throw new Exception("User not found");
 
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            _conexion.Desconectar();
+            _conexion = null;
+            _dtr = null;
+        }
+    }
 }

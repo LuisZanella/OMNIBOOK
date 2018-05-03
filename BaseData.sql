@@ -161,5 +161,9 @@ AS
 	SET @lastId = (SELECT MAX(Id_Usuario) FROM Usuario)
 	SELECT * FROM Usuario WHERE Id_Usuario = @lastId
 GO
-
-
+CREATE PROCEDURE [dbo].[sp_LoginUser]
+@_Nick NVARCHAR(50),
+@_Password NVARCHAR(200)
+AS
+	SELECT * FROM Usuario WHERE Nick = @_Nick AND Contrasenia = @_Password
+GO
