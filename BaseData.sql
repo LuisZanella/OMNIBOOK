@@ -20,13 +20,19 @@ Biografia NVARCHAR(300),
 
 )
 GO
-
+CREATE TABLE Amistad(
+Id_Usuario INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
+Id_Usuario_Dos INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL
+CONSTRAINT Id_Amistad PRIMARY KEY (Id_Usuario,Id_Usuario_Dos) IDENTITY (1,1)
+)
+GO
 
 CREATE TABLE Publicacion(
 Id_Publicacion INT IDENTITY PRIMARY KEY,
 Id_Usuario INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
+Id_Amistad INT FOREIGN KEY REFERENCES Amistad(Id_Amistad),
 Titulo NVARCHAR(150),
-Imagen IMAGE,
+Imagen NVARCHAR(80),
 Fecha_Publicacion DATETIME NOT NULL
 )
 GO
@@ -38,9 +44,4 @@ Comentario NVARCHAR(260)
 )
 GO
 
-CREATE TABLE Amistad(
-Id_Usuario INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
-Id_Usuario_Dos INT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL
-PRIMARY KEY (Id_Usuario,Id_Usuario_Dos) IDENTITY (1,1)
-)
-GO
+
