@@ -31,6 +31,19 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <!-- css personalisados-->
     <link href="../recursos/css/wrapNav.css" rel="stylesheet" />
+    <!--Icon-->
+    <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico"/>
+        <!--JAVASCRIPT-->
+    <script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
+    <!--JS PERSONALIZADOS-->
+    <script src="../recursos/js/global.js"></script>
+    <script src="../recursos/js/login.js"></script>
+    <script src="../recursos/js/principalPerfilTop.js"></script>
 </head>
 <body>
     <div class="app-header colorDegrade box-shadow navbar-md">
@@ -48,7 +61,7 @@
                             <ul class="list-group list-group-gap m-a-0">
                                 <li class="list-group-item black lt box-shadow-z0 b">
                                     <span class="pull-left m-r">
-                                        <img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle">
+                                        <i id="imagenPrincipal"></i>
                                     </span>
                                     <span class="clear block">
                                         Increible
@@ -795,14 +808,5 @@
             </div>
         </div>
     </div>
-    <!--JAVASCRIPT-->
-    <script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
-    <script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
-    <script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
-    <script src="../recursos/js/global.js"></script>
-    <script src="../recursos/js/login.js"></script>
 </body>
 </html>
