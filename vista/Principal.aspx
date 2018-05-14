@@ -8,6 +8,9 @@
     <meta name="description" content="Admin, Dashboard, Bootstrap, Bootstrap 4, Angular, AngularJS"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!--Icon-->
+    <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico"/>
+
     <!-- for Chrome on Android, multi-resolution icon of 196x196 -->
     <meta name="mobile-web-app-capable" content="yes"/>
     <link rel="shortcut icon" sizes="196x196" href="../recursos/img/iconos/logo.ico"/>
@@ -28,19 +31,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <!-- css personalisados-->
     <link href="../recursos/css/wrapNav.css" rel="stylesheet" />
-    <!--Icon-->
-    <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico"/>
-        <!--JAVASCRIPT-->
-    <script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
-    <script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
-    <script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
-    <script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
-    <!--JS PERSONALIZADOS-->
-    <script src="../recursos/js/global.js"></script>
-    <script src="../recursos/js/login.js"></script>
-    <script src="../recursos/js/principalPerfilTop.js"></script>
 </head>
 <body>
     <div class="app-header colorDegrade box-shadow navbar-md">
@@ -51,14 +41,14 @@
             <ul class="nav navbar-nav pull-right">
                 <li class="nav-item dropdown pos-stc-xs">
                     <a class="nav-link" href="" data-toggle="dropdown">
-                        <i class="material-icons">notifications_none</i> <span id="noNotificaciones" class="label label-sm up warn"></span>
+                        <i class="material-icons">notifications_none</i> <span class="label label-sm up warn">3</span>
                     </a>
                     <div class="dropdown-menu pull-right w-xl animated fadeInUp no-bg no-border no-shadow ng-scope">
                         <div class="scrollable" style="max-height: 220px">
                             <ul class="list-group list-group-gap m-a-0">
                                 <li class="list-group-item black lt box-shadow-z0 b">
-                                    <span class="pull-left m-r" id="imagenPerfil">
-
+                                    <span class="pull-left m-r">
+                                        <img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle">
                                     </span>
                                     <span class="clear block">
                                         Increible
@@ -805,5 +795,14 @@
             </div>
         </div>
     </div>
+    <!--JAVASCRIPT-->
+    <script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
+    <script src="../recursos/js/global.js"></script>
+    <script src="../recursos/js/login.js"></script>
 </body>
 </html>
