@@ -226,51 +226,7 @@
                             <div class="col-sm-8 col-lg-9">
                                 <div class="tab-content">
                                     <div class="tab-pane p-v-sm active" id="tab_1">
-                                        <div class="streamline b-l m-b m-l">
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        <p>Hace 2 minutos</p>
-                                                    </div>
-                                                    <div class="sl-author">
-                                                        <a href="">Zanellita :D</a>
-                                                    </div>
-                                                    <div><p>Verifica tu conexion</p></div>
-                                                    <div class="sl-footer">
-                                                        <a href="" ui-toggle-class="" class="btn white btn-xs">
-                                                            <i class="fa fa-fw fa-star-o text-muted inline"></i>
-                                                            <i class="fa fa-fw fa-star text-danger none"></i>
-                                                        </a>
-                                                        <a href="" class="btn white btn-xs" data-toggle="collapse" data-target="#reply-1">
-                                                            <i class="fa fa-fw fa-mail-reply text-muted"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="box collapse m-a-0" id="reply-1">
-                                                        <form class="ng-pristine ng-valid">
-                                                            <textarea class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
-                                                        </form>
-                                                        <div class="box-footer clearfix">
-                                                            <button class="btn btn-info pull-right btn-sm">Enviar</button>
-                                                            <ul class="nav nav-pills nav-sm">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="">
-                                                                        <i class="fa fa-camera text-muted">
-                                                                        </i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="">
-                                                                        <i class="fa fa-video-camera text-muted"></i>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="streamline b-l m-b m-l" id="muro">
                                             <div class="sl-item">
                                                 <div class="sl-left">
                                                     <img src="../recursos/img/logo.png" class="img-circle">
