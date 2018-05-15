@@ -110,7 +110,7 @@
             </div>
             <div flex="" class="hide-scroll">
                 <nav class="scroll nav-active-success">
-                    <ul class="nav ng-scope">
+                    <ul class="nav ng-scope" ui-nav="">
                         <li class="nav-header hidden-folded">
                             <small class="text-muted">Menú</small>
                         </li>
@@ -226,197 +226,13 @@
                             <div class="col-sm-8 col-lg-9">
                                 <div class="tab-content">
                                     <div class="tab-pane p-v-sm active" id="tab_1">
-                                        <div class="streamline b-l m-b m-l" id="muro">
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        9:30
-                                                    </div>
-                                                    <div class="sl-author">
-                                                        <a href="">Chocito :)</a>
-                                                    </div>
-                                                    <div>
-                                                        <p>Aprendiendo de un gran maestro</p>
-                                                    </div>
-                                                    <div class="sl-footer">
-                                                        <a href="" ui-toggle-class="" class="btn white btn-xs">
-                                                            <i class="fa fa-fw fa-star-o text-muted inline"></i>
-                                                            <i class="fa fa-fw fa-star text-danger none"></i>
-                                                        </a>
-                                                        <a href="" class="btn white btn-xs" data-toggle="collapse" data-target="#reply-2">
-                                                            <i class="fa fa-fw fa-mail-reply text-muted"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="box collapse in m-a-0" id="reply-2">
-                                                        <form class="ng-pristine ng-valid">
-                                                            <textarea class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
-                                                        </form>
-                                                        <div class="box-footer clearfix">
-                                                            <button class="btn btn-info pull-right btn-sm">Post</button>
-                                                            <ul class="nav nav-pills nav-sm">
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="">
-                                                                        <i class="fa fa-camera text-muted"> </i>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nav-item">
-                                                                    <a class="nav-link" href="">
-                                                                        <i class="fa fa-video-camera text-muted"></i>
-                                                                    </a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        8:30
-                                                    </div>
-                                                    <div class="sl-author">
-                                                        <a href="">Sofi</a>
-                                                    </div>
-                                                    <div>
-                                                        <p>Llamar al cliente <a href="" class="text-info"> Pablillo</a> y hablar de los detalles.</p>
-                                                        <p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="../recursos/img/logo.png" class="w-full"></span></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Miercoles, 25 Marzo
-                                                    </div>
-                                                    <p>Tarea finalizada <a href="" class="text-info">Probando</a>.</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Jueves, 10 Marzo
-                                                    </div>
-                                                    <p>Viaje a la luna</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Sat, 5 Mar
-                                                    </div>
-                                                    <p>Preparar presentacion</p>
-                                                    <blockquote>
-                                                        <p>
-                                                            Los sentimientos son algo que simplemente no se pueden entender, y se cometen muchas
-                                                            errores por ellos. Pero es aquella la mente la que se encarga de aprender de estos errores
-                                                        </p>
-                                                        <small>Alguien famoso <cite title="Source Title">Fuente titulos</cite></small>
-                                                    </blockquote>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Domingo, 11 Febrero
-                                                    </div>
-                                                    <p>
-                                                        <a href="" class="text-info">Jessi</a> asignar tarea
-                                                        <a href="" class="text-info">Diseño.</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-left">
-                                                    <img src="../recursos/img/logo.png" class="img-circle">
-                                                </div>
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Jueves, 17 Enero
-                                                    </div>
-                                                    <p>Seguir para cerrar el trato</p>
-                                                </div>
-                                            </div>
+                                        <div class="streamline b-l m-b m-l">
+                                            <p id="muroPrincipal"></p>
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_2">
                                         <div class="streamline b-l m-b m-l">
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Hace 2 minutos
-                                                    </div>
-                                                    <p>Verifica tu conexión a internet</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        9:30
-                                                    </div>
-                                                    <p>Hablar con el lider</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item b-success">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        8:30
-                                                    </div>
-                                                    <p>Llamar al cliente <a href="" class="text-info">Jacob</a> Discutir detalles.</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">
-                                                        Miercoles, 25 Marzo
-                                                    </div>
-                                                    <p>Terminar tarea <a href="" class="text-info">Probando</a>.</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">Jueves, 10 Marzo</div>
-                                                    <p>Viajar a la luna</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item b-info">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">Sabado, 5 Marzo</div>
-                                                    <p>Preparar para la presentación</p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">Sabado, 11 Febrero</div>
-                                                    <p>
-                                                        <a href="" class="text-info">Jessi</a> asignar tarea
-                                                        <a href="" class="text-info">Crear Diseño.</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="sl-item">
-                                                <div class="sl-content">
-                                                    <div class="sl-date text-muted">Jueves, 17 Enero</div>
-                                                    <p>Seguir para cerrar trato</p>
-                                                </div>
-                                            </div>
+                                            <p id="notificacionesPrincipal"></p>
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_3">
