@@ -59,14 +59,12 @@
                     <div class="dropdown-menu pull-right w-xl animated fadeInUp no-bg no-border no-shadow ng-scope">
                         <div class="scrollable" style="max-height: 220px">
                             <ul class="list-group list-group-gap m-a-0" id="notificaciones">
-                               
                             </ul>
                         </div>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link clear" href="" data-toggle="dropdown">
-                        <span class="avatar w-32"><img src="../recursos/img/logo.png" alt="..."><i class="on b-white bottom"></i></span>
+                    <a class="nav-link clear" href="" data-toggle="dropdown" id="imagenNBSD">
                     </a>
                     <div class="dropdown-menu pull-right dropdown-menu-scale ng-scope">
                         <a class="dropdown-item" ui-sref="app.inbox.list" href="#/app/inbox/inbox/">
@@ -95,7 +93,7 @@
                       role="search">
                     <div class="form-group l-h m-a-0">
                         <div class="input-group">
-                            <input type="text" class="form-control form-control-sm p-x b-a rounded" placeholder="Buscar un Amigo">
+                            <input type="text" class="form-control form-control-sm p-x b-a rounded" placeholder="Buscar un Amigo"/>
                         </div>
                     </div>
                 </form>
@@ -106,13 +104,13 @@
         <div class="left navside indigo-900 dk" layout="column">
             <div class="navbar navbar-md no-radius">
                 <a class="navbar-brand ng-scope">
-                    <img class=" w-40 img-circle" src="../recursos/img/logo.png" alt=".">
+                    <i id="imagenNBSI"></i>
                     <span class="hidden-folded inline ng-binding">Perfil</span>
                 </a>
             </div>
             <div flex="" class="hide-scroll">
                 <nav class="scroll nav-active-success">
-                    <ul class="nav ng-scope" ui-nav="">
+                    <ul class="nav ng-scope">
                         <li class="nav-header hidden-folded">
                             <small class="text-muted">Menú</small>
                         </li>
@@ -151,21 +149,21 @@
                 <div ui-view="" class="ng-scope" style="">
                     <div class="item ng-scope">
                         <div class="item-bg">
-                            <img src="../recursos/img/logo.png" class="blur opacity-3">
+                            <i id="imagenFondoPerfilPrincipal"></i>
                         </div>
                         <div class="p-a-md">
                             <div class="row m-t">
                                 <div class="col-sm-7">
                                     <a href="" class="pull-left m-r-md">
-                                        <span class="avatar w-96">
-                                            <img src="../recursos/img/logo.png"> <i class="on b-white"></i>
+                                        <span class="avatar w-96" id="imagenPrincipalPersona">
+
                                         </span>
                                     </a>
                                     <div class="clear m-b">
-                                        <h3 class="m-a-0 m-b-xs">Pablito 10 </h3>
+                                        <h3 class="m-a-0 m-b-xs" id="nombreUsuario"></h3>
                                         <p class="text-muted">
-                                            <span class="m-r">ISSC211/Ingeniero en software</span>
-                                            <small><i class="fa fa-map-marker m-r-xs"></i>León, México</small>
+                                            <span class="m-r" id="vocacionUsuario"></span>
+                                            <small id="ubicacionUsuario"><i class="fa fa-map-marker m-r-xs"></i></small>
                                         </p>
                                         <div class="block clearfix m-b">
                                             <a href="" class="btn btn-icon btn-social rounded white btn-sm">
@@ -188,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-5">
-                                    <p class="text-md profile-status">Me siento bien!!</p>
+                                    <p class="text-md profile-status" id="estadoUsuario"></p>
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
                                         <textarea class="form-control no-border" rows="2" placeholder="Escribe algo..."></textarea>
@@ -202,23 +200,19 @@
                             <div class="col-sm-6 push-sm-6">
                                 <div class="p-y text-center text-sm-right">
                                     <a href="" class="inline p-x text-center">
-                                        <span class="h4 block m-a-0">2k</span>
+                                        <span class="h4 block m-a-0" id="seguidores"></span>
                                         <small class="text-xs text-muted">Seguidores</small>
                                     </a>
                                     <a href="" class="inline p-x b-l b-r text-center">
-                                        <span class="h4 block m-a-0">250</span>
+                                        <span class="h4 block m-a-0" id="siguiendo"></span>
                                         <small class="text-xs text-muted">Siguiendo</small>
-                                    </a>
-                                    <a href="" class="inline p-x text-center">
-                                        <span class="h4 block m-a-0">89</span>
-                                        <small class="text-xs text-muted">Actividades</small>
                                     </a>
                                 </div>
                             </div>
                             <div class="col-sm-6 pull-sm-6">
                                 <div class="p-y-md clearfix nav-active-success">
                                     <ul class="nav nav-pills nav-sm">
-                                        <li class="nav-item active"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_1">Activities</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_1">Muro</a></li>
                                         <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_2">Notificaciones</a></li>
                                         <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_3">Amigos</a></li>
                                         <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_4">Perfil</a></li>
