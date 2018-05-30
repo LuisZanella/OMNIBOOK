@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
     <!-- css personalisados-->
     <link href="../recursos/css/wrapNav.css" rel="stylesheet" />
+    <link href="../recursos/css/muro.css" rel="stylesheet" />
     <!--Icon-->
     <link rel="icon" type="image/x-icon" href="../recursos/img/iconos/logo.ico"/>
         <!--JAVASCRIPT-->
@@ -236,191 +237,26 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_3">
-                                        <div class="row row-sm ng-scope">
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Crystal Guerrero</a></div>
-                                                        <small class="text-muted text-ellipsis">Diseñador, Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Andrei</a></div>
-                                                        <small class="text-muted text-ellipsis">Escritor, Mag Editor</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="..."> <i class="away b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Mark Zuckerberg</a></div>
-                                                        <small class="text-muted text-ellipsis">Escritor, Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="...">
-                                                            <i class="busy b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Carolina Contreras</a></div>
-                                                        <small class="text-muted text-ellipsis">Artista, Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar"><img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i></span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Juan Pablo</a></div>
-                                                        <small class="text-muted text-ellipsis">Entrenador, chochos world :'c</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="...">
-                                                            <i class="on b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Guillermo Ramirez</a></div>
-                                                        <small class="text-muted text-ellipsis">Maestro</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="...">
-                                                            <i class="on b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Juan</a></div>
-                                                        <small class="text-muted text-ellipsis">Profesor, Entrenador</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="...">
-                                                            <i class="away b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Karol Rock</a></div>
-                                                        <small class="text-muted text-ellipsis">Sin empleo</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 avatar">
-                                                            <img src="../recursos/img/logo.png" alt="...">
-                                                            <i class="busy b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Sara King</a></div>
-                                                        <small class="text-muted text-ellipsis">Designer, Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 circle amber avatar">
-                                                            <i class="busy b-white bottom"></i>
-                                                        </span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Sebastian</a></div>
-                                                        <small class="text-muted text-ellipsis">Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 circle blue">J</span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Sofia Denisse</a></div>
-                                                        <small class="text-muted text-ellipsis">Artista, Modelo, Escritora</small>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-6 col-lg-4">
-                                                <div class="list-item box r m-b">
-                                                    <a herf="" class="list-left">
-                                                        <span class="w-40 circle green">M</span>
-                                                    </a>
-                                                    <div class="list-body">
-                                                        <div class="text-ellipsis"><a href="">Melissa Garza</a></div>
-                                                        <small class="text-muted text-ellipsis">Blogger</small>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="row row-sm ng-scope" id="friends">
+                                            
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_4">
                                         <div class="row m-b">
-                                            <div class="col-xs-6">
+                                            <div class="col-xs-6" id="noTelefonico">
                                                 <small class="text-muted">Numero Telefónico</small>
-                                                <div class="_500">1243 0303 0333</div>
                                             </div>
-                                            <div class="col-xs-6">
+                                            <div class="col-xs-6" id="noCasa">
                                                 <small class="text-muted">Teléfono de casa</small>
-                                                <div class="_500">+32(0) 3003 234 543</div>
                                             </div>
                                         </div>
                                         <div class="row m-b">
-                                            <div class="col-xs-6">
-                                                <small class="text-muted">Reportero</small>
-                                                <div class="_500">Coch Jose</div>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <small class="text-muted">Director</small>
-                                                <div class="_500">James Richo</div>
+                                            <div class="col-xs-6" id="vocacion">
+                                                
                                             </div>
                                         </div>
-                                        <div>
+                                        <div id="biografia">
                                             <small class="text-muted">Biografia</small>
-                                            <div>
-                                                Cómo muchos saben mi destino no esta escrito, pero mi pasado si, no me arrepiento de esto.
-                                                Porque gracias a esto soy como soy.
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -430,116 +266,20 @@
                                     <div class="box">
                                         <div class="box-header"><h3>A quien seguir</h3></div>
                                         <div class="box-divider m-a-0"></div>
-                                        <ul class="list no-border p-b">
-                                            <li class="list-item">
-                                                <a herf="" class="list-left">
-                                                    <span class="w-40 avatar">
-                                                        <img src="../recursos/img/logo.png" alt="...">
-                                                        <i class="on b-white bottom"></i>
-                                                    </span>
-                                                </a>
-                                                <div class="list-body">
-                                                    <div><a href="">Megan Fox</a></div>
-                                                    <small class="text-muted text-ellipsis">Diseñador, Blogger</small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <a herf="" class="list-left">
-                                                    <span class="w-40 avatar">
-                                                        <img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i>
-                                                    </span>
-                                                </a>
-                                                <div class="list-body">
-                                                    <div><a href="">Juan Pablito</a></div>
-                                                    <small class="text-muted text-ellipsis">Escritor, Mag Editor</small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <a herf="" class="list-left">
-                                                    <span class="w-40 avatar">
-                                                        <img src="../recursos/img/logo.png" alt="..."> <i class="busy b-white bottom"></i>
-                                                    </span>
-                                                </a>
-                                                <div class="list-body">
-                                                    <div><a href="">Luis Zanella</a></div>
-                                                    <small class="text-muted text-ellipsis">Director de Cine, Empresario</small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <a herf="" class="list-left">
-                                                    <span class="w-40 avatar">
-                                                        <img src="../recursos/img/logo.png" alt="..."> <i class="away b-white bottom"></i>
-                                                    </span>
-                                                </a>
-                                                <div class="list-body">
-                                                    <div><a href="">Folisise Chosielie</a></div>
-                                                    <small class="text-muted text-ellipsis">Musico, Jugador</small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <a herf="" class="list-left">
-                                                    <span class="w-40 circle green avatar">
-                                                        P <i class="away b-white bottom"></i>
-                                                    </span>
-                                                </a>
-                                                <div class="list-body">
-                                                    <div><a href="">Peter</a></div>
-                                                    <small class="text-muted text-ellipsis">Super Heroe</small>
-                                                </div>
-                                            </li>
+                                        <ul class="list no-border p-b" id="seguir">
                                         </ul>
                                     </div>
                                     <div class="box info dk">
-                                        <div class="box-body">
-                                            <a href="" class="pull-left m-r">
-                                                <img src="../recursos/img/logo.png" class="img-circle w-40">
-                                            </a>
-                                            <div class="clear">
-                                                <a href="">@Mike Mcalidek</a>
-                                                <small class="block text-muted">2,415 followers / 225 tweets</small>
-                                                <a href="" class="btn btn-sm btn-rounded btn-info m-t-xs">
-                                                    <i class="fa fa-twitter m-t-xs"></i> Follow
-                                                </a>
-                                            </div>
+                                        <div class="box-header"><h3>Top Famoso</h3></div>
+                                        <div class="box-divider m-a-0"></div>
+                                        <div class="box-body" id="famoso">
                                         </div>
                                     </div>
                                     <div class="box">
-                                        <div class="box-header"><h2>Latest Tweets</h2></div>
+                                        <div class="box-header"><h2>Últimas noticias</h2></div>
                                         <div class="box-divider m-a-0"></div>
-                                        <ul class="list">
-                                            <li class="list-item">
-                                                <div class="list-body">
-                                                    <p>
-                                                        Bienvenido
-                                                        <a href="" class="text-info">@Drew Wllon </a>
-                                                    </p>
-                                                    <small class="block text-muted">
-                                                        <i class="fa fa-fw fa-clock-o"></i>
-                                                        Hace 2 minutos
-                                                    </small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <div class="list-body">
-                                                    <p>Morbi nec <a href="" class="text-info">@Jonathan  George</a></p>
-                                                    <small class="block text-muted">
-                                                        <i class="fa fa-fw fa-clock-o"></i>
-                                                        Hace 1 minuto
-                                                    </small>
-                                                </div>
-                                            </li>
-                                            <li class="list-item">
-                                                <div class="list-body">
-                                                    <p>
-                                                        <a href="" class="text-info">@Josh Long</a>
-                                                        Escucha lo que tengo que decir porque soy unico.
-                                                    </p>
-                                                    <small class="block text-muted">
-                                                        <i class="fa fa-fw fa-clock-o"></i>
-                                                        Hace 2 horas
-                                                    </small>
-                                                </div>
-                                            </li>
+                                        <ul class="list" id="noticias">
+                                            
                                         </ul>
                                     </div>
                                 </div>
