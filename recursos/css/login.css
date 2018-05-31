@@ -1,0 +1,70 @@
+body{
+    background-color: white;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.btn{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+a.btn:not([href]):not([tabindex]), a.btn:not([href]):not([tabindex]):hover{
+    color: white;
+    font-size: 1rem
+}
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.navbar .logo {
+    min-height: 7rem;
+}
+.logologin{
+    height: 80px;
+    width: 80px;
+}
+.navbar{
+    border: none;
+    margin: 0;
+    padding: 8px 11rem;
+    flex-shrink: 0;
+    min-height: 4.5rem;
+    border-radius: 0.25rem;
+    position: relative;
+    content: "";
+    clear: both;
+}
+.icono-idioma{
+    background-size: 15px !important;
+    width: 15px;
+    height: 15px;
+}
+.btn-sm, .btn-group-sm > .btn{
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
+}
+.btn-group, .btn-group-vertical{
+position: relative;
+display: inline-block;
+vertical-align: middle;
+}
+.pull-right{
+float: right !important;
+}
