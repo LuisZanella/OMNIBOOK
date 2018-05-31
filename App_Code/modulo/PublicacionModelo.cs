@@ -9,11 +9,14 @@ using System.Web;
 public class PublicacionModelo
 {
     public int Id_Publicacion { set; get; } 
-    public UsuarioModelo Usuario { set; get; } 
-    public string Descripcion { set; get; }
-    public string Tags { set; get; }
+    public UsuarioModelo Usuario { set; get; }
+    public AmistadModelo  Amistad { get; set; }
+    public string Titulo { set; get; }
     public string Imagen { set; get; }
-    public DateTime Fecha_Publicacion { set; get; }
+    public int Tipo { get; set; }
+    public string Descripcion { set; get; }
+    public string Fuente { get; set; }
+    public DateTime Fecha_Publicacion { get; set; }
     public PublicacionModelo()
     {
         //

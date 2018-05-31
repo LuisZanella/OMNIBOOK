@@ -9,8 +9,8 @@ using System.Web;
 public class AmistadModelo
 {
     public int Id_Amistad { set; get; }
-    public UsuarioModelo Id_Usuario { set; get; }
-    public UsuarioModelo Id_Usuario2 { set; get; }
+    public UsuarioModelo Usuario { set; get; }
+    public UsuarioModelo Usuario2 { set; get; }
     public AmistadModelo()
     {
         //
