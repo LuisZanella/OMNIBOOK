@@ -24,8 +24,8 @@
      /*SPLISTO*/$("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">Crystal Guerrero</a></div><small class="text-muted text-ellipsis">Diseñador, Blogger</small> </div></div></div >'); // imagen del amigo, vocacion, nickname
     /*Perfil*/
      /*SPLISTO*/$("#noTelefonico").append('<div class="_500">1243 0303 0333</div>');
-     /*SPLISTO*/$("#noCasa").append('<div class="_500">1243 0303 0333</div>')
-    $("#vocacion").append('<small class="text-muted" > Reportero</small>')
+     /*SPLISTO*/$("#noCasa").append('<div class="_500">1243 0303 0333</div>');
+    $("#vocacion").append('<small class="text-muted" > Reportero</small>');
     $("#vocacion").append('<div class="_500" > Coch Jose</div >');
      /*SPLISTO*/$("#biografia").append('<div>Cómo muchos saben mi destino no esta escrito, pero mi pasado si, no me arrepiento de esto.Porque gracias a esto soy como soy. </div >');
     /*A quien seguir*/
@@ -35,5 +35,5 @@
     /*Noticias resientes*/
     $("#noticias").append('<li class="list-item"><div class="list-body" ><p>Bienvenido<a href="" class="text-info">@Drew Wllon </a></p><small class="block text-muted"><i class="fa fa-fw fa-clock-o"></i>Hace 2 minutos</small></div></li >');
     $("").append('descripcionUsuario');
-})
+});
 

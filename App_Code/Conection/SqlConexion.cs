@@ -11,7 +11,6 @@ using System.Web;
 public class SqlConexion
 {
     private SqlConnection _conn = null;
-    string _ConnectionString = "";
     bool _Conectado = false;
     string _NombreProcedimiento = "";
     List<SqlParameter> _Parametros = new List<SqlParameter>();
