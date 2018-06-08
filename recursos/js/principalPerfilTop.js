@@ -1,16 +1,16 @@
 ﻿$(document).ready(function () {
-    $("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle"></span><span class="clear block"> Increible <a href="" class="text-primary" > texto animado</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >');
+    $("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle"></span><span class="clear block"> Increible <a href="" class="text-primary" > texto animado</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
     $("#notificaciones").append('<li class="list-group-item dark-white text-color box-shadow-z0 b"> <span class="pull-left m-r"><img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle"></span><span class="clear block"> <a href="" class="text-primary">Danie</a> Mandar un mensaje<br><small class="text-muted">Hace 1 día</small></span></li>');
-    $("#imagenNBSD").append('<span class="avatar w-32"><img src="../recursos/img/logo.png" alt="..."><i class="on b-white bottom"></i></span>');
-    $("#imagenNBSI").append('<img class=" w-40 img-circle" src="../recursos/img/logo.png" alt="."/>');
-    $("#imagenFondoPerfilPrincipal").append('<img src= "../recursos/img/logo.png" class="blur opacity-3"/>');
-    $("#imagenPrincipalPersona").append('<img src="../recursos/img/logo.png"> <i class="on b-white"></i>');
-    $("#nombreUsuario").append('Pablito 10');
-    $("#vocacionUsuario").append('ISSC211/Ingeniero en software');
-    $("#ubicacionUsuario").append('León, México');
-    $("#estadoUsuario").append('Me siento bien!!');
-    $("#seguidores").append('2k');
-    $("#siguiendo").append('250');
+    $("#imagenNBSD").append('<span class="avatar w-32"><img src="../recursos/img/logo.png" alt="..."><i class="on b-white bottom"></i></span>'); //traer la foto del usuario actual
+    $("#imagenNBSI").append('<img class=" w-40 img-circle" src="../recursos/img/logo.png" alt="."/>'); //omite, es el sp anterior
+    $("#imagenFondoPerfilPrincipal").append('<img src= "../recursos/img/logo.png" class="blur opacity-3"/>'); //traer imagen de portada
+    $("#imagenPrincipalPersona").append('<img src="../recursos/img/logo.png"> <i class="on b-white"></i>'); //omite, es el sp de la imagen del usuario
+    $("#nombreUsuario").append('Pablito 10'); //obtener el nombre del usuario
+    $("#vocacionUsuario").append('ISSC211/Ingeniero en software'); //obtener la vocacion del usuario
+    $("#ubicacionUsuario").append('León, México'); //obtener la ubicacion del usuario
+    $("#estadoUsuario").append('Me siento bien!!'); // obtener el estado del usuario
+    $("#seguidores").append('2k'); //obtener los seguidores del usuario
+    $("#siguiendo").append('250'); //obtener siguiendo del usaurio
     /*El siguiente append es sobre una publicacion*/
     $("#muroPrincipal").append('<div class="sl-item"><div class="sl-left"><img src= "../recursos/img/logo.png" class="img-circle" > </div > <div class="sl-content"> <div class="sl-date text-muted"><p>Hace 2 minutos</p></div> <div class="sl-author"> <a href="">Zanellita :D</a> </div> <div><p>Verifica tu conexion</p></div> <div class="sl-footer"></div> <div class="box collapse m-a-0" id="reply-1"> <form class="ng-pristine ng-valid">');
     $("#muroPrincipal").append('<textarea class="form-control no-border textShare" rows="3" placeholder="Escribe algo..."></textarea> </form> <div class="box-footer clearfix"> <button class="btn btn-info pull-right btn-sm">Enviar</button></div> </div> </div> </div>');
@@ -21,7 +21,7 @@
     /*Notificaciones*/
     $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-content"> <div class="sl-date text-muted"> Hace 2 minutos </div> <p>Verifica tu conexión a internet</p> </div> </div>');
     /*Amigos*/
-    $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">Crystal Guerrero</a></div><small class="text-muted text-ellipsis">Diseñador, Blogger</small> </div></div></div >');
+    $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="../recursos/img/logo.png" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">Crystal Guerrero</a></div><small class="text-muted text-ellipsis">Diseñador, Blogger</small> </div></div></div >'); // imagen del amigo, vocacion, nickname
     /*Perfil*/
     $("#noTelefonico").append('<div class="_500">1243 0303 0333</div>');
     $("#noCasa").append('<div class="_500">1243 0303 0333</div>')

@@ -208,3 +208,112 @@ AS
 	SET @lastAm = (SELECT MAX(Id_Amistad) FROM Amistad)
 	SELECT * FROM Amistad WHERE Id_Amistad = @lastAm
 GO
+
+---------------------------------
+--CREACION DE SP'S COCCHE
+
+--CREACION DE SP DE notificacion
+CREATE PROCEDURE [dbo].[sp_obtenerNotificacion]
+@IdUsuario INT
+AS
+	SELECT TOP 3 U.Nombre, D.Imagen_Perfil, P.Titulo FROM Usuario U
+	INNER JOIN Amistad A ON A.Id_Usuario = U.Id_Usuario
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN Publicacion P ON P.Id_Amistad = A.Id_Amistad 
+	INNER JOIN Notificacion N ON N.Id_Publicacion = P.Id_Publicacion WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la imagen del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerImagenPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Imagen_Perfil FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la imagen de portada del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerImagenPortadaPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Imagen_Portada FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener el nombre del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerNombrePerfil]
+@IdUsuario INT
+AS
+	SELECT U.Nombre FROM Usuario U WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la vocacion del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerVocacionPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Vocacion FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la ubicacion del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerUbicacionPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Ciudad, D.Pais FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la ubicacion del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerEstadoPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Estado FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener los seguidores del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerSeguidoresPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Seguidores FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener siguiendo del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerSiguiendoPerfil]
+@IdUsuario INT
+AS
+	SELECT D.Siguiendo FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario WHERE U.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener nick, imagen de usuario y vocacion de los amigos del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenerPerfilAmigos]
+@IdUsuario INT
+AS
+	SELECT D.Imagen_Perfil, U.Nick, D.Vocacion FROM Amistad A
+	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos 
+	INNER JOIN Usuario U ON U.Id_Usuario = A.Id_Usuario_Dos
+	WHERE A.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener no telefonico del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenernoTelefonico]
+@IdUsuario INT
+As
+	SELECT D.Telefono FROM Datos D WHERE D.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener no telefonico casa del usuario actual
+CREATE PROCEDURE [dbo].[sp_obtenernoTelefonicoCasa]
+@IdUsuario INT
+As
+	SELECT D.Telefono_Casa FROM Datos D WHERE D.Id_Usuario = @IdUsuario
+GO
+
+--CREACION DE SP para obtener la biografia de un usuario
+CREATE PROCEDURE [dbo].[sp_obtenerBiografia]
+@IdUsuario INT
+As
+	SELECT D.Biografia FROM Datos D WHERE D.Id_Usuario = @IdUsuario
+GO
+
