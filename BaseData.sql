@@ -187,7 +187,7 @@ CREATE PROCEDURE [dbo].[sp_LoginUser]
 @_Password NVARCHAR(200)
 AS
 	SELECT * FROM Usuario WHERE Nick = @_Nick AND Contrasenia = @_Password
-=======
+/***/
 CREATE PROCEDURE [dbo].[sp_InComentario]
 @Id_Usuario INT,
 @Id_Publicacion INT,
