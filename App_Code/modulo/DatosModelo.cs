@@ -8,19 +8,19 @@ using System.Web;
 /// </summary>
 public class DatosModelo
 {
-    UsuarioModelo Usuario { get; set; }
-    string Vocacion { get; set; }
-    string Ciudad { get; set; }
-    string Pais { get; set; }
-    string Estado { get; set; }
-    int Seguidores { get; set; }
-    int Siguiendo { get; set; }
-    string NombreArtistico { get; set; }
-    string Imagen_Perfil { get; set; }
-    string Imagen_Portada { get; set; }
-    string Telefono { get; set; }
-    string Telefono_Casa { get; set; }
-    string Biografia { get; set; }
+    public UsuarioModelo Usuario { get; set; }
+    public string Vocacion { get; set; }
+    public string Ciudad { get; set; }
+    public string Pais { get; set; }
+    public string Estado { get; set; }
+    public int Seguidores { get; set; }
+    public int Siguiendo { get; set; }
+    public string NombreArtistico { get; set; }
+    public string Imagen_Perfil { get; set; }
+    public string Imagen_Portada { get; set; }
+    public string Telefono { get; set; }
+    public string Telefono_Casa { get; set; }
+    public string Biografia { get; set; }
     public DatosModelo()
     {
         //
