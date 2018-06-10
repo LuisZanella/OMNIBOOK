@@ -272,3 +272,39 @@ AS
 UPDATE Datos SET Biografia=@Variable WHERE Id_Usuario=@Id
 GO
 
+SELECT P.Id_Usuario,D.Imagen_Perfil, U.Nick, P.Descripcion FROM Publicacion P LEFT JOIN Usuario U
+ON P.Id_Usuario = P.Id_Usuario
+INNER JOIN Datos D
+ON D.Id_Usuario = U.Id_Usuario
+INNER JOIN Amistad A
+ON A.Id_Amistad = P.Id_Amistad
+WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1;
+
+SELECT P.Id_Usuario,D.Imagen_Perfil, U.Nick, P.Descripcion, P.Imagen FROM Publicacion P LEFT JOIN Usuario U
+ON P.Id_Usuario = P.Id_Usuario
+INNER JOIN Datos D
+ON D.Id_Usuario = U.Id_Usuario
+INNER JOIN Amistad A
+ON A.Id_Amistad = P.Id_Amistad
+WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 2;
+
+SELECT P.Id_Usuario,D.Imagen_Perfil, U.Nick, P.Descripcion, P.Titulo, P.Imagen FROM Publicacion P LEFT JOIN Usuario U
+ON P.Id_Usuario = P.Id_Usuario
+INNER JOIN Datos D
+ON D.Id_Usuario = U.Id_Usuario
+INNER JOIN Amistad A
+ON A.Id_Amistad = P.Id_Amistad
+WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 3;
+
+SELECT * FROM Notificacion
+
+SELECT TOP 3 P.Id_Usuario,D.Imagen_Perfil, U.Nick, SUBSTRING(P.Descripcion,1,15) Descripcion FROM Publicacion P LEFT JOIN Usuario U
+ON P.Id_Usuario = P.Id_Usuario
+INNER JOIN Datos D
+ON D.Id_Usuario = U.Id_Usuario
+INNER JOIN Amistad A
+ON A.Id_Amistad = P.Id_Amistad
+INNER JOIN Notificacion N
+ON N.Id_Publicacion = P.Id_Publicacion
+WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1
+ORDER BY  P.Fecha_Publicacion;
