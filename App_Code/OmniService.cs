@@ -162,7 +162,7 @@ public class OmniService : System.Web.Services.WebService
         }
     }
     [WebMethod(EnableSession = true)]
-    public List<ModulosBaseModelo> Leer(string spNombre, string [] campos, int id)
+    public List<ModulosBaseModelo> Leer(string spNombre, string [] Campos, int Id)
     {
         List<ModulosBaseModelo> _Datos = new List<ModulosBaseModelo>();
         ModulosBaseModelo _Dato = new ModulosBaseModelo();
@@ -179,7 +179,7 @@ public class OmniService : System.Web.Services.WebService
             _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
             // Se agregan parámetros a la lista List <SqlParameter>, con los valores para cada parametro que se obtienen de los atributos
             // del objeto Pej.Objeto . Atributo_x
-            _Parametros.Add(new SqlParameter("@Id", id));
+            _Parametros.Add(new SqlParameter("@Id", Id));
             _conexion.PrepararProcedimiento(spNombre, _Parametros);
             _dtr = _conexion.EjecutarTableReader();
             if (_dtr.HasRows)
@@ -190,8 +190,8 @@ public class OmniService : System.Web.Services.WebService
                     _datosUsuario = new DatosModelo();
                     _notificacion = new NotificacionModelo();
                     _publicacion = new PublicacionModelo();
-                    for (int i = 0; i<campos.Length; i++) {
-                        switch (campos[i]) {
+                    for (int i = 0; i<Campos.Length; i++) {
+                        switch (Campos[i]) {
                             /*Usuario*/
                             case "Nombre":
                                 _usuario.Nombre = _dtr["Nombre"].ToString();
@@ -268,6 +268,7 @@ public class OmniService : System.Web.Services.WebService
                     _datosUsuario.Usuario = _usuario;
                     _Dato.Usuario = _usuario;
                     _Dato.Datos = _datosUsuario;
+                    _Dato.Publicacion = _publicacion;
                     _Dato.Notificacion = _notificacion;
                     _Datos.Add(_Dato);
                 }

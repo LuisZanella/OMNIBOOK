@@ -1,3 +1,4 @@
+
 function btnIniciarSesion() {
     var userObj = {
         "Contrasenia": $("#txtPswI").val(),
@@ -6,11 +7,13 @@ function btnIniciarSesion() {
 
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}"
+    user = "{'user':" + user + "}";
     ajax('OmniService.asmx', 'iniciarSesion', user);
 }
 function iniciarSesion(response){
-    if (response.d.Id_Usuario > 0) window.location.href = "Principal.aspx";
+    if (response.d.Id_Usuario > 0) {
+        window.location.href = "Principal.aspx?" + response.d.Id_Usuario;
+    }
 }
 function btnRegistrar() {
     btnRegistrarUsuario(); //Dar de alta al usuario en la BD
@@ -87,19 +90,19 @@ function btnRegistrarUsuario() {
         "Fecha_Nacimiento": $('#dtFechaNacimiento').val(),
         "Nick": $("#txtNickRegistro").val(),
         "Correo": $("#txtCorreoRegistro").val(),
-        "Estatus": true,
-        "Imagen_Perfil": "",
-        "Imagen_Portada": "",
-        "Telefono": "",
-        "Telefono_Casa": "",
-        "Biografia": "",
-        "Id_Usuario": 0
+        "Estatus": true
+        //"Imagen_Perfil": "",
+        //"Imagen_Portada": "",
+        //"Telefono": "",
+        //"Telefono_Casa": "",
+        //"Biografia": "",
+        //"Id_Usuario": 0
     };
     //userObj = "{'user':" + userObj + "}";
 
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}"
+    user = "{'user':" + user + "}";
 
     ajax('OmniService.asmx', 'registrarUsuario', user);
 

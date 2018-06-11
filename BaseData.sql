@@ -286,7 +286,7 @@ AS
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1 AND U.Id_Usuario = @Id AND U.Estatus = 1
 	ORDER BY  P.Fecha_Publicacion
 GO
-
+EXEC [sp_obtenerImagenPerfil] 1
 --CREACION DE SP para obtener la imagen del usuario actual
 CREATE PROCEDURE [dbo].[sp_obtenerImagenPerfil]
 @Id INT

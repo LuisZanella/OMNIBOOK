@@ -1,5 +1,11 @@
-﻿$(document).ready(function () {
-   /*SPLISTO*/ $("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle"></span><span class="clear block"> Increible <a href="" class="text-primary" > texto animado</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
+﻿var IdUser;
+function loadId() {
+    IdUser = window.location.href;
+    IdUser = IdUser.split('?')[1];
+}
+$(document).ready(function () {
+    loadId();
+    Notificaciones();
      /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item dark-white text-color box-shadow-z0 b"> <span class="pull-left m-r"><img src="../recursos/img/logo.png" alt="..." class="w-40 img-circle"></span><span class="clear block"> <a href="" class="text-primary">Danie</a> Mandar un mensaje<br><small class="text-muted">Hace 1 día</small></span></li>');
      /*SPLISTO*/$("#imagenNBSD").append('<span class="avatar w-32"><img src="../recursos/img/logo.png" alt="..."><i class="on b-white bottom"></i></span>'); //traer la foto del usuario actual
      /*SPLISTO*/$("#imagenNBSI").append('<img class=" w-40 img-circle" src="../recursos/img/logo.png" alt="."/>'); //omite, es el sp anterior
@@ -36,4 +42,18 @@
     $("#noticias").append('<li class="list-item"><div class="list-body" ><p>Bienvenido<a href="" class="text-info">@Drew Wllon </a></p><small class="block text-muted"><i class="fa fa-fw fa-clock-o"></i>Hace 2 minutos</small></div></li >');
     $("").append('descripcionUsuario');
 });
-
+function Notificaciones() {
+    var Campos = ["Imagen_Perfil", "Nick", "Descripcion"];
+    var spName = "sp_obtenerNotificacion";
+    var Obj = {
+        "spNombre": spName, "Campos": Campos, "Id": IdUser
+    }
+    var data = JSON.stringify(Obj);
+    ajax("OmniService.asmx", "Leer", data, "CargarNotificaciones");
+}
+function CargarNotificaciones(Response) {
+    console.warn(Response);
+    for (var i = 0; i < Response.d.length; i++) {
+            /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..." class="w-40 img-circle"></span><span class="clear block">' + Response.d[i].Usuario.Nick+' : ' + '<a href="" class="text-primary" >'+ Response.d[i].Publicacion.Descripcion+'</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
+    }
+}
