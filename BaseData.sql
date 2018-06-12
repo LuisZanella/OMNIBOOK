@@ -125,7 +125,7 @@ AS
 INSERT INTO Publicacion(Id_Usuario, Titulo, Imagen, Fecha_Publicacion)
 VALUES(@Id, @Variable, @Variable2, CURRENT_TIMESTAMP)
 GO
-CREATE PROCEDURE [dbo].[sp_InComentario]
+/*CREATE PROCEDURE [dbo].[sp_InComentario]
 @Id INT,
 @Id2 INT,
 @Variable NVARCHAR(260)
@@ -133,6 +133,7 @@ AS
 INSERT INTO Comentario(Id_Usuario, Id_Publicacion, Comentario)
 VALUES (@Id, @Id2, @Variable)
 GO
+*/
 CREATE PROCEDURE [dbo].[sp_InUsuario]
 @Nombre NVARCHAR(50),
 @Correo NVARCHAR(40),
