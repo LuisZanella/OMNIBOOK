@@ -105,10 +105,10 @@
     <div id="aside" class="app-aside modal fade folded md nav-expand ng-scope">
         <div class="left navside indigo-900 dk" layout="column">
             <div class="navbar navbar-md no-radius">
-                <a class="navbar-brand ng-scope">
+                <a class="navbar-brand ng-scope" data-toggle="modal" data-target="#editarCuentaModal">
                     <i id="imagenNBSI"></i>
                     <span class="hidden-folded inline ng-binding">Perfil</span>
-                </a>
+                <a/>
             </div>
             <div flex="" class="hide-scroll">
                 <nav class="scroll nav-active-success">
@@ -291,5 +291,102 @@
             </div>
         </div>
     </div>
+     <div class="modal fade" id="editarCuentaModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content modal-body-back ">
+                <div class="modal-header back-head">
+                    <div class="container">
+                        <div class="navbar logo">
+                            <div class="pull-centro-registro">
+                                <!-- brand -->
+                                <div class="navbar-brand">
+                                    <img class="logologin w3-circle" src="../recursos/img/logo.png">
+                                </div>
+                                <!-- / brand -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="datosRegistro">
+                    <div class="modal-body back-registro">
+                        <div class="center-block w-xxl w-auto-xs p-y-md ">
+                            <div class="md-form-group float-label">
+                                <input id="txtNombreRegistro" name="usuario" type="text" class="md-input" required="">
+                                <label>Nick</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtNickRegistro" name="nick" type="text" class="md-input" required="">
+                                <label>Correo</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtCorreoRegistro" name="correo" type="text" class="md-input" required="">
+                                <label>Numero telefonico</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtContraseniaRegistro" name="password" type="password" class="md-input"
+                                       required="">
+                                <label>Telefono</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtCContraseniaRegistro" name="confirmPassword" type="password" class="md-input"
+                                       required="">
+                                <label>Telefono de casa</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>vocacion</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>nombre artistico</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>biografia</label>
+                            </div>
+                               <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label> ciudad</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>Pais</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>Estado</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>Nombre</label>
+                            </div>
+                             <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>Imagenes</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal"
+                                onclick="btnRegistrar()">
+                            Registrarme
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
