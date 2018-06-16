@@ -192,6 +192,7 @@
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
                                         <textarea class="form-control no-border" rows="2" placeholder="Escribe algo..."></textarea>
+                                        <button class="btn btn-sm white collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button>
                                     </div>
                                 </div>
                             </div>

@@ -419,5 +419,14 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo3]
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 3 AND U.Id_Usuario = @Id
 GO
 
-SELECT * FROM Usuario
+SELECT * FROM Notificacion
 
+--obtener todas las publicaciones de los amigos
+CREATE PROCEDURE [dbo].[sp_obtenerPublicaciones] 
+@Id INT
+AS 
+	SELECT * FROM Publicacion P
+	INNER JOIN Amistad A ON A.Id_Usuario = @Id
+	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos
+	WHERE P.Id_Usuario = A.Id_Usuario_Dos
+	GO

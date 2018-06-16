@@ -1,3 +1,8 @@
+$("#txtPswI").keyup(function (event) {
+    if (event.keyCode === 13) {
+        btnIniciarSesion();
+    }
+});
 
 function btnIniciarSesion() {
     var userObj = {
@@ -15,45 +20,7 @@ function iniciarSesion(response){
     if (response.d.Id_Usuario === 0) alert("Usuario o Contrase\u00f1a incorrectos");
 }
 function btnRegistrar() {
-    btnRegistrarUsuario(); //Dar de alta al usuario en la BD
-
-    //var btnEnviar = $('#btnEnviarRegistro');
-    //var nombre = $("#txtNombreRegistro").val();
-    //var correo = $("#txtCorreoRegistro").val();
-    //var contrasenia = $('#txtContraseniaRegistro').val();
-    //var ccontrasenia = $('#txtCContraseniaRegistro').val();
-    //var nick = $('#txtNickRegistro').val();
-    //var mensaje = 'Gracias por Registrarte en Omnibook';
-    //var asunto = 'Omnibook';
-    //btnEnviar.attr('disabled', 'disabled');
-    //if (validacionCamposEnviarEmail(nombre, correo, mensaje, contrasenia, ccontrasenia, nick) === true) {
-    //    $.ajax({
-    //        url: "recursos/email/php/sendmail.php",
-    //        method: "post",
-    //        data: {
-    //            nombre: nombre,
-    //            correo: correo,
-    //            mensaje: mensaje,
-    //            asunto: asunto,
-    //            nick: nick
-    //        },
-    //        dataType: "json"
-    //    })
-    //        .done(function (response) {
-    //            if (response.message == "Tu mensaje ha sido enviado con éxito. Pronto nos pondremos en contacto contigo.") {
-    //                alert(response.message);
-    //            }
-    //            if (response.message == "No se pudo enviar el mensaje. Si el problema persiste, comuníquese con el desarrollador.") {
-    //                alert("Error al enviar el mensaje")
-    //            }
-    //        })
-    //        .fail(function (response) {
-    //            alert(response.message);
-    //            console.warn(response);
-    //        })
-    //}
-    //btnEnviar.removeAttr('disabled');
-
+    if (validacionCamposEnviarEmail()) btnRegistrarUsuario();
 }
 function validacionCamposEnviarEmail(nombre, correo, mensaje, contrasenia, ccontrasenia, nick) {
     var emailVerficacion = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
@@ -90,27 +57,19 @@ function btnRegistrarUsuario() {
         "Nick": $("#txtNickRegistro").val(),
         "Correo": $("#txtCorreoRegistro").val(),
         "Estatus": true
-        //"Imagen_Perfil": "",
-        //"Imagen_Portada": "",
-        //"Telefono": "",
-        //"Telefono_Casa": "",
-        //"Biografia": "",
-        //"Id_Usuario": 0
     };
-    //userObj = "{'user':" + userObj + "}";
-
     var user = JSON.stringify(userObj);
 
     user = "{'user':" + user + "}";
 
-    ajax('OmniService.asmx', 'registrarUsuario', user);
+    ajax('OmniService.asmx', 'registrarUsuario', user,'registrarUsuario');
 
 }
 function registrarUsuario(response) {
     if (response.d > 0) {
         //se registro bien
         alert("Has sido registrado en Omnitrix!!");
-        window.location.href = "Principal.aspx";
+        window.location.href = "Principal.aspx?" + response.d;
     } else {
         //no se registro bien
         alert("Error al registrarte, trata mas tarde...");
