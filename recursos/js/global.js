@@ -1,4 +1,5 @@
-function ajax(pagina, fn, post) {
+function ajax(pagina, fn, post, fnJs) {
+    if (fnJs === undefined) fnJs = fn;
     $.ajax({
         url: "../" + pagina + "/" + fn,
         data: post,
@@ -7,13 +8,13 @@ function ajax(pagina, fn, post) {
     })
         .done(function (result) {
             if (typeof result !== 'string') {
-                if (typeof window[fn] !== 'undefined' && typeof window[fn] === 'function')
-                    window[fn](result);
+                if (typeof window[fnJs] !== 'undefined' && typeof window[fnJs] === 'function')
+                    window[fnJs](result);
             }
             else {
                 alert(result);
                 console.error(result);
-                window[fn](result);
+                window[fnJs](result);
             }
         }
         ).fail(function (result) {

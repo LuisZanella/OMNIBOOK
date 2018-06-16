@@ -33,114 +33,31 @@
     <link rel="stylesheet" href="../recursos/css/resgistroModal.css">
 </head>
 <body>
-<div class="loader" style="display: none;">
-    <div id="loading">
-        <div class="loading-center">
-            <div class="loading-center-absolute">
-                <div class="object" id="object_one"></div>
-                <div class="object" id="object_two"></div>
-                <div class="object" id="object_three"></div>
-                <div class="object" id="object_four"></div>
-                <div class="object" id="object_five"></div>
-                <div class="object" id="object_six"></div>
-                <div class="object" id="object_seven"></div>
-                <div class="object" id="object_eight"></div>
-                <div class="object" id="object_big"></div>
+    <div class="loader" style="display: none;">
+        <div id="loading">
+            <div class="loading-center">
+                <div class="loading-center-absolute">
+                    <div class="object" id="object_one"></div>
+                    <div class="object" id="object_two"></div>
+                    <div class="object" id="object_three"></div>
+                    <div class="object" id="object_four"></div>
+                    <div class="object" id="object_five"></div>
+                    <div class="object" id="object_six"></div>
+                    <div class="object" id="object_seven"></div>
+                    <div class="object" id="object_eight"></div>
+                    <div class="object" id="object_big"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<form id="frmSistema">
-    <fieldset id="loader">
-        <div class="app" id="app">
+    <form id="frmSistema">
+        <fieldset id="loader">
+            <div class="app" id="app">
 
-            <!-- ############ LAYOUT START-->
-            <div class="center-block w-xxl w-auto-xs p-y-md">
-                <div class="navbar logo">
-                    <div class="pull-center">
-                        <!-- brand -->
-                        <div class="navbar-brand">
-                            <img class="logologin w3-circle" src="../recursos/img/logo.png">
-                        </div>
-                        <!-- / brand -->
-                    </div>
-                </div>
-                <div class="navbar">
-                    <div class="pull-center">
-                        <!-- brand -->
-                        <div class="navbar-brand">
-                            <span class="hidden-folded inline">Omnibook</span>
-                        </div>
-                        <!-- / brand -->
-                    </div>
-                </div>
-                <div class="box-color r text-color container">
-                    <form id="datosInicioSesion">
-                        <div class="md-form-group float-label">
-                            <input id="txtUsuarioI"name="usuario" type="text" class="md-input" required="">
-                            <label>Usuario</label>
-                        </div>
-                        <div class="md-form-group float-label">
-                            <input id="txtPswI"name="password" type="password" class="md-input" required="">
-                            <label>Contraseña</label>
-                        </div>
-                        <div>
-                            <a onclick="btnIniciarSesion()" class="btn green btn-block p-x-md">Iniciar Sesión</a>
-                        </div>
-                    </form>
-                    <br>
-                    <div style="text-align: center;font-size: 85%">
-                        <a data-toggle="modal" data-target="#olvideContrasenia" class="p-x-md">Olvidé mi contraseña</a>
-                    </div>
-                    <br>
-                    <div style="text-align: center;font-size: 85%">
-                        <a data-toggle="modal" data-target="#crearCuentaModal">Crear Cuenta</a>
-                    </div>
-                </div>
-                <div class="navbar">
-                    <div class="btn-group dropdown pull-right">
-                        <a class="btn white btn-sm dropdown-toggle" data-toggle="dropdown">
-                            <div class="icono-idioma icono-mexico" role="img"></div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-scale pull-right">
-                            <a class="dropdown-item" href="?lang=es_mx">Español</a>
-                            <a class="dropdown-item" href="?lang=en_us">Inglés</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ############ LAYOUT END-->
-        </div>
-    </fieldset>
-</form>
-<form id="frmAside">
-    <!-- right -->
-    <div class="modal fade inactive" id="rightBar" data-backdrop="false">
-        <div class="right w-xl b-l white">
-            <div class="navbar grey-100">
-                <!--<h4 class="navbar-brand"></h4>-->
-                <a id="btnCerrarAside" class="btn btn-danger btn-sm btnAside" onclick="cerrarAside()">
-                    <i class="material-icons">close</i>
-                </a>
-            </div>
-            <input type="hidden" id="txtAside" value="0" class="has-value">
-            <div id="rightBarContent">
-                <div class="loading"></div>
-            </div>
-        </div>
-    </div>
-    <input type="hidden" value="0" id="txtGuardado" class="has-value">
-</form>
-<!--MODAL-->
-<!-- Modal Crear Cuenta-->
-<div class="modal fade" id="crearCuentaModal" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content modal-body-back ">
-            <div class="modal-header back-head">
-                <div class="container">
+                <!-- ############ LAYOUT START-->
+                <div class="center-block w-xxl w-auto-xs p-y-md">
                     <div class="navbar logo">
-                        <div class="pull-centro-registro">
+                        <div class="pull-center">
                             <!-- brand -->
                             <div class="navbar-brand">
                                 <img class="logologin w3-circle" src="../recursos/img/logo.png">
@@ -148,99 +65,184 @@
                             <!-- / brand -->
                         </div>
                     </div>
-                </div>
-            </div>
-            <form id="datosRegistro">
-                <div class="modal-body back-registro">
-                    <div class="center-block w-xxl w-auto-xs p-y-md ">
-                        <div class="md-form-group float-label">
-                            <input id="txtNombreRegistro" name="usuario" type="text" class="md-input" required="">
-                            <label>Nombre</label>
-                        </div>
-                        <div class="md-form-group float-label">
-                            <input id="txtNickRegistro" name="nick" type="text" class="md-input" required="">
-                            <label>Nick</label>
-                        </div>
-                        <div class="md-form-group float-label">
-                            <input id="txtCorreoRegistro" name="correo" type="text" class="md-input" required="">
-                            <label>Correo</label>
-                        </div>
-                        <div class="md-form-group float-label">
-                            <input id="txtContraseniaRegistro" name="password" type="password" class="md-input"
-                                   required="">
-                            <label>Contraseña</label>
-                        </div>
-                        <div class="md-form-group float-label">
-                            <input id="txtCContraseniaRegistro" name="confirmPassword" type="password" class="md-input"
-                                   required="">
-                            <label>Confirmar Constraseña</label>
-                        </div>
-                        <div class="md-form-group ">
-                            <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
-                                   required="">
-                            <label>Fecha de Nacimiento</label>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                    <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal"
-                            onclick="btnRegistrar()">Registrarme
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!--MODAL Termina Crear Cuenta-->
-<!--Modal Olvide Contraseña-->
-<div class="modal fade" id="olvideContrasenia" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content modal-body-back-contrasenia ">
-            <div class="modal-header back-olvide-top">
-                <div class="container">
-                    <div class="navbar logo">
-                        <div class="pull-centro-registro">
+                    <div class="navbar">
+                        <div class="pull-center">
                             <!-- brand -->
                             <div class="navbar-brand">
-                                <img class="logologin w3-circle" src="../recursos/img/logo.png">
+                                <span class="hidden-folded inline">Omnibook</span>
                             </div>
                             <!-- / brand -->
                         </div>
                     </div>
-                </div>
-            </div>
-            <form id="datosOlvideContrasenia">
-                <div class="modal-body back-olvide-center">
-                    <div class="center-block w-xxl w-auto-xs p-y-md ">
-                        <div class="md-form-group float-label">
-                            <input name="correo" type="text" class="md-input" required="">
-                            <label>Correo</label>
+                    <div class="box-color r text-color container">
+                        <form id="datosInicioSesion">
+                            <div class="md-form-group float-label">
+                                <input id="txtUsuarioI" name="usuario" type="text" class="md-input" required="">
+                                <label>Usuario</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtPswI" name="password" type="password" class="md-input" required="">
+                                <label>Contraseña</label>
+                            </div>
+                            <div>
+                                <a onclick="btnIniciarSesion()" class="btn green btn-block p-x-md">Iniciar Sesión</a>
+                            </div>
+                        </form>
+                        <br>
+                        <div style="text-align: center;font-size: 85%">
+                            <a data-toggle="modal" data-target="#olvideContrasenia" class="p-x-md">Olvidé mi contraseña</a>
+                        </div>
+                        <br>
+                        <div style="text-align: center;font-size: 85%">
+                            <a data-toggle="modal" data-target="#crearCuentaModal">Crear Cuenta</a>
                         </div>
                     </div>
+                    <div class="navbar">
+                        <div class="btn-group dropdown pull-right">
+                            <a class="btn white btn-sm dropdown-toggle" data-toggle="dropdown">
+                                <div class="icono-idioma icono-mexico" role="img"></div>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-scale pull-right">
+                                <a class="dropdown-item" href="?lang=es_mx">Español</a>
+                                <a class="dropdown-item" href="?lang=en_us">Inglés</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ############ LAYOUT END-->
+            </div>
+        </fieldset>
+    </form>
+    <form id="frmAside">
+        <!-- right -->
+        <div class="modal fade inactive" id="rightBar" data-backdrop="false">
+            <div class="right w-xl b-l white">
+                <div class="navbar grey-100">
+                    <!--<h4 class="navbar-brand"></h4>-->
+                    <a id="btnCerrarAside" class="btn btn-danger btn-sm btnAside" onclick="cerrarAside()">
+                        <i class="material-icons">close</i>
+                    </a>
+                </div>
+                <input type="hidden" id="txtAside" value="0" class="has-value">
+                <div id="rightBarContent">
+                    <div class="loading"></div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" value="0" id="txtGuardado" class="has-value">
+    </form>
+    <!--MODAL-->
+    <!-- Modal Crear Cuenta-->
+    <div class="modal fade" id="crearCuentaModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content modal-body-back ">
+                <div class="modal-header back-head">
+                    <div class="container">
+                        <div class="navbar logo">
+                            <div class="pull-centro-registro">
+                                <!-- brand -->
+                                <div class="navbar-brand">
+                                    <img class="logologin w3-circle" src="../recursos/img/logo.png">
+                                </div>
+                                <!-- / brand -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="datosRegistro">
+                    <div class="modal-body back-registro">
+                        <div class="center-block w-xxl w-auto-xs p-y-md ">
+                            <div class="md-form-group float-label">
+                                <input id="txtNombreRegistro" name="usuario" type="text" class="md-input" required="">
+                                <label>Nombre</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtNickRegistro" name="nick" type="text" class="md-input" required="">
+                                <label>Nick</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtCorreoRegistro" name="correo" type="text" class="md-input" required="">
+                                <label>Correo</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtContraseniaRegistro" name="password" type="password" class="md-input"
+                                       required="">
+                                <label>Contraseña</label>
+                            </div>
+                            <div class="md-form-group float-label">
+                                <input id="txtCContraseniaRegistro" name="confirmPassword" type="password" class="md-input"
+                                       required="">
+                                <label>Confirmar Constraseña</label>
+                            </div>
+                            <div class="md-form-group ">
+                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                       required="">
+                                <label>Fecha de Nacimiento</label>
+                            </div>
+                        </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                    <button type="button" class="btn btn-primary green" data-dismiss="modal"
-                            onclick="btnRestaurarContrasena()">Enviar Correo
-                    </button>
-                </div>
-            </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal"
+                                onclick="btnRegistrar()">
+                            Registrarme
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!--Modal Olvide Contraseña Termina-->
-<!--JAVASCRIPT-->
-<script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
-<script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
-<script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
-<script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
-<script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
-<script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
-<script src="../recursos/js/global.js"></script>
-<script src="../recursos/js/login.js"></script>
+    <!--MODAL Termina Crear Cuenta-->
+    <!--Modal Olvide Contraseña-->
+    <div class="modal fade" id="olvideContrasenia" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content modal-body-back-contrasenia ">
+                <div class="modal-header back-olvide-top">
+                    <div class="container">
+                        <div class="navbar logo">
+                            <div class="pull-centro-registro">
+                                <!-- brand -->
+                                <div class="navbar-brand">
+                                    <img class="logologin w3-circle" src="../recursos/img/logo.png">
+                                </div>
+                                <!-- / brand -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form id="datosOlvideContrasenia">
+                    <div class="modal-body back-olvide-center">
+                        <div class="center-block w-xxl w-auto-xs p-y-md ">
+                            <div class="md-form-group float-label">
+                                <input name="correo" type="text" class="md-input" required="">
+                                <label>Correo</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
+                        <button type="button" class="btn btn-primary green" data-dismiss="modal"
+                                onclick="btnRestaurarContrasena()">
+                            Enviar Correo
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Modal Olvide Contraseña Termina-->
+    <!--JAVASCRIPT-->
+    <script src="../recursos/plugin/flatkit/libs/jquery/jquery/dist/jquery.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/tether/dist/js/tether.min.js"></script>
+    <script src="../recursos/plugin/flatkit/libs/jquery/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-device.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ui-form.js"></script>
+    <script src="../recursos/plugin/flatkit/scripts/ajax.js"></script>
+    <script src="../recursos/js/global.js"></script>
+    <script src="../recursos/js/login.js"></script>
 </body>
 </html>

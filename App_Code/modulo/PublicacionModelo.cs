@@ -16,7 +16,7 @@ public class PublicacionModelo
     public int Tipo { get; set; }
     public string Descripcion { set; get; }
     public string Fuente { get; set; }
-    public DateTime Fecha_Publicacion { get; set; }
+    public string Fecha_Publicacion { get; set; }
     public PublicacionModelo()
     {
         //

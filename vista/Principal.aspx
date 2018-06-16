@@ -47,6 +47,7 @@
     <script src="../recursos/js/principalPerfilTop.js"></script>
 </head>
 <body>
+    <p style="background-color:red;" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
         <div class="navbar ng-scope">
             <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
@@ -54,7 +55,7 @@
             </a>
             <ul class="nav navbar-nav pull-right">
                 <li class="nav-item dropdown pos-stc-xs">
-                    <a class="nav-link" href="" data-toggle="dropdown">
+                    <a class="nav-link" data-toggle="dropdown">
                         <i class="material-icons">notifications_none</i> <span class="label label-sm up warn">3</span>
                     </a>
                     <div class="dropdown-menu pull-right w-xl animated fadeInUp no-bg no-border no-shadow ng-scope">
@@ -183,7 +184,7 @@
                                                 <i class="fa fa-linkedin cyan-600"></i>
                                             </a>
                                         </div>
-                                        <a href="" class="btn btn-sm lime btn-rounded m-b">Seguir</a>
+                                        <a id="btnSeguir" class="btn btn-sm lime btn-rounded m-b">Seguir</a>
                                     </div>
                                 </div>
                                 <div class="col-sm-5">

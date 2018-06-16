@@ -14,6 +14,7 @@ public class UsuarioModelo
         public string Correo { get; set; }
         public string Contrasenia { get; set; }
         public string Fecha_Nacimiento { get; set; }
+        public bool Estatus { get; set; }
     //
     // TODO: Add constructor logic here
     //
