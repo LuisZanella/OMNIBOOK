@@ -227,7 +227,7 @@ public class OmniService : System.Web.Services.WebService
                                 _datosUsuario.Seguidores = Int32.Parse(_dtr["Seguidores"].ToString());
                                 break;
                             case "Siguiendo":
-                                _datosUsuario.Siguiendo = Int32.Parse(_dtr["Vocacion"].ToString());
+                                _datosUsuario.Siguiendo = Int32.Parse(_dtr["Siguiendo"].ToString());
                                 break;
                             case "NombreArtistico":
                                 _datosUsuario.NombreArtistico = _dtr["NombreArtistico"].ToString();

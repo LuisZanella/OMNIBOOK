@@ -1,3 +1,8 @@
+$("#txtPswI").keyup(function (event) {
+    if (event.keyCode === 13) {
+        btnIniciarSesion();
+    }
+});
 
 function btnIniciarSesion() {
     var userObj = {
