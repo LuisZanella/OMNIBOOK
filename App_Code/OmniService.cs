@@ -117,6 +117,7 @@ public class OmniService : System.Web.Services.WebService
             _conexion.Desconectar();
             _conexion = null;
         }
+
     }
     [WebMethod(EnableSession = true)]
     public UsuarioModelo iniciarSesion(UsuarioModelo user)
@@ -148,10 +149,13 @@ public class OmniService : System.Web.Services.WebService
                 throw new Exception("User not found");
 
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-
-            throw new Exception(ex.Message);
+            UsuarioModelo _user = new global::UsuarioModelo()
+            {
+                Id_Usuario = 0
+            };
+            return _user;
         }
         finally
         {

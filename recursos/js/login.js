@@ -11,9 +11,8 @@ function btnIniciarSesion() {
     ajax('OmniService.asmx', 'iniciarSesion', user);
 }
 function iniciarSesion(response){
-    if (response.d.Id_Usuario > 0) {
-        window.location.href = "Principal.aspx?" + response.d.Id_Usuario;
-    }
+    if (response.d.Id_Usuario > 0) window.location.href = "Principal.aspx?" + response.d.Id_Usuario;
+    if (response.d.Id_Usuario === 0) alert("Usuario o Contrase\u00f1a incorrectos");
 }
 function btnRegistrar() {
     btnRegistrarUsuario(); //Dar de alta al usuario en la BD
