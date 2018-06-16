@@ -306,4 +306,21 @@ function CargarActualizarEstadoEnBD(Response) {
     //Hacer que se regrese el div 
     $("#btnEditar").click();
 }
+//Poner estado del usuario
+function Amigos() {
+    var Campos = ["Nick", "Imagen_Perfil", "Vocacion"];
+    var spName = "sp_obtenerPerfilAmigos";
+    var Obj = {
+        "spNombre": spName, "Campos": Campos, "Id": IdUser
+    }
+    var data = JSON.stringify(Obj);
+    ajax("OmniService.asmx", "Leer", data, "CargarAmigos");
+}
+function CargarAmigos(Response) {
+    console.warn(Response);
+    for (var i = 0; i < Response.d.length; i++) {
+        $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">' + Response.d[i].Usuario.Nick + '</a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Vocacion + '</small> </div></div></div >');
+    }
+}
+/*SPLISTO*/ // imagen del amigo, vocacion, nick
 //$("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="../recursos/img/logo.png" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted"> Sat, 5 Mar </div> <p>Preparar presentacion</p> <blockquote> <p> Los sentimientos son algo que simplemente no se pueden entender, y se cometen muchas errores por ellos. Pero es aquella la mente la que se encarga de aprender de estos errores </p> <small>Alguien famoso <cite title="Source Title">Fuente titulos</cite></small> </blockquote> </div> </div>');
