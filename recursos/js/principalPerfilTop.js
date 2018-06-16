@@ -25,7 +25,7 @@ function Notificaciones() {
     var spName = "sp_obtenerNotificacion";
     
     var Obj = {
-        "spNombre": spName, "Campos": Campos, "id": IdUser
+        "spNombre": spName, "Campos": Campos, "Id": IdUser
     }
     var data = JSON.stringify(Obj);
     ajax("OmniService.asmx", "Leer", data, "CargarNotificaciones");
@@ -250,7 +250,7 @@ function ActualizarEstadoEnBD() {
     var Campos = $("#textAreaEditarEstado").val();
 
     //validar que no este vacio el texto para actualizar
-    if (Campos == "") {
+    if (Campos === "") {
         alert("Necesitas escribir tu nuevo estado para poder actualizarlo.");
     } else {
         var spName = "sp_UpEstado";

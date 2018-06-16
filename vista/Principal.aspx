@@ -189,9 +189,9 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <p class="text-md profile-status" id="estadoUsuario"></p>
-                                    <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false">Editar</button>
+                                    <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false" id="btnEditar">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
-                                        <textarea class="form-control no-border" rows="2" placeholder="Escribe algo..."></textarea>
+                                        <textarea class="form-control no-border" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
                                         <button class="btn btn-sm white collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button>
                                     </div>
                                 </div>
