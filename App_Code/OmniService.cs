@@ -74,7 +74,7 @@ public class OmniService : System.Web.Services.WebService
             }
             else
             {
-                throw new Exception("User not found");
+                throw new Exception("Error 430 Contacte a los desarrolladores");
             }
 
         }

@@ -52,27 +52,19 @@ function btnRegistrarUsuario() {
         "Nick": $("#txtNickRegistro").val(),
         "Correo": $("#txtCorreoRegistro").val(),
         "Estatus": true
-        //"Imagen_Perfil": "",
-        //"Imagen_Portada": "",
-        //"Telefono": "",
-        //"Telefono_Casa": "",
-        //"Biografia": "",
-        //"Id_Usuario": 0
     };
-    //userObj = "{'user':" + userObj + "}";
-
     var user = JSON.stringify(userObj);
 
     user = "{'user':" + user + "}";
 
-    ajax('OmniService.asmx', 'registrarUsuario', user);
+    ajax('OmniService.asmx', 'registrarUsuario', user,'registrarUsuario');
 
 }
 function registrarUsuario(response) {
     if (response.d > 0) {
         //se registro bien
         alert("Has sido registrado en Omnitrix!!");
-        window.location.href = "Principal.aspx";
+        window.location.href = "Principal.aspx?" + response.d;
     } else {
         //no se registro bien
         alert("Error al registrarte, trata mas tarde...");
