@@ -1,5 +1,6 @@
 CREATE DATABASE omnitrix
 GO
+
 USE omnitrix
 GO
 
@@ -116,13 +117,32 @@ WHERE Id_Comentario = @Id
 GO
 
 
-CREATE PROCEDURE[dbo].[sp_InPublicacion]
+--crear sp para insertar publicacion tipo 1 (solo texto)
+CREATE PROCEDURE[dbo].[sp_InPublicacion1]
 @Id INT,
-@Variable NVARCHAR(150),
-@Variable2 NVARCHAR(80)
+@Descripcion NVARCHAR(300)
 AS
-INSERT INTO Publicacion(Id_Usuario, Titulo, Imagen, Fecha_Publicacion)
-VALUES(@Id, @Variable, @Variable2, CURRENT_TIMESTAMP)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo)
+VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1)
+GO
+--crear sp para insertar publicacion tipo 2 (con imagen)
+CREATE PROCEDURE[dbo].[sp_InPublicacion2]
+@Id INT,
+@Descripcion NVARCHAR(300), 
+@Imagen NVARCHAR(80)
+AS
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 2)
+GO
+--crear sp para insertar publicacion tipo 3 (con imagen y titulo)
+CREATE PROCEDURE[dbo].[sp_InPublicacion3]
+@Id INT,
+@Descripcion NVARCHAR(300), 
+@Imagen NVARCHAR(80),
+@Titulo NVARCHAR(150)
+AS
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Titulo)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 3, @Titulo)
 GO
 /*CREATE PROCEDURE [dbo].[sp_InComentario]
 @Id INT,
@@ -284,7 +304,7 @@ AS
 	ON A.Id_Amistad = P.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
-	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1 AND U.Id_Usuario = @Id AND U.Estatus = 1
+	WHERE A.Id_Usuario = @Id OR A.Id_Usuario_Dos = @Id AND U.Id_Usuario !=@Id AND U.Estatus = 1 
 	ORDER BY  P.Fecha_Publicacion
 GO
 EXEC [sp_obtenerImagenPerfil] 1
@@ -431,3 +451,13 @@ AS
 	WHERE P.Id_Usuario = A.Id_Usuario_Dos
 GO
 
+
+CREATE TRIGGER tgr_PonerNotificacion
+ON Publicacion 
+AFTER INSERT 
+AS
+	BEGIN
+	SET NOCOUNT ON;
+	INSERT INTO Notificacion(Id_Publicacion, Estatus) VALUES ((SELECT Id_Publicacion FROM inserted), 1)
+END
+GO

@@ -19,6 +19,7 @@ $(document).ready(function () {
     Biografia();
     Publicacion();
     Amigos();
+    NotificacionesPrincipales();
 });
 function Notificaciones() {
     var Campos = ["Imagen_Perfil", "Nick", "Descripcion"];
@@ -31,9 +32,16 @@ function Notificaciones() {
     ajax("OmniService.asmx", "Leer", data, "CargarNotificaciones");
 }
 function CargarNotificaciones(Response) {
+    var cuentaN = 0;
     for (var i = 0; i < Response.d.length; i++) {
-            /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="' + Response.d[i].Datos.Imagen_Perfil +'" alt="..." class="w-40 img-circle"></span><span class="clear block">' + Response.d[i].Usuario.Nick+' : ' + '<a href="" class="text-primary" >'+ Response.d[i].Publicacion.Descripcion+'</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
+        if (Response.d[i].Datos.Imagen_Perfil !== "NF") {
+            /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..." class="w-40 img-circle"></span><span class="clear block">' + Response.d[i].Usuario.Nick + ' : ' + '<a href="" class="text-primary" >' + Response.d[i].Publicacion.Descripcion + '</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
+            cuentaN++;
+            //no hay notificaciones a mostrar, no mostrar nada
+        }
     }
+    //Poner el numero de notificaciones
+    $("#numNotificaciones").append(cuentaN);
 }
 //Poner la imagen del usuario
 function ImagenPerfil() {
@@ -224,13 +232,12 @@ function CargarPublicaciones(Response) {
         } else if (Response.d[i].Publicacion.Tipo === 2) {
             //Con imagen
             $("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
-            debugger;
-
         } else if (Response.d[i].Publicacion.Tipo === 3) {
             //Con imagen y titulo
             $("#muroPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
+        } else if (Response.d[i].Publicacion.Tipo == 4) {
+            //no hay ninguna publicacion de los amigos (no hacer nada)
         }
-        $("#biografia").append('<div>' + Response.d[i].Datos.Biografia + '</div >');
     }
 }
 
@@ -270,5 +277,34 @@ function Amigos() {
 function CargarAmigos(Response) {
     for (var i = 0; i < Response.d.length; i++) {
         $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="'+Response.d[i].Datos.Imagen_Perfil+'" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">' + Response.d[i].Usuario.Nick + '</a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Vocacion + '</small> </div></div></div >');
+    }
+}
+//NotificacionesPrincipales
+function NotificacionesPrincipales() {
+    var Campos = ["Tipo", "Titulo", "Imagen", "Descripcion", "Fuente", "Fecha_Publicacion", "Imagen_Perfil"];
+    var spName = "sp_obtenerPublicaciones";
+
+    var Obj = {
+        "spNombre": spName, "Campos": Campos, "Id": IdUser
+    };
+    var data = JSON.stringify(Obj);
+    ajax("OmniService.asmx", "Leer", data, "CargarNotificacionesPrincipal");
+}
+function CargarNotificacionesPrincipal(Response) {
+    for (var i = 0; i < Response.d.length; i++) {
+
+        //checar el tipo de la publicacion
+        if (Response.d[i].Publicacion.Tipo === 1) {
+            //Sin imagen
+            $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"> </div>  <div class="sl-left"></div> <div class="sl-content"> <div class="sl-date text-muted"> ' + Response.d[i].Publicacion.Fecha_Publicacion + ' </div> <blockquote> <p>' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+        } else if (Response.d[i].Publicacion.Tipo === 2) {
+            //Con imagen
+            $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+        } else if (Response.d[i].Publicacion.Tipo === 3) {
+            //Con imagen y titulo
+            $("#notificacionesPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
+        } else if (Response.d[i].Publicacion.Tipo == 4) {
+            //no hay ninguna publicacion de los amigos (no hacer nada)
+        }
     }
 }

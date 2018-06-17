@@ -277,8 +277,29 @@ public class OmniService : System.Web.Services.WebService
                 }
                 return _Datos;
             }
-            else
-                throw new Exception("Sin infromacion");
+            else { 
+                if (spNombre == "sp_obtenerPublicaciones")
+                {
+                    //validar el error de que no hay publicaciones
+                    _publicacion = new PublicacionModelo();
+                    _publicacion.Tipo = 4;
+                    _Dato = new ModulosBaseModelo();
+                    _Dato.Publicacion = _publicacion;
+                    _Datos.Add(_Dato);
+                    return _Datos;
+                }
+                if (spNombre == "sp_obtenerNotificacion")
+                {
+                    //validar el error de que no hay notificaciones
+                    _datosUsuario = new DatosModelo();
+                    _datosUsuario.Imagen_Perfil = "NF";
+                    _Dato = new ModulosBaseModelo();
+                    _Dato.Datos = _datosUsuario;
+                    _Datos.Add(_Dato);
+                    return _Datos;
+                }
+                    throw new Exception("Sin informacion");
+            }
         }
         catch (Exception ex)
         {

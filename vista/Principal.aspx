@@ -47,7 +47,7 @@
     <script src="../recursos/js/principalPerfilTop.js"></script>
 </head>
 <body>
-    <p style="background-color:red;" id="IdUser"></p>
+    <p style="visibility:hidden" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
         <div class="navbar ng-scope">
             <a data-toggle="modal" data-target="#aside" class="navbar-item pull-left hidden-lg-up">
@@ -56,7 +56,7 @@
             <ul class="nav navbar-nav pull-right">
                 <li class="nav-item dropdown pos-stc-xs">
                     <a class="nav-link" data-toggle="dropdown">
-                        <i class="material-icons">notifications_none</i> <span class="label label-sm up warn">3</span>
+                        <i class="material-icons">notifications_none</i> <span class="label label-sm up warn" id="numNotificaciones"></span>
                     </a>
                     <div class="dropdown-menu pull-right w-xl animated fadeInUp no-bg no-border no-shadow ng-scope">
                         <div class="scrollable" style="max-height: 220px">
@@ -65,23 +65,13 @@
                         </div>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown" style="padding: 14px;">
                     <a class="nav-link clear" href="" data-toggle="dropdown" id="imagenNBSD">
                     </a>
                     <div class="dropdown-menu pull-right dropdown-menu-scale ng-scope">
-                        <a class="dropdown-item" ui-sref="app.inbox.list" href="#/app/inbox/inbox/">
-                            <span>Mensajes</span>
-                            <span class="label warn m-l-xs">3</span>
-                        </a>
-                        <a class="dropdown-item" ui-sref="app.page.profile" href="#/app/page/profile">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#editarCuentaModal">
                             <span>Perfil</span>
                         </a>
-                        <a class="dropdown-item" ui-sref="app.page.setting" href="#/app/page/setting">
-                            <span>Configuración</span>
-                            <span class="label primary m-l-xs">3/9</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" ui-sref="access.signin" href="#/access/signin">Salir</a>
                     </div>
                 </li>
                 <li class="nav-item hidden-md-up">
@@ -96,6 +86,33 @@
                     <div class="form-group l-h m-a-0">
                         <div class="input-group">
                             <input type="text" class="form-control form-control-sm p-x b-a rounded" placeholder="Buscar un Amigo"/>
+                             <ul class="nav navbar-nav pull-right">
+                <li class="nav-item dropdown pos-stc-xs">
+                    <a class="nav-link" data-toggle="dropdown">
+                        <i class="material-icons">notifications_none</i> <span class="label label-sm up warn" id="numNotificaciones"></span>
+                    </a>
+                    <div class="dropdown-menu pull-right w-xl animated fadeInUp no-bg no-border no-shadow ng-scope">
+                        <div class="scrollable" style="max-height: 220px">
+                            <ul class="list-group list-group-gap m-a-0" id="notificaciones">
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" style="padding: 14px;">
+                    <a class="nav-link clear" href="" data-toggle="dropdown" id="imagenNBSD">
+                    </a>
+                    <div class="dropdown-menu pull-right dropdown-menu-scale ng-scope">
+                        <a class="dropdown-item" data-toggle="modal" data-target="#editarCuentaModal">
+                            <span>Perfil</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item hidden-md-up">
+                    <a class="nav-link" data-toggle="collapse" data-target="#collapse">
+                        <i class="material-icons"></i>
+                    </a>
+                </li>
+            </ul>
                         </div>
                     </div>
                 </form>
@@ -105,38 +122,27 @@
     <div id="aside" class="app-aside modal fade folded md nav-expand ng-scope">
         <div class="left navside indigo-900 dk" layout="column">
             <div class="navbar navbar-md no-radius">
-                <a class="navbar-brand ng-scope" data-toggle="modal" data-target="#editarCuentaModal">
-                    <i id="imagenNBSI"></i>
-                    <span class="hidden-folded inline ng-binding">Perfil</span>
-                <a/>
+                <a class="navbar-brand ng-scope" data-toggle="modal" data-target="#editarCuentaModal"> <i id="imagenNBSI"></i>
+                    <span class="hidden-folded inline ng-binding">Perfil</span></a>
             </div>
             <div flex="" class="hide-scroll">
-                <nav class="scroll nav-active-success">
+                <%--<nav class="scroll nav-active-success">
                     <ul class="nav ng-scope" ui-nav="">
                         <li class="nav-header hidden-folded">
                             <small class="text-muted">Menú</small>
                         </li>
                     </ul>
-                </nav>
+                </nav>--%>
             </div>
             <div flex-no-shrink="">
                 <nav ui-nav="" class="ng-scope">
                     <ul class="nav">
-                        <li class="no-bg">
-                            <a>
-                                <span class="nav-icon"><i class="material-icons">help</i></span>
-                                <span class="nav-text">Ayuda</span>
-                            </a>
-                        </li>
                         <li>
                             <div class="b-b b m-v-sm"></div>
                         </li>
                         <li class="no-bg">
                             <form id="form1" runat="server">
-                                    <span class="nav-icon">
-                                    <i class="material-icons"></i>
-                                    </span>
-                                   <span><asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkCerrar_click" CssClass="nav-text">Cerrar Sesión</asp:LinkButton></span>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkCerrar_click" CssClass=""> <span class="nav-icon"><i class="material-icons"></i></span><span class="nav-text">Salir</span></asp:LinkButton>
                             </form>
                         </li>
                     </ul>
@@ -191,8 +197,8 @@
                                     <p class="text-md profile-status" id="estadoUsuario"></p>
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false" id="btnEditar">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
-                                        <textarea class="form-control no-border" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
-                                        <button class="btn btn-sm white collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button>
+                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
+                                        <div class="box-footer clearfix"> <button class="btn btn-info pull-left collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button></div>
                                     </div>
                                 </div>
                             </div>
