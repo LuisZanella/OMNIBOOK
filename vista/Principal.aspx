@@ -313,81 +313,80 @@
                     <div class="modal-body back-registro">
                         <div class="center-block w-xxl w-auto-xs p-y-md ">
                             <div class="md-form-group float-label">
-                                <input id="txtNombreRegistro" name="usuario" type="text" class="md-input" required="">
+                                <input id="lblUpNick" name="Nick" type="text" class="md-input" required="">
                                 <label>Nick</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input id="txtNickRegistro" name="nick" type="text" class="md-input" required="">
+                                <input id="lblUpCorreo" name="Correo" type="text" class="md-input" required="">
                                 <label>Correo</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input id="txtCorreoRegistro" name="correo" type="text" class="md-input" required="">
-                                <label>Numero telefonico</label>
-                            </div>
-                            <div class="md-form-group float-label">
-                                <input id="txtContraseniaRegistro" name="password" type="password" class="md-input"
+                                <input id="lblUpTelefono" name="Telefono" type="text" class="md-input"
                                        required="">
                                 <label>Telefono</label>
                             </div>
                             <div class="md-form-group float-label">
-                                <input id="txtCContraseniaRegistro" name="confirmPassword" type="password" class="md-input"
+                                <input id="lblUpTelefonoCasa" name="TelefonoCasa" type="text" class="md-input"
                                        required="">
                                 <label>Telefono de casa</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpVocacion" name="Vocacion" type="text" class="md-input"
                                        required="">
                                 <label>vocacion</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpNombreArtistico" name="NombreArtistico" type="text" class="md-input"
                                        required="">
                                 <label>nombre artistico</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpBiografia" name="Biografia" type="text" class="md-input"
                                        required="">
                                 <label>biografia</label>
                             </div>
                                <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpCiudad" name="Ciudad" type="text" class="md-input"
                                        required="">
                                 <label> ciudad</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpPais" name="Pais" type="text" class="md-input"
                                        required="">
                                 <label>Pais</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpEstado" name="Estado" type="text" class="md-input"
                                        required="">
                                 <label>Estado</label>
                             </div>
                             <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpNombre" name="Nombre" type="text" class="md-input"
                                        required="">
                                 <label>Nombre</label>
                             </div>
                              <div class="md-form-group ">
-                                <input id="dtFechaNacimiento" name="fechaNacimiento" type="date" class="md-input"
+                                <input id="lblUpImagenPerfil" name="Imagenes" type="text" class="md-input"
                                        required="">
-                                <label>Imagenes</label>
+                                <label>Imagen Perfil</label>
+                            </div>
+							 <div class="md-form-group ">
+                                <input id="lblUpImagenPortada" name="Imagenes" type="text" class="md-input"
+                                       required="">
+                                <label>Imagen Portada</label>
                             </div>
                         </div>
 
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal"
-                                onclick="btnRegistrar()">
-                            Registrarme
+                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal">
+                            Actualizar
                         </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
 </body>
 </html>

@@ -1,6 +1,5 @@
 CREATE DATABASE omnitrix
 GO
-
 USE omnitrix
 GO
 
@@ -136,11 +135,12 @@ GO
 */
 CREATE PROCEDURE [dbo].[sp_InUsuario]
 @Nombre NVARCHAR(50),
+@Nick NVARCHAR(50),
 @Correo NVARCHAR(40),
 @Contrasenia NVARCHAR(200),
 @FechaNacimiento Date
 AS
-	INSERT INTO Usuario(Nombre, Correo, Contrasenia, Fecha_Nacimiento) VALUES(@Nombre, @Correo, @Contrasenia, @FechaNacimiento)
+	INSERT INTO Usuario(Nombre, Nick, Correo, Contrasenia, Fecha_Nacimiento) VALUES(@Nombre,@Nick, @Correo, @Contrasenia, @FechaNacimiento)
 	DECLARE @lastId INT
 	SET @lastId = (SELECT MAX(Id_Usuario) FROM Usuario)
 	SELECT * FROM Usuario WHERE Id_Usuario = @lastId
@@ -429,4 +429,5 @@ AS
 	INNER JOIN Amistad A ON A.Id_Usuario = @Id
 	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos
 	WHERE P.Id_Usuario = A.Id_Usuario_Dos
-	GO
+GO
+
