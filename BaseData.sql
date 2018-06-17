@@ -429,4 +429,5 @@ AS
 	INNER JOIN Amistad A ON A.Id_Usuario = @Id
 	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos
 	WHERE P.Id_Usuario = A.Id_Usuario_Dos
-	GO
+GO
+
