@@ -250,7 +250,10 @@ public class OmniService : System.Web.Services.WebService
                             case "Biografia":
                                 _datosUsuario.Biografia = _dtr["Biografia"].ToString();
                                 break;
-                                /*Publicacion*/
+                            /*Publicacion*/
+                            case "NoPublicaciones":
+                                _publicacion.Id_Publicacion = Int32.Parse(_dtr["NoPublicaciones"].ToString());
+                                break;
                             case "Titulo":
                                 
                                 break;
@@ -489,4 +492,42 @@ public class OmniService : System.Web.Services.WebService
         }
 
     }
+    [WebMethod(EnableSession = true)]
+    public string Seguir(string spNombre, int IdUsuario, int IdUsuarioDos)
+    {
+        SqlConexion _conexion = new SqlConexion();
+        List<SqlParameter> _Parametros = new List<SqlParameter>();
+        DataTableReader _dtr = null;
+        try
+        {
+            //Abrir conexion
+            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
+            // Se agregan parámetros a la lista List <SqlParameter>, con los valores para cada parametro que se obtienen de los atributos
+            // del objeto Pej.Objeto . Atributo_x
+            _Parametros.Add(new SqlParameter("@Id", IdUsuario));
+            _Parametros.Add(new SqlParameter("@IdDos", IdUsuarioDos));
+            _conexion.PrepararProcedimiento(spNombre, _Parametros);
+            _dtr = _conexion.EjecutarTableReader();
+            if (_dtr.HasRows)
+            {
+                return "Registrado";
+            }
+            else
+            {
+                return "Usted ya sigue a este usuario";
+            }
+            
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            _conexion.Desconectar();
+            _conexion = null;
+        }
+
+    }
 }
+

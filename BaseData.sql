@@ -6,7 +6,7 @@ GO
 
 CREATE TABLE Usuario(
 Id_Usuario BIGINT IDENTITY (1,1) PRIMARY KEY,
-Nombre NVARCHAR(50) UNIQUE NOT NULL,
+Nombre NVARCHAR(50) NOT NULL,
 Nick NVARCHAR(50) UNIQUE NOT NULL,
 Correo NVARCHAR(40) UNIQUE NOT NULL,
 Contrasenia NVARCHAR(200) NOT NULL,
@@ -50,6 +50,7 @@ CREATE TABLE Amistad(
 Id_Amistad BIGINT PRIMARY KEY IDENTITY (1,1),
 Id_Usuario BIGINT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
 Id_Usuario_Dos BIGINT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL
+CONSTRAINT UC_Amistad UNIQUE (Id_Usuario,Id_Usuario_Dos)
 )
 GO
 
@@ -293,7 +294,7 @@ AS
 UPDATE Datos SET Biografia=@Variable WHERE Id_Usuario=@Id
 GO
 --CREACION DE SP PARA OBTENER las notificaciones
-ALTER PROCEDURE [dbo].[sp_obtenerNotificacion]
+CREATE PROCEDURE [dbo].[sp_obtenerNotificacion]
 @Id INT
 AS
 	SELECT TOP 3 P.Id_Usuario,D.Imagen_Perfil, U.Nick, SUBSTRING(P.Descripcion,1,15) Descripcion FROM Publicacion P LEFT JOIN Usuario U
@@ -484,7 +485,7 @@ AS
 END
 GO
 --obtener amigos con el nombre parecido
-ALTER PROCEDURE [dbo].[sp_buscarAmigo] 
+CREATE PROCEDURE [dbo].[sp_buscarAmigo] 
 @Buscar NVARCHAR(50),
 @Id INT
 AS	SELECT * FROM(
@@ -510,4 +511,48 @@ AS	SELECT * FROM(
 	INNER JOIN Usuario U ON U.Id_Usuario = A.Id_Usuario_Dos
 	WHERE A.Id_Usuario = @Id)ex
 	ORDER BY ex.Seguidores ASC
+GO
+-- Top más seguidores
+CREATE PROCEDURE [dbo].[sp_obtenerFamoso]
+@Id INT
+AS
+	SELECT TOP 1 U.Id_Usuario IdBuscado,D.Imagen_Perfil, U.Nick,D.Seguidores, COUNT(P.Id_Publicacion) NoPublicaciones FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN Publicacion P ON P.Id_Usuario = U.Id_Usuario 
+	WHERE U.Id_Usuario != @Id
+	GROUP BY U.Id_Usuario,D.Imagen_Perfil, U.Nick,D.Seguidores
+	ORDER BY D.Seguidores DESC
+GO
+--obtener todas las publicaciones de los generales
+CREATE PROCEDURE [dbo].[sp_obtenerPublicacionesTop] 
+@Id INT
+AS 
+	SELECT TOP 3 P.Tipo,P.Imagen, CONCAT(SUBSTRING(P.Descripcion,1,30),'...') Descripcion, P.Fuente, P.Fecha_Publicacion, D.Imagen_Perfil, P.Titulo, U.Id_Usuario IdBuscado, U.Nick FROM Publicacion P LEFT JOIN Usuario U
+	ON P.Id_Usuario = U.Id_Usuario
+	INNER JOIN Datos D
+	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN Amistad A
+	ON A.Id_Amistad = P.Id_Amistad
+	INNER JOIN Notificacion N
+	ON N.Id_Publicacion = P.Id_Publicacion
+	ORDER BY P.Fecha_Publicacion DESC
+GO
+/*Seguir*/
+CREATE PROCEDURE [dbo].[sp_Seguir]
+@Id INT,
+@IdDos INT
+AS
+BEGIN TRY
+	BEGIN TRANSACTION
+		INSERT INTO Amistad (Id_Usuario,Id_Usuario_Dos) VALUES (@Id, @IdDos)
+		DECLARE @Siguiendo INT = (SELECT Siguiendo FROM Datos WHERE Id_Usuario = @Id)
+		DECLARE @Seguidores INT = (SELECT Seguidores FROM Datos WHERE Id_Usuario = @IdDos)
+		UPDATE Datos SET Seguidores = (@Seguidores+1)  WHERE Id_Usuario = @IdDos
+		UPDATE Datos SET Siguiendo = (@Siguiendo+1) WHERE Id_Usuario = @Id
+		SELECT  Id_Usuario Id, Id_Usuario_Dos IdDos FROM Amistad WHERE Id_Amistad = (SELECT MAX(Id_Amistad) FROM Amistad)
+	COMMIT Transaction
+	END TRY
+	BEGIN CATCH
+		ROLLBACK TRANSACTION
+	END CATCH
 GO
