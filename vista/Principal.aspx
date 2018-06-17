@@ -229,8 +229,33 @@
                             <div class="col-sm-8 col-lg-9">
                                 <div class="tab-content">
                                     <div class="tab-pane p-v-sm active" id="tab_1">
-                                        <div class="streamline b-l m-b m-l">
-                                            <p id="muroPrincipal"></p>
+                                        <div class="row">
+                                            <div class="box collapse in m-a-0" id="reply-2">
+                                                            <form class="ng-pristine ng-valid">
+                                                                <textarea id="txtPublicacion" class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
+                                                            </form>
+                                                            <div class="box-footer clearfix">
+                                                                <button class="btn btn-info pull-right btn-sm">Publicar</button>
+                                                                <ul class="nav nav-pills nav-sm">
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="">
+                                                                            <i class="fa fa-camera text-muted"> </i>
+                                                                        </a>
+                                                                    </li>
+                                                                    <li class="nav-item">
+                                                                        <a class="nav-link" href="">
+                                                                            <i class="fa fa-video-camera text-muted"></i>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                            </div>
+                                        </div>
+                                        <div style="padding:10px"></div>
+                                        <div class="row">
+                                            <div class="streamline b-l m-b m-l">
+                                                <p id="muroPrincipal"></p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_2">
