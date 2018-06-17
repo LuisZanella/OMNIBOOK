@@ -17,3 +17,29 @@
     NotificacionesPrincipales();
     Personas();
 }
+function RecargarComponentes() {
+    $("#muroPrincipal").html("");
+    $("#siguiendo").html("");
+    $("#seguidores").html("");
+    $("#notificacionesPrincipal").html("");
+    $("#vocacionUsuario").html("");
+    $("#vocacion").html("");
+    $("#ubicacionUsuario").html("");
+    $("#estadoUsuario").html("");
+    $("#seguidores").html("");
+    $("#siguiendo").html("");
+    $("#noTelefonico").html("");
+    $("#noCasa").html("");
+    $("#biografia").html("");
+    $("#lstBuscarAmigo").html("");
+    $("#friends").html("");
+    $("#estadoUsuario").html("");
+    $("#nombreUsuario").html("");
+    $("#imagenFondoPerfilPrincipal").html("");
+    $("#imagenPrincipalPersona").html("");
+    $("#imagenNBSI").html("");
+    $("#imagenNBSD").html("");
+    $("#numNotificaciones").html("");
+    $("#notificaciones").html("");
+    CargarComponentes();
+}

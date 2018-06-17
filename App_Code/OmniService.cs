@@ -282,6 +282,9 @@ public class OmniService : System.Web.Services.WebService
                                 break;
                         }
                     }
+                    if (_usuario.Id_Usuario.ToString() == null) {
+                        _usuario.Id_Usuario = -1;
+                    }
                     _datosUsuario.Usuario = _usuario;
                     _Dato.Usuario = _usuario;
                     _Dato.Datos = _datosUsuario;
@@ -317,8 +320,12 @@ public class OmniService : System.Web.Services.WebService
         }
         catch (Exception ex)
         {
-
-            throw new Exception(ex.Message);
+                _usuario = new UsuarioModelo();
+                _usuario.Id_Usuario = -1;
+                _Dato = new ModulosBaseModelo();
+                _Dato.Usuario = _usuario;
+                _Datos.Add(_Dato);
+                return _Datos;
         }
         finally
         {

@@ -19,11 +19,11 @@ function Notificaciones() {
 function CargarNotificaciones(Response) {
     var cuentaN = 0;
     for (var i = 0; i < Response.d.length; i++) {
-        if (Response.d[i].Datos.Imagen_Perfil !== "NF") {
-            /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..." class="w-40 img-circle"></span><span class="clear block">' + Response.d[i].Usuario.Nick + ' : ' + '<a href="" class="text-primary" >' + Response.d[i].Publicacion.Descripcion + '</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
-            cuentaN++;
-            //no hay notificaciones a mostrar, no mostrar nada
-        }
+                if (Response.d[i].Datos.Imagen_Perfil !== "NF") {
+                    /*SPLISTO*/$("#notificaciones").append('<li class="list-group-item black lt box-shadow-z0 b"> <span class="pull-left m-r" ><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..." class="w-40 img-circle"></span><span class="clear block">' + Response.d[i].Usuario.Nick + ' : ' + '<a href="" class="text-primary" >' + Response.d[i].Publicacion.Descripcion + '</a > </br> <small class="text-muted">hace 10 minutos</small> </span > </li >'); //imagen, nombre de usuario y titulo
+                    cuentaN++;
+                    //no hay notificaciones a mostrar, no mostrar nada
+                }
     }
     //Poner el numero de notificaciones
     $("#numNotificaciones").append(cuentaN);
@@ -40,9 +40,9 @@ function ImagenPerfil() {
 }
 function CargarImagenPerfil(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#imagenNBSD").append('<span class="avatar w-32"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."><i class="on b-white bottom"></i></span>'); //imagen, nombre de usuario y titulo
-        $("#imagenNBSI").append('<img class=" w-40 img-circle" src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="."/>');
-        $("#imagenPrincipalPersona").append('<img src="' + Response.d[i].Datos.Imagen_Perfil + '"> <i class="on b-white"></i>');
+            $("#imagenNBSD").append('<span class="avatar w-32"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."><i class="on b-white bottom"></i></span>'); //imagen, nombre de usuario y titulo
+            $("#imagenNBSI").append('<img class=" w-40 img-circle" src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="."/>');
+            $("#imagenPrincipalPersona").append('<img src="' + Response.d[i].Datos.Imagen_Perfil + '"> <i class="on b-white"></i>');
     }
 }
 //Poner imagen portada
@@ -57,7 +57,7 @@ function ImagenPortada() {
 }
 function CargarImagenPortada(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#imagenFondoPerfilPrincipal").append('<img src= "' + Response.d[i].Datos.Imagen_Portada + '" class="blur opacity-3"/>');
+            $("#imagenFondoPerfilPrincipal").append('<img src= "' + Response.d[i].Datos.Imagen_Portada + '" class="blur opacity-3"/>');
     }
 }
 //Poner nombre del usuario
@@ -72,7 +72,7 @@ function Nombre() {
 }
 function CargarNombre(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#nombreUsuario").append(Response.d[i].Usuario.Nombre);
+            $("#nombreUsuario").append(Response.d[i].Usuario.Nombre);
     }
 }
 
@@ -112,7 +112,7 @@ function Amigos() {
 }
 function CargarAmigos(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="'+Response.d[i].Datos.Imagen_Perfil+'" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">' + Response.d[i].Usuario.Nick + '</a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Vocacion + '</small> </div></div></div >');
+            $("#friends").append('<div class="col-xs-6 col-lg-4"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis"><a href="">' + Response.d[i].Usuario.Nick + '</a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Vocacion + '</small> </div></div></div >');
     }
 }
 
@@ -133,9 +133,7 @@ function BuscarAmigo() {
 function BuscandoAmigo(Response) {
     $("#lstBuscarAmigo").html("");
     for (var i = 0; i < Response.d.length; i++) {
-        if (Response.d[i].Usuario.Id_Usuario !== 0) {
             $("#lstBuscarAmigo").append('<div class="col-md-8 col-lg-7 col-sm-5 col-xl-7 col-xs-12"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis">' + Response.d[i].Usuario.Nick + '        <a class="pull-right btn btn-info"href="" onclick="Seguir(' + Response.d[i].Usuario.Id_Usuario + ')" class="btn btn-sm btn-rounded btn-info m-t-xs"> <i class= "fa fa-twitter m-t-xs" ></i > Follow </a></div><small class="text-muted text-ellipsis">' + '<p> Vocacion: ' + Response.d[i].Datos.Vocacion + '  Seguidores: ' + Response.d[i].Datos.Seguidores + '</small> </div></div></div >');
-        }
     }
 
 }

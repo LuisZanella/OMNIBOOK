@@ -30,7 +30,7 @@
     });
 });
 function cargarPagina(Response) {
-    if (Response.d == "actualizado") { CargarComponentes() };
+    if (Response.d == "actualizado") { RecargarComponentes(); };
 }
 function constructorActualizar(spName, newData) {
     Obj = {

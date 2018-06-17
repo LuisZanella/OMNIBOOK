@@ -10,7 +10,9 @@ function Personas() {
 }
 function CargarPersonas(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#lstBuscarAmigo").append('<div class="col-md-8 col-lg-7 col-sm-5 col-xl-7 col-xs-12"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis">' + Response.d[i].Usuario.Nick + '        <a class="pull-right btn btn-info"href="" onclick="Seguir(' + Response.d[i].Usuario.Id_Usuario + ')" class="btn btn-sm btn-rounded btn-info m-t-xs"> <i class= "fa fa-twitter m-t-xs" ></i > Follow </a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Seguidores + '</small> </div></div></div >');
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#lstBuscarAmigo").append('<div class="col-md-8 col-lg-7 col-sm-5 col-xl-7 col-xs-12"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis">' + Response.d[i].Usuario.Nick + '        <a class="pull-right btn btn-info"href="" onclick="Seguir(' + Response.d[i].Usuario.Id_Usuario + ')" class="btn btn-sm btn-rounded btn-info m-t-xs"> <i class= "fa fa-twitter m-t-xs" ></i > Follow </a></div><small class="text-muted text-ellipsis">' + Response.d[i].Datos.Seguidores + '</small> </div></div></div >');
+        }
     }
 }
 //NotificacionesPrincipales
@@ -26,19 +28,20 @@ function NotificacionesPrincipales() {
 }
 function CargarNotificacionesPrincipal(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-
-        //checar el tipo de la publicacion
-        if (Response.d[i].Publicacion.Tipo === 1) {
-            //Sin imagen
-            $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"> </div>  <div class="sl-left"></div> <div class="sl-content"> <div class="sl-date text-muted"> ' + Response.d[i].Publicacion.Fecha_Publicacion + ' </div> <blockquote> <p>' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
-        } else if (Response.d[i].Publicacion.Tipo === 2) {
-            //Con imagen
-            $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
-        } else if (Response.d[i].Publicacion.Tipo === 3) {
-            //Con imagen y titulo
-            $("#notificacionesPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
-        } else if (Response.d[i].Publicacion.Tipo === 4) {
-            //no hay ninguna publicacion de los amigos (no hacer nada)
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            //checar el tipo de la publicacion
+            if (Response.d[i].Publicacion.Tipo === 1) {
+                //Sin imagen
+                $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"> </div>  <div class="sl-left"></div> <div class="sl-content"> <div class="sl-date text-muted"> ' + Response.d[i].Publicacion.Fecha_Publicacion + ' </div> <blockquote> <p>' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+            } else if (Response.d[i].Publicacion.Tipo === 2) {
+                //Con imagen
+                $("#notificacionesPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+            } else if (Response.d[i].Publicacion.Tipo === 3) {
+                //Con imagen y titulo
+                $("#notificacionesPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
+            } else if (Response.d[i].Publicacion.Tipo === 4) {
+                //no hay ninguna publicacion de los amigos (no hacer nada)
+            }
         }
     }
 }
@@ -70,7 +73,9 @@ function Ubicacion() {
 }
 function CargarUbicacion(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#ubicacionUsuario").append(Response.d[i].Datos.Ciudad + ", " + Response.d[i].Datos.Pais);
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#ubicacionUsuario").append(Response.d[i].Datos.Ciudad + ", " + Response.d[i].Datos.Pais);
+        }
     }
 }
 //Poner estado del usuario
@@ -85,7 +90,9 @@ function Estado() {
 }
 function CargarEstado(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#estadoUsuario").append(Response.d[i].Datos.Estado);
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#estadoUsuario").append(Response.d[i].Datos.Estado);
+        }
     }
 }
 //Poner seguidores del usuario
@@ -100,7 +107,9 @@ function Seguidores() {
 }
 function CargarSeguidores(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#seguidores").append(Response.d[i].Datos.Seguidores);
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#seguidores").append(Response.d[i].Datos.Seguidores);
+        }
     }
 }
 //Poner siguiendo del usuario
@@ -115,7 +124,9 @@ function Siguiendo() {
 }
 function CargarSiguiendo(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#siguiendo").append(Response.d[i].Datos.Siguiendo);
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#siguiendo").append(Response.d[i].Datos.Siguiendo);
+        }
     }
 }
 //Poner numero telefonico del usuario
@@ -130,7 +141,9 @@ function NoTelefonico() {
 }
 function CargarNoTelefonico(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#noTelefonico").append('<div class="_500">' + Response.d[i].Datos.Telefono + '</div>');
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#noTelefonico").append('<div class="_500">' + Response.d[i].Datos.Telefono + '</div>');
+        }
     }
 }
 //Poner telefono casa del usuario
@@ -145,7 +158,9 @@ function TelefonoCasa() {
 }
 function CargarTelefonoCasa(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#noCasa").append('<div class="_500">' + Response.d[i].Datos.Telefono_Casa + '</div>');
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#noCasa").append('<div class="_500">' + Response.d[i].Datos.Telefono_Casa + '</div>');
+        }
     }
 }
 //Poner biografia del usuario
@@ -160,7 +175,9 @@ function Biografia() {
 }
 function CargarBiografia(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-        $("#biografia").append('<div>' + Response.d[i].Datos.Biografia + '</div >');
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            $("#biografia").append('<div>' + Response.d[i].Datos.Biografia + '</div >');
+        }
     }
 }
 //Poner biografia del usuario
@@ -176,19 +193,20 @@ function Publicacion() {
 }
 function CargarPublicaciones(Response) {
     for (var i = 0; i < Response.d.length; i++) {
-
-        //checar el tipo de la publicacion
-        if (Response.d[i].Publicacion.Tipo === 1) {
-            //Sin imagen
-            $("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"> </div>  <div class="sl-left"></div> <div class="sl-content"> <div class="sl-date text-muted"> ' + Response.d[i].Publicacion.Fecha_Publicacion + ' </div> <blockquote> <p>' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
-        } else if (Response.d[i].Publicacion.Tipo === 2) {
-            //Con imagen
-            $("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
-        } else if (Response.d[i].Publicacion.Tipo === 3) {
-            //Con imagen y titulo
-            $("#muroPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
-        } else if (Response.d[i].Publicacion.Tipo === 4) {
-            //no hay ninguna publicacion de los amigos (no hacer nada)
+        if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
+            //checar el tipo de la publicacion
+            if (Response.d[i].Publicacion.Tipo === 1) {
+                //Sin imagen
+                $("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"> </div>  <div class="sl-left"></div> <div class="sl-content"> <div class="sl-date text-muted"> ' + Response.d[i].Publicacion.Fecha_Publicacion + ' </div> <blockquote> <p>' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+            } else if (Response.d[i].Publicacion.Tipo === 2) {
+                //Con imagen
+                $("#muroPrincipal").append('<div class="sl-item"> <div class="sl-left"> <img src="" class="img-circle"> </div>  <div class="sl-left"> <img src="' + Response.d[i].Publicacion.Imagen + '" class="img-circle"> </div> <div class="sl-content"> <div class="sl-date text-muted">  </div><blockquote> <p> ' + Response.d[i].Publicacion.Descripcion + '</p> <small>Alguien famoso <cite title="Source Title">' + Response.d[i].Publicacion.Fuente + '</cite></small> </blockquote> </div> </div>');
+            } else if (Response.d[i].Publicacion.Tipo === 3) {
+                //Con imagen y titulo
+                $("#muroPrincipal").append('<div class="sl-item"><div class="sl-left"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" class="img-circle"></div><div class="sl-content"><div class="sl-date text-muted">' + Response.d[i].Publicacion.Fecha_Publicacion + '</div><div class="sl-author"><a href="">' + Response.d[i].Publicacion.Titulo + '</a></div><div><p>' + Response.d[i].Publicacion.Descripcion + '</p><p><span class="inline w-lg w-auto-xs p-a-xs b dark-white"><img src="' + Response.d[i].Publicacion.Imagen + '" class="w-full"></span></p></div></div></div>');
+            } else if (Response.d[i].Publicacion.Tipo === 4) {
+                //no hay ninguna publicacion de los amigos (no hacer nada)
+            }
         }
     }
 }
