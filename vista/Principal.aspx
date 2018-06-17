@@ -44,7 +44,9 @@
     <!--JS PERSONALIZADOS-->
     <script src="../recursos/js/global.js"></script>
     <script src="../recursos/js/login.js"></script>
+    <script src="../recursos/js/principalImportante.js"></script>
     <script src="../recursos/js/principalMuro.js"></script>
+    <script src="../recursos/js/modalPerfil.js"></script>
     <script src="../recursos/js/principalPerfilTop.js"></script>
 
 </head>
@@ -400,7 +402,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Salir</button>
-                        <button id="btnEnviarRegistro" type="button" class="btn btn-primary green" data-dismiss="modal">
+                        <button id="btnActualizarUsuario" type="button" class="btn btn-primary green" data-dismiss="modal">
                             Actualizar
                         </button>
                     </div>

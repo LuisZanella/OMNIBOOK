@@ -1,0 +1,19 @@
+﻿function CargarComponentes() {
+    loadId();
+    Notificaciones();
+    ImagenPerfil();
+    ImagenPortada();
+    Nombre();
+    Vocacion();
+    Ubicacion();
+    Estado();
+    Seguidores();
+    Siguiendo();
+    NoTelefonico();
+    TelefonoCasa();
+    Biografia();
+    Publicacion();
+    Amigos();
+    NotificacionesPrincipales();
+    Personas();
+}

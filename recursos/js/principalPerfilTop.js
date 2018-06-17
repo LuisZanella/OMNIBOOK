@@ -4,23 +4,7 @@ function loadId() {
     IdUser = IdUser.split('?')[1];
 }
 $(document).ready(function () {
-    loadId();
-    Notificaciones();
-    ImagenPerfil();
-    ImagenPortada();
-    Nombre();
-    Vocacion();
-    Ubicacion();
-    Estado();
-    Seguidores();
-    Siguiendo();
-    NoTelefonico();
-    TelefonoCasa();
-    Biografia();
-    Publicacion();
-    Amigos();
-    NotificacionesPrincipales();
-    Personas();
+    CargarComponentes();
 });
 function Notificaciones() {
     var Campos = ["Imagen_Perfil", "Nick", "Descripcion"];
