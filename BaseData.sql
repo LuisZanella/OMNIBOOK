@@ -327,7 +327,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_obtenerNombrePerfil]
 @Id INT
 AS
-	SELECT U.Nombre FROM Usuario U WHERE U.Id_Usuario = @Id
+	SELECT U.Nick Nombre FROM Usuario U WHERE U.Id_Usuario = @Id
 GO
 
 --CREACION DE SP para obtener la vocacion del usuario actual
@@ -412,6 +412,7 @@ As
 	INNER JOIN Amistad A
 	ON A.Id_Amistad = P.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1 AND U.Id_Usuario = @Id
+	ORDER BY P.Fecha_Publicacion
 GO
 --CREACION DE SP para obtener con foto Tipo 2
 CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo2]
@@ -424,6 +425,7 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo2]
 	INNER JOIN Amistad A
 	ON A.Id_Amistad = P.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 2 AND U.Id_Usuario = @Id
+	ORDER BY P.Fecha_Publicacion
 GO
 --CREACION DE SP para obtener con foto pero con titulo Tipo 3
 CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo3]
@@ -436,6 +438,7 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo3]
 	INNER JOIN Amistad A
 	ON A.Id_Amistad = P.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 3 AND U.Id_Usuario = @Id
+	ORDER BY P.Fecha_Publicacion
 GO
 
 
@@ -443,10 +446,31 @@ GO
 CREATE PROCEDURE [dbo].[sp_obtenerPublicaciones] 
 @Id INT
 AS 
-	SELECT * FROM Publicacion P
-	INNER JOIN Amistad A ON A.Id_Usuario = @Id
-	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos
-	WHERE P.Id_Usuario = A.Id_Usuario_Dos
+	SELECT P.Tipo,P.Imagen, P.Descripcion, P.Fuente, P.Fecha_Publicacion, D.Imagen_Perfil, P.Titulo FROM Publicacion P LEFT JOIN Usuario U
+	ON P.Id_Usuario = U.Id_Usuario
+	INNER JOIN Datos D
+	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN Amistad A
+	ON A.Id_Amistad = P.Id_Amistad
+	INNER JOIN Notificacion N
+	ON N.Id_Publicacion = P.Id_Publicacion
+	WHERE (A.Id_Usuario_Dos = @Id) OR A.Id_Usuario = @Id
+	ORDER BY P.Fecha_Publicacion DESC
+GO
+-- Procedimiento para obtener las notificaciones y que no sean del usuario
+CREATE PROCEDURE [dbo].[sp_obtenerNotificacionesPrincipal] 
+@Id INT
+AS 
+	SELECT P.Tipo,P.Imagen, P.Descripcion, P.Fuente, P.Fecha_Publicacion, D.Imagen_Perfil, P.Titulo FROM Publicacion P LEFT JOIN Usuario U
+	ON P.Id_Usuario = U.Id_Usuario
+	INNER JOIN Datos D
+	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN Amistad A
+	ON A.Id_Amistad = P.Id_Amistad
+	INNER JOIN Notificacion N
+	ON N.Id_Publicacion = P.Id_Publicacion
+	WHERE (A.Id_Usuario_Dos = @Id)
+	ORDER BY P.Fecha_Publicacion DESC
 GO
 
 
