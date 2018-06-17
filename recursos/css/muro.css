@@ -3,3 +3,13 @@
     border-radius: 3px;
     margin-left: 10px;
 }
+.btn-black {
+    background: black;
+    border-color: black;
+}
+    .btn-black:hover {
+        background: gray;
+    }
+.margin-top-14 {
+    margin-top: 14px;
+}

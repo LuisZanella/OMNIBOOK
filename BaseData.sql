@@ -23,8 +23,8 @@ Vocacion NVARCHAR(60),
 Ciudad NVARCHAR(30),
 Pais NVARCHAR(40),
 Estado NVARCHAR(200),
-Seguidores BIGINT,
-Siguiendo BIGINT,
+Seguidores BIGINT DEFAULT 0,
+Siguiendo BIGINT DEFAULT 0,
 NombreArtistico NVARCHAR(100),
 Imagen_Perfil NVARCHAR(80),
 Imagen_Portada NVARCHAR(80),
@@ -293,21 +293,20 @@ AS
 UPDATE Datos SET Biografia=@Variable WHERE Id_Usuario=@Id
 GO
 --CREACION DE SP PARA OBTENER las notificaciones
-CREATE PROCEDURE [dbo].[sp_obtenerNotificacion]
+ALTER PROCEDURE [dbo].[sp_obtenerNotificacion]
 @Id INT
 AS
 	SELECT TOP 3 P.Id_Usuario,D.Imagen_Perfil, U.Nick, SUBSTRING(P.Descripcion,1,15) Descripcion FROM Publicacion P LEFT JOIN Usuario U
-	ON P.Id_Usuario = P.Id_Usuario
+	ON P.Id_Usuario = U.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
 	INNER JOIN Amistad A
 	ON A.Id_Amistad = P.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
-	WHERE A.Id_Usuario = @Id OR A.Id_Usuario_Dos = @Id AND U.Id_Usuario !=@Id AND U.Estatus = 1 
-	ORDER BY  P.Fecha_Publicacion
+	WHERE (A.Id_Usuario_Dos = @Id) AND U.Id_Usuario != @Id
+	ORDER BY P.Fecha_Publicacion
 GO
-EXEC [sp_obtenerImagenPerfil] 1
 --CREACION DE SP para obtener la imagen del usuario actual
 CREATE PROCEDURE [dbo].[sp_obtenerImagenPerfil]
 @Id INT
@@ -439,7 +438,6 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo3]
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 3 AND U.Id_Usuario = @Id
 GO
 
-SELECT * FROM Notificacion
 
 --obtener todas las publicaciones de los amigos
 CREATE PROCEDURE [dbo].[sp_obtenerPublicaciones] 
@@ -460,4 +458,32 @@ AS
 	SET NOCOUNT ON;
 	INSERT INTO Notificacion(Id_Publicacion, Estatus) VALUES ((SELECT Id_Publicacion FROM inserted), 1)
 END
+GO
+--obtener amigos con el nombre parecido
+ALTER PROCEDURE [dbo].[sp_buscarAmigo] 
+@Buscar NVARCHAR(50),
+@Id INT
+AS	SELECT * FROM(
+	SELECT U.Id_Usuario Id,D.Imagen_Perfil, U.Nick, D.Vocacion,D.Seguidores FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario 
+	WHERE U.Nick = @Buscar OR U.Nick LIKE @Buscar+'%' OR U.Nick LIKE '%'+@Buscar+'%' OR U.Nick LIKE '%'+@Buscar
+	EXCEPT
+	SELECT U.Id_Usuario Id,D.Imagen_Perfil, U.Nick, D.Vocacion,D.Seguidores FROM Amistad A
+	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos 
+	INNER JOIN Usuario U ON U.Id_Usuario = A.Id_Usuario_Dos
+	WHERE A.Id_Usuario = @Id OR U.Id_Usuario = @Id)ex
+GO
+-- Obtener personas no seguidas
+CREATE PROCEDURE [dbo].[sp_obtenerPersonas] 
+@Id INT
+AS	SELECT * FROM(
+	SELECT U.Id_Usuario IdBuscado,D.Imagen_Perfil, U.Nick,D.Seguidores FROM Usuario U
+	INNER JOIN Datos D ON D.Id_Usuario = U.Id_Usuario 
+	WHERE U.Id_Usuario != @Id
+	EXCEPT
+	SELECT U.Id_Usuario IdBuscado,D.Imagen_Perfil, U.Nick,D.Seguidores FROM Amistad A
+	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos 
+	INNER JOIN Usuario U ON U.Id_Usuario = A.Id_Usuario_Dos
+	WHERE A.Id_Usuario = @Id)ex
+	ORDER BY ex.Seguidores ASC
 GO

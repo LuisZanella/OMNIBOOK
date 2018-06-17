@@ -196,6 +196,9 @@ public class OmniService : System.Web.Services.WebService
                     for (int i = 0; i<Campos.Length; i++) {
                         switch (Campos[i]) {
                             /*Usuario*/
+                            case "IdBuscado":
+                                _usuario.Id_Usuario = Int32.Parse(_dtr["IdBuscado"].ToString());
+                                break;
                             case "Nombre":
                                 _usuario.Nombre = _dtr["Nombre"].ToString();
                                 break;
@@ -249,13 +252,24 @@ public class OmniService : System.Web.Services.WebService
                                 break;
                                 /*Publicacion*/
                             case "Titulo":
-                                _publicacion.Titulo = _dtr["Titulo"].ToString();
+                                
                                 break;
                             case "Imagen":
-                                _publicacion.Imagen = _dtr["Imagen"].ToString();
+                                
                                 break;
                             case "Tipo":
                                 _publicacion.Tipo = Int16.Parse(_dtr["Tipo"].ToString());
+                                switch (_publicacion.Tipo) {
+                                    case 1:
+                                        break;
+                                    case 2:
+                                        _publicacion.Imagen = _dtr["Imagen"].ToString();
+                                        break;
+                                    case 3:
+                                        _publicacion.Titulo = _dtr["Titulo"].ToString();
+                                        _publicacion.Imagen = _dtr["Imagen"].ToString();
+                                        break;
+                                }
                                 break;
                             case "Descripcion":
                                 _publicacion.Descripcion = _dtr["Descripcion"].ToString();
@@ -304,6 +318,161 @@ public class OmniService : System.Web.Services.WebService
         catch (Exception ex)
         {
 
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            _conexion.Desconectar();
+            _conexion = null;
+        }
+
+    }
+    [WebMethod(EnableSession = true)]
+    public List<ModulosBaseModelo> Buscar(string spNombre, string[] Campos, string Buscar,int Id)
+    {
+        List<ModulosBaseModelo> _Datos = new List<ModulosBaseModelo>();
+        ModulosBaseModelo _Dato = new ModulosBaseModelo();
+        SqlConexion _conexion = new SqlConexion();
+        DataTableReader _dtr = null;
+        UsuarioModelo _usuario;
+        DatosModelo _datosUsuario;
+        PublicacionModelo _publicacion;
+        NotificacionModelo _notificacion;
+        List<SqlParameter> _Parametros = new List<SqlParameter>();
+        try
+        {
+            //Abrir conexion
+            _conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
+            // Se agregan parámetros a la lista List <SqlParameter>, con los valores para cada parametro que se obtienen de los atributos
+            // del objeto Pej.Objeto . Atributo_x
+            _Parametros.Add(new SqlParameter("@Buscar", Buscar));
+            _Parametros.Add(new SqlParameter("@Id", Id));
+            _conexion.PrepararProcedimiento(spNombre, _Parametros);
+            _dtr = _conexion.EjecutarTableReader();
+            if (_dtr.HasRows)
+            {
+                while (_dtr.Read())
+                {
+                    _Dato = new ModulosBaseModelo();
+                    _usuario = new UsuarioModelo();
+                    _datosUsuario = new DatosModelo();
+                    _notificacion = new NotificacionModelo();
+                    _publicacion = new PublicacionModelo();
+                    for (int i = 0; i < Campos.Length; i++)
+                    {
+                        switch (Campos[i])
+                        {
+                            /*Usuario*/
+                            case "Id":
+                                _usuario.Id_Usuario = Int32.Parse(_dtr["Id"].ToString());
+                                break;
+                            case "Nombre":
+                                _usuario.Nombre = _dtr["Nombre"].ToString();
+                                break;
+                            case "Nick":
+                                _usuario.Nick = _dtr["Nick"].ToString();
+                                break;
+                            case "Correo":
+                                _usuario.Correo = _dtr["Correo"].ToString();
+                                break;
+                            case "Contrasenia":
+                                _usuario.Contrasenia = _dtr["Contrasenia"].ToString();
+                                break;
+                            case "Fecha_Nacimiento":
+                                break;
+                            /*Datos*/
+                            case "Vocacion":
+                                _datosUsuario.Vocacion = _dtr["Vocacion"].ToString();
+                                break;
+                            case "Ciudad":
+                                _datosUsuario.Ciudad = _dtr["Ciudad"].ToString();
+                                break;
+                            case "Pais":
+                                _datosUsuario.Pais = _dtr["Pais"].ToString();
+                                break;
+                            case "Estado":
+                                _datosUsuario.Estado = _dtr["Estado"].ToString();
+                                break;
+                            case "Seguidores":
+                                _datosUsuario.Seguidores = Int32.Parse(_dtr["Seguidores"].ToString());
+                                break;
+                            case "Siguiendo":
+                                _datosUsuario.Siguiendo = Int32.Parse(_dtr["Siguiendo"].ToString());
+                                break;
+                            case "NombreArtistico":
+                                _datosUsuario.NombreArtistico = _dtr["NombreArtistico"].ToString();
+                                break;
+                            case "Imagen_Perfil":
+                                _datosUsuario.Imagen_Perfil = _dtr["Imagen_Perfil"].ToString();
+                                break;
+                            case "Imagen_Portada":
+                                _datosUsuario.Imagen_Portada = _dtr["Imagen_Portada"].ToString();
+                                break;
+                            case "Telefono":
+                                _datosUsuario.Telefono = _dtr["Telefono"].ToString();
+                                break;
+                            case "Telefono_Casa":
+                                _datosUsuario.Telefono_Casa = _dtr["Telefono_Casa"].ToString();
+                                break;
+                            case "Biografia":
+                                _datosUsuario.Biografia = _dtr["Biografia"].ToString();
+                                break;
+                            /*Publicacion*/
+                            case "Titulo":
+                                _publicacion.Titulo = _dtr["Titulo"].ToString();
+                                break;
+                            case "Imagen":
+                                _publicacion.Imagen = _dtr["Imagen"].ToString();
+                                break;
+                            case "Tipo":
+                                _publicacion.Tipo = Int16.Parse(_dtr["Tipo"].ToString());
+                                break;
+                            case "Descripcion":
+                                _publicacion.Descripcion = _dtr["Descripcion"].ToString();
+                                break;
+                            case "Fuente":
+                                _publicacion.Fuente = _dtr["Fuente"].ToString();
+                                break;
+                            case "Fecha_Publicacion":
+                                _publicacion.Fecha_Publicacion = string.Format("{0:MM/dd/yyyy}", _dtr["Fuente"]);
+                                break;
+                        }
+                    }
+                    _datosUsuario.Usuario = _usuario;
+                    _Dato.Usuario = _usuario;
+                    _Dato.Datos = _datosUsuario;
+                    _Dato.Publicacion = _publicacion;
+                    _Dato.Notificacion = _notificacion;
+                    _Datos.Add(_Dato);
+                }
+                return _Datos;
+            }
+            else
+            {
+                if (spNombre == "sp_obtenerNotificacion")
+                {
+                    //validar el error de que no hay notificaciones
+                    _datosUsuario = new DatosModelo();
+                    _datosUsuario.Imagen_Perfil = "NF";
+                    _Dato = new ModulosBaseModelo();
+                    _Dato.Datos = _datosUsuario;
+                    _Datos.Add(_Dato);
+                    return _Datos;
+                }
+                throw new Exception("Sin informacion");
+            }
+        }
+        catch (Exception ex)
+        {
+            if (spNombre == "sp_buscarAmigo")
+            {
+                //validar el error de que no hay usuario con ese nombre
+                _Dato = new ModulosBaseModelo();
+                _Dato.Usuario = new UsuarioModelo();
+                _Dato.Usuario.Id_Usuario = 0;
+                _Datos.Add(_Dato);
+                return _Datos;
+            }
             throw new Exception(ex.Message);
         }
         finally

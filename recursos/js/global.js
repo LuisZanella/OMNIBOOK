@@ -1,4 +1,5 @@
 function ajax(pagina, fn, post, fnJs) {
+    $("input[type=a]").addClass("disabled");
     if (fnJs === undefined) fnJs = fn;
     $.ajax({
         url: "../" + pagina + "/" + fn,
@@ -21,4 +22,5 @@ function ajax(pagina, fn, post, fnJs) {
             alert(result.responseText);
             console.error(result.responseText)
         })
+    $("input[type=a]").removeClass("disabled", false);
 }
