@@ -51,7 +51,7 @@
 
 </head>
 <body>
-
+    <div class="switcher box-color black lt ng-scope" id="sw-demo"><a onclick="RecargarComponentes()" ui-toggle-class="active" class="box-color dark-gray text-color sw-btn"><i class="material-icons dark-gray" >autorenew</i></a><div class="box-header"></div></div>
     <p style="visibility:hidden" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
         <div class="navbar ng-scope">
@@ -85,7 +85,7 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown" style="padding: 14px;">
-                            <a class="nav-link clear" href="" data-toggle="dropdown" id="imagenNBSD">
+                            <a class="nav-link clear" data-toggle="dropdown" id="imagenNBSD">
                             </a>
                             <div class="dropdown-menu pull-right dropdown-menu-scale ng-scope">
                                 <a class="dropdown-item" data-toggle="modal" data-target="#editarCuentaModal">
@@ -147,7 +147,7 @@
                         <div class="p-a-md">
                             <div class="row m-t">
                                 <div class="col-sm-7">
-                                    <a href="" class="pull-left m-r-md">
+                                    <a class="pull-left m-r-md">
                                         <span class="avatar w-96" id="imagenPrincipalPersona">
 
                                         </span>
@@ -170,7 +170,7 @@
                                                 <i class="fa fa-google-plus"></i>
                                                 <i class="fa fa-google-plus red"></i>
                                             </a>
-                                            <a href="" class="btn btn-icon btn-social rounded white btn-sm">
+                                            <a href=""class="btn btn-icon btn-social rounded white btn-sm">
                                                 <i class="fa fa-linkedin"></i>
                                                 <i class="fa fa-linkedin cyan-600"></i>
                                             </a>
@@ -193,11 +193,11 @@
                         <div class="row">
                             <div class="col-sm-6 push-sm-6">
                                 <div class="p-y text-center text-sm-right">
-                                    <a href="" class="inline p-x text-center">
+                                    <a class="inline p-x text-center">
                                         <span class="h4 block m-a-0" id="seguidores"></span>
                                         <small class="text-xs text-muted">Seguidores</small>
                                     </a>
-                                    <a href="" class="inline p-x b-l b-r text-center">
+                                    <a class="inline p-x b-l b-r text-center">
                                         <span class="h4 block m-a-0" id="siguiendo"></span>
                                         <small class="text-xs text-muted">Siguiendo</small>
                                     </a>
@@ -206,11 +206,11 @@
                             <div class="col-sm-6 pull-sm-6">
                                 <div class="p-y-md clearfix nav-active-success">
                                     <ul class="nav nav-pills nav-sm">
-                                        <li class="nav-item active"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_1">Muro</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_2">Notificaciones</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_3">Amigos</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_4">Perfil</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="" data-toggle="tab" data-target="#tab_5">Más Personas</a></li>
+                                        <li class="nav-item active"><a class="nav-link" data-toggle="tab" data-target="#tab_1">Muro</a></li>
+                                        <li class="nav-item"><a class="nav-link" data-toggle="tab" data-target="#tab_2">Notificaciones</a></li>
+                                        <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_3">Amigos</a></li>
+                                        <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_4">Perfil</a></li>
+                                        <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_5">Más Personas</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -234,12 +234,12 @@
                                                                 <button class="btn btn-info pull-right btn-sm" onclick="Publicar()">Publicar</button>
                                                                 <ul class="nav nav-pills nav-sm">
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link" href="">
+                                                                        <a class="nav-link" >
                                                                             <i class="fa fa-camera text-muted"> </i>
                                                                         </a>
                                                                     </li>
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link" href="">
+                                                                        <a class="nav-link">
                                                                             <i class="fa fa-video-camera text-muted"></i>
                                                                         </a>
                                                                     </li>

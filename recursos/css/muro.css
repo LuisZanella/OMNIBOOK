@@ -13,3 +13,9 @@
 .margin-top-14 {
     margin-top: 14px;
 }
+.dark-gray {
+    color: black;
+}
+.dark-gray:hover {
+    color:gray;
+}
