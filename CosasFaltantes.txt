@@ -1,6 +1,5 @@
 -Obligar al usuario a minimo seguir a alguien para publicar o que lo sigan
--Top Más seguidores
-- Insertar publicación
-- Ultimas publicaciones TOp 3
 - A quien seguir esta dificil dejadmelo a mi
 -Subida y bajada de archivos
+--ERRORES
+Imagen_Perfil, Portada

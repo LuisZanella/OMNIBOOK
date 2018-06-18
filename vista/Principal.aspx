@@ -182,7 +182,7 @@
                                     <p class="text-md profile-status" id="estadoUsuario"></p>
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false" id="btnEditar">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
-                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
+                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="txtDescripcionPublicacion"></textarea>
                                         <div class="box-footer clearfix"> <button class="btn btn-info pull-left collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button></div>
                                     </div>
                                 </div>
@@ -224,10 +224,14 @@
                                         <div class="row">
                                             <div class="box collapse in m-a-0" id="reply-2">
                                                             <form class="ng-pristine ng-valid">
+                                                                <textarea class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Titulo..." id="txtTituloPublicacion"></textarea>
+                                                                <div class="box-divider m-a-0"></div>
                                                                 <textarea id="txtPublicacion" class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
+                                                                <div class="box-divider m-a-0"></div>
+                                                                <textarea class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Fuente..." id="txtFuente"></textarea>
                                                             </form>
                                                             <div class="box-footer clearfix">
-                                                                <button class="btn btn-info pull-right btn-sm">Publicar</button>
+                                                                <button class="btn btn-info pull-right btn-sm" onclick="Publicar()">Publicar</button>
                                                                 <ul class="nav nav-pills nav-sm">
                                                                     <li class="nav-item">
                                                                         <a class="nav-link" href="">
