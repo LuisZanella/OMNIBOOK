@@ -48,16 +48,9 @@
     <script src="../recursos/js/principalMuro.js"></script>
     <script src="../recursos/js/modalPerfil.js"></script>
     <script src="../recursos/js/principalPerfilTop.js"></script>
-    <script src="../recursos/js/WCF/buscar.js"></script>
-    <script src="../recursos/js/WCF/guardar.js"></script>
-    <script src="../recursos/js/WCF/MyUpload.js"></script>
+
 </head>
 <body>
-           <asp:ScriptManager ID="ScriptManager1" runat="server">
-              <Scripts>
-                    <asp:ScriptReference Path="../recursos/js/WCF/fileuploader.js" />
-              </Scripts>
-        </asp:ScriptManager>
     <div class="switcher box-color black lt ng-scope" id="sw-demo"><a id="Refresh" onclick="recargarcosasPrincipales()" ui-toggle-class="active" class="box-color dark-gray text-color sw-btn"><i class="material-icons dark-gray" >autorenew</i></a><div class="box-header"></div></div>
     <p style="visibility:hidden" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
@@ -231,8 +224,7 @@
                                         <div class="row">
                                             <div class="box collapse in m-a-0" id="reply-2">
                                                             <form class="ng-pristine ng-valid">
-																<%-- aqui va la publicacion --%>
-                                                                <textarea id="txtTituloPublicacion" class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Titulo..." id="txtTituloPublicacion"></textarea>
+                                                                <textarea class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Titulo..." id="txtTituloPublicacion"></textarea>
                                                                 <div class="box-divider m-a-0"></div>
                                                                 <textarea id="txtPublicacion" class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
                                                                 <div class="box-divider m-a-0"></div>

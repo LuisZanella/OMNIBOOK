@@ -219,12 +219,13 @@ function CargarPublicaciones(Response) {
 // Publicar cosas
 function Publicar() {
 	var Titulo = $("#txtTituloPublicacion").val();
-	var Publicacion = $("#txtPublicacion").val();
+    var Publicacion = $("#txtPublicacion").val();
 	var Fuente = $("#txtFuentePublicacion").val();
-	var Imagen = $("#img").val();
+    var Imagen = $("#img").val();
+    debugger;
 	var tipo;
-	if (Publicacion !== "" && Imagen !== "" && Titulo !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion3", Titulo, Publicacion, Imagen, Fuente, tipo = 3);
-	else if (Publicacion !== "" && Imagen !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion2", null, Publicacion, Imagen, Fuente, tipo = 2);
+    if (Publicacion !== "" && Imagen !== "" && Titulo !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion3", Titulo, Publicacion, Imagen, Fuente, tipo = 3);
+    else if (Publicacion !== "" && Imagen !== "" && Imagen !== undefined && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion2", null, Publicacion, Imagen, Fuente, tipo = 2);
 	else if (Publicacion !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion1", null, Publicacion, null, Fuente, tipo = 1)
     else if (Fuente === "") alert('Para publicar llena minimo los campos -- Escibre algo.. y Fuente... -- !!')
     else alert('Error al compartir :( intente más tarde');
@@ -260,10 +261,11 @@ function constructorInsertarPublicacion(spName, Titulo, Publicacion, Imagen, Fue
 	data = JSON.stringify(data);
 
 	info = "{'spNombre':" + JSON.stringify(spName) + ",'data':" + data + ",'Id':" +JSON.stringify(IdUser)+"}";
-	ajax('OmniService.asmx', 'InsertarPublicaion', info, 'InsertarPublicacion');
+	ajax('OmniService.asmx', 'InsertarPublicaion', info, 'InsertarLaPublicacion');
 }
-function InsertarPublicacion(Response) {
+function InsertarLaPublicacion(Response) {
     if (Response.d === "Publicado") {
+        alert(Response.d)
         recargarcosasPrincipales();
 	}
     if (Response.d === "No sigues a nadie :( !, intenta seguir a alguien!! Para poder publicar") {

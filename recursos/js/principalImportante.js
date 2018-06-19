@@ -145,7 +145,6 @@ function Seguir(IdUsarioDos) {
     ajax("OmniService.asmx", "Seguir", data, "RespuestaSeguir");
 }
 function RespuestaSeguir(Response) {
-    console.warn(Response);
     if (Response.d === "Registrado") {
         recargarcosasPrincipales();
     }
