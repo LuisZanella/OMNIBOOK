@@ -222,9 +222,8 @@ function Publicar() {
     var Publicacion = $("#txtPublicacion").val();
 	var Fuente = $("#txtFuentePublicacion").val();
     var Imagen = $("#img").val();
-    debugger;
 	var tipo;
-    if (Publicacion !== "" && Imagen !== "" && Titulo !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion3", Titulo, Publicacion, Imagen, Fuente, tipo = 3);
+    if (Publicacion !== "" && Imagen !== "" && Titulo !== "" && Imagen !== undefined && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion3", Titulo, Publicacion, Imagen, Fuente, tipo = 3);
     else if (Publicacion !== "" && Imagen !== "" && Imagen !== undefined && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion2", null, Publicacion, Imagen, Fuente, tipo = 2);
 	else if (Publicacion !== "" && Fuente !== "") constructorInsertarPublicacion("sp_InPublicacion1", null, Publicacion, null, Fuente, tipo = 1)
     else if (Fuente === "") alert('Para publicar llena minimo los campos -- Escibre algo.. y Fuente... -- !!')
