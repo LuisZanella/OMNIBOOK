@@ -7,7 +7,7 @@ $("#txtPswI").keyup(function (event) {
 function btnIniciarSesion() {
     var userObj = {
         "Contrasenia": $("#txtPswI").val(),
-        "Nick": $("#txtUsuarioI").val()
+        "Nick": sha256($("#txtUsuarioI").val())
     };
 
     var user = JSON.stringify(userObj);
@@ -50,9 +50,10 @@ function btnRegistrarUsuario() {
     day = date.getDate();
     month = date.getMonth() + 1;
     year = date.getFullYear();
+    var con = $("#txtContraseniaRegistro").val();
     var userObj = {
         "Nombre": $("#txtNombreRegistro").val(),
-        "Contrasenia": $("#txtContraseniaRegistro").val(),
+        "Contrasenia": sha256(con),
         "Fecha_Nacimiento": $('#dtFechaNacimiento').val(),
         "Nick": $("#txtNickRegistro").val(),
         "Correo": $("#txtCorreoRegistro").val(),

@@ -9,7 +9,7 @@ Id_Usuario BIGINT IDENTITY (1,1) PRIMARY KEY,
 Nombre NVARCHAR(50) NOT NULL,
 Nick NVARCHAR(50) NOT NULL,
 Correo NVARCHAR(40) NOT NULL,
-Contrasenia NVARCHAR(200) NOT NULL,
+Contrasenia NVARCHAR(400) NOT NULL,
 Fecha_Nacimiento DATE,
 Verificacion_Clave NVARCHAR(300),
 Estatus BIT DEFAULT '1',
@@ -110,7 +110,7 @@ UPDATE Usuario SET Correo = @Variable
 WHERE Id_Usuario = @Id
 GO
 CREATE PROCEDURE [dbo].[sp_UpContrasenia]
-@Variable NVARCHAR(200),
+@Variable NVARCHAR(400),
 @Id INT
 AS
 UPDATE Usuario SET Contrasenia = @Variable 
@@ -181,7 +181,7 @@ CREATE PROCEDURE [dbo].[sp_InUsuario]
 @Nombre NVARCHAR(50),
 @Nick NVARCHAR(50),
 @Correo NVARCHAR(40),
-@Contrasenia NVARCHAR(200),
+@Contrasenia NVARCHAR(400),
 @FechaNacimiento Date
 AS
 	INSERT INTO Usuario(Nombre, Nick, Correo, Contrasenia, Fecha_Nacimiento) VALUES(@Nombre,@Nick, @Correo, @Contrasenia, @FechaNacimiento)
