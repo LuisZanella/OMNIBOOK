@@ -51,7 +51,7 @@
 
 </head>
 <body>
-    <div class="switcher box-color black lt ng-scope" id="sw-demo"><a onclick="RecargarComponentes()" ui-toggle-class="active" class="box-color dark-gray text-color sw-btn"><i class="material-icons dark-gray" >autorenew</i></a><div class="box-header"></div></div>
+    <div class="switcher box-color black lt ng-scope" id="sw-demo"><a id="Refresh" onclick="recargarcosasPrincipales()" ui-toggle-class="active" class="box-color dark-gray text-color sw-btn"><i class="material-icons dark-gray" >autorenew</i></a><div class="box-header"></div></div>
     <p style="visibility:hidden" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
         <div class="navbar ng-scope">

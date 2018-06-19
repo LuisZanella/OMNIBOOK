@@ -1,13 +1,18 @@
 ﻿
 function CargarComponentes() {
     loadId();
-    Notificaciones();
     ImagenPerfil();
     ImagenPortada();
     Nombre();
-    Vocacion();
     Ubicacion();
     Estado();
+    Personas();
+    cargarCosasPrincipales();
+    writeNext(4);
+}
+function cargarCosasPrincipales() {
+    Notificaciones();
+    Vocacion();
     Seguidores();
     Siguiendo();
     NoTelefonico();
@@ -16,27 +21,20 @@ function CargarComponentes() {
     Publicacion();
     Amigos();
     NotificacionesPrincipales();
-    Personas();
     PublicacionRecientes();
     CargarTopPersona();
     PersonaFamosa();
-    setInterval();
-    $("a").prop('hidden', false);
+    wait(4);
 }
-var start = new Date;
-setInterval(function () {
-    $('.Timer').text((new Date - start) / 1000 + " Seconds");
-}, 1000);
-function RecargarComponentes() {
-    $("a").attr("hidden",true);
+function recargarcosasPrincipales() {
+    $("#notificaciones").html("");
+    $("#famoso").html("");
     $("#muroPrincipal").html("");
     $("#siguiendo").html("");
     $("#seguidores").html("");
     $("#notificacionesPrincipal").html("");
     $("#vocacionUsuario").html("");
     $("#vocacion").html("");
-    $("#ubicacionUsuario").html("");
-    $("#estadoUsuario").html("");
     $("#seguidores").html("");
     $("#siguiendo").html("");
     $("#noTelefonico").html("");
@@ -44,16 +42,43 @@ function RecargarComponentes() {
     $("#biografia").html("");
     $("#lstBuscarAmigo").html("");
     $("#friends").html("");
+    $("#numNotificaciones").html("");
+    cargarCosasPrincipales();
+}
+function writeNext(i) {
+    $("a").attr("hidden", true);
+    if (i == 5) {
+        $("a").prop('hidden', false);
+        return;
+    }
+
+    setTimeout(function () {
+        writeNext(i + 1);
+
+    }, 1000);
+}
+function wait(i) {
+    $("#Refresh").attr("hidden", true);
+    if (i == 5) {
+        $("#Refresh").prop('hidden', false);
+        return;
+    }
+
+    setTimeout(function () {
+        writeNext(i + 1);
+
+    }, 1000);
+}
+function RecargarComponentes() {
+    recargarcosasPrincipales();
+    $("#ubicacionUsuario").html("");
+    $("#estadoUsuario").html("");
     $("#estadoUsuario").html("");
     $("#nombreUsuario").html("");
     $("#imagenFondoPerfilPrincipal").html("");
     $("#imagenPrincipalPersona").html("");
     $("#imagenNBSI").html("");
     $("#imagenNBSD").html("");
-    $("#numNotificaciones").html("");
-    $("#notificaciones").html("");
-    $("#famoso").html("");
-
     CargarComponentes();
 }
 

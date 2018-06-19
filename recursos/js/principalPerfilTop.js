@@ -5,6 +5,7 @@ function loadId() {
 }
 $(document).ready(function () {
     CargarComponentes();
+    $("a").attr("hidden", false);
 });
 function Notificaciones() {
     var Campos = ["Imagen_Perfil", "Nick", "Descripcion"];
