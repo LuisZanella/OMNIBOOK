@@ -7,14 +7,17 @@ GO
 CREATE TABLE Usuario(
 Id_Usuario BIGINT IDENTITY (1,1) PRIMARY KEY,
 Nombre NVARCHAR(50) NOT NULL,
-Nick NVARCHAR(50) UNIQUE NOT NULL,
-Correo NVARCHAR(40) UNIQUE NOT NULL,
+Nick NVARCHAR(50) NOT NULL,
+Correo NVARCHAR(40) NOT NULL,
 Contrasenia NVARCHAR(200) NOT NULL,
 Fecha_Nacimiento DATE,
 Verificacion_Clave NVARCHAR(300),
-Estatus BIT DEFAULT '0',
+Estatus BIT DEFAULT '1',
+CONSTRAINT UQ_Nick UNIQUE (Nick),
+CONSTRAINT UQ_Correo UNIQUE (Correo)
 )
 GO
+SELECT * FROM usuario
 
 CREATE TABLE Datos(
 Id_Datos BIGINT IDENTITY (1,1) PRIMARY KEY,
@@ -57,13 +60,18 @@ GO
 CREATE TABLE Publicacion(
 Id_Publicacion BIGINT IDENTITY PRIMARY KEY,
 Id_Usuario BIGINT FOREIGN KEY REFERENCES Usuario(Id_Usuario) NOT NULL,
-Id_Amistad BIGINT FOREIGN KEY REFERENCES Amistad(Id_Amistad),
 Titulo NVARCHAR(150),
 Imagen NVARCHAR(80),
 Tipo INT,
 Descripcion NVARCHAR(300),
 Fuente NVARCHAR(200) NULL,
 Fecha_Publicacion DATETIME NOT NULL
+)
+GO
+CREATE TABLE AmistadPublicacion(
+Id_AmistadPublicacion BIGINT IDENTITY PRIMARY KEY,
+Id_Publicacion BIGINT FOREIGN KEY REFERENCES Publicacion(Id_Publicacion),
+Id_Amistad BIGINT FOREIGN KEY REFERENCES Amistad(Id_Amistad),
 )
 GO
 CREATE TABLE Comentario(
@@ -116,34 +124,49 @@ AS
 UPDATE Comentario SET Comentario = @Variable 
 WHERE Id_Comentario = @Id
 GO
-
-
 --crear sp para insertar publicacion tipo 1 (solo texto)
 CREATE PROCEDURE[dbo].[sp_InPublicacion1]
 @Id INT,
-@Descripcion NVARCHAR(300)
+@Descripcion NVARCHAR(300),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo)
-VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo, Fuente)
+VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1, @Fuente)
+INSERT INTO AmistadPublicacion (Id_Amistad,Id_Publicacion) VALUES (@IdAmistad,(SELECT MAX(Id_Publicacion) FROM Publicacion))
+GO
+-- Traer las id amistad de cada uno
+CREATE PROCEDURE [dbo].[sp_TraerAmistades]
+@Id INT
+AS
+SELECT Id_Amistad FROM Amistad WHERE Id_Usuario = @Id 
+GO
+EXEC sp_TraerAmistades 1
 GO
 --crear sp para insertar publicacion tipo 2 (con imagen)
 CREATE PROCEDURE[dbo].[sp_InPublicacion2]
 @Id INT,
 @Descripcion NVARCHAR(300), 
-@Imagen NVARCHAR(80)
+@Imagen NVARCHAR(80),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo)
-VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 2)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Fuente)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 2, @Fuente)
+INSERT INTO AmistadPublicacion (Id_Amistad,Id_Publicacion) VALUES (@IdAmistad,(SELECT MAX(Id_Publicacion) FROM Publicacion))
 GO
 --crear sp para insertar publicacion tipo 3 (con imagen y titulo)
 CREATE PROCEDURE[dbo].[sp_InPublicacion3]
 @Id INT,
 @Descripcion NVARCHAR(300), 
 @Imagen NVARCHAR(80),
-@Titulo NVARCHAR(150)
+@Titulo NVARCHAR(150),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Titulo)
-VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 3, @Titulo)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Titulo, Fuente)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 3, @Titulo, @Fuente)
+INSERT INTO AmistadPublicacion (Id_Amistad,Id_Publicacion) VALUES (@IdAmistad,(SELECT MAX(Id_Publicacion) FROM Publicacion))
 GO
 /*CREATE PROCEDURE [dbo].[sp_InComentario]
 @Id INT,
@@ -297,12 +320,15 @@ GO
 CREATE PROCEDURE [dbo].[sp_obtenerNotificacion]
 @Id INT
 AS
-	SELECT TOP 3 P.Id_Usuario,D.Imagen_Perfil, U.Nick, SUBSTRING(P.Descripcion,1,15) Descripcion FROM Publicacion P LEFT JOIN Usuario U
+	SELECT TOP 3 P.Id_Usuario,D.Imagen_Perfil, U.Nick, SUBSTRING(P.Descripcion,1,15) Descripcion FROM 
+	Publicacion P LEFT JOIN Usuario U
 	ON P.Id_Usuario = U.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
 	WHERE (A.Id_Usuario_Dos = @Id) AND U.Id_Usuario != @Id
@@ -410,8 +436,10 @@ As
 	ON P.Id_Usuario = P.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 1 AND U.Id_Usuario = @Id
 	ORDER BY P.Fecha_Publicacion
 GO
@@ -423,8 +451,10 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo2]
 	ON P.Id_Usuario = P.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 2 AND U.Id_Usuario = @Id
 	ORDER BY P.Fecha_Publicacion
 GO
@@ -436,8 +466,10 @@ CREATE PROCEDURE [dbo].[sp_obtenerPublicacionTipo3]
 	ON P.Id_Usuario = P.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	WHERE P.Id_Usuario = A.Id_Usuario OR P.Id_Usuario = A.Id_Usuario_Dos AND Tipo = 3 AND U.Id_Usuario = @Id
 	ORDER BY P.Fecha_Publicacion
 GO
@@ -451,11 +483,14 @@ AS
 	ON P.Id_Usuario = U.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
 	WHERE (A.Id_Usuario_Dos = @Id) OR A.Id_Usuario = @Id
+	GROUP BY P.Tipo,P.Imagen, P.Descripcion, P.Fuente, P.Fecha_Publicacion, D.Imagen_Perfil, P.Titulo
 	ORDER BY P.Fecha_Publicacion DESC
 GO
 -- Procedimiento para obtener las notificaciones y que no sean del usuario
@@ -466,14 +501,15 @@ AS
 	ON P.Id_Usuario = U.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
 	WHERE (A.Id_Usuario_Dos = @Id)
 	ORDER BY P.Fecha_Publicacion DESC
 GO
-
 
 CREATE TRIGGER tgr_PonerNotificacion
 ON Publicacion 
@@ -497,6 +533,8 @@ AS	SELECT * FROM(
 	INNER JOIN Datos D ON D.Id_Usuario = A.Id_Usuario_Dos 
 	INNER JOIN Usuario U ON U.Id_Usuario = A.Id_Usuario_Dos
 	WHERE A.Id_Usuario = @Id OR U.Id_Usuario = @Id)ex
+GO
+EXEC sp_buscarAmigo 'a',1
 GO
 -- Obtener personas no seguidas
 CREATE PROCEDURE [dbo].[sp_obtenerPersonas] 
@@ -531,8 +569,10 @@ AS
 	ON P.Id_Usuario = U.Id_Usuario
 	INNER JOIN Datos D
 	ON D.Id_Usuario = U.Id_Usuario
+	INNER JOIN AmistadPublicacion AP
+	ON AP.Id_Publicacion = P.Id_Publicacion
 	INNER JOIN Amistad A
-	ON A.Id_Amistad = P.Id_Amistad
+	ON A.Id_Amistad = AP.Id_Amistad
 	INNER JOIN Notificacion N
 	ON N.Id_Publicacion = P.Id_Publicacion
 	ORDER BY P.Fecha_Publicacion DESC
