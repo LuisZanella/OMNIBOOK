@@ -208,7 +208,7 @@
                                     <ul class="nav nav-pills nav-sm">
                                         <li class="nav-item active"><a class="nav-link" data-toggle="tab" data-target="#tab_1">Muro</a></li>
                                         <li class="nav-item"><a class="nav-link" data-toggle="tab" data-target="#tab_2">Notificaciones</a></li>
-                                        <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_3">Amigos</a></li>
+                                        <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_3">Siguiendo</a></li>
                                         <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_4">Perfil</a></li>
                                         <li class="nav-item"><a class="nav-link"  data-toggle="tab" data-target="#tab_5">Más Personas</a></li>
                                     </ul>
@@ -241,7 +241,7 @@
                                                                         </a>
                                                                     </li>
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link">
+                                                                        <a class="nav-link" href="../AppWebFileUploader/Default.aspx">
                                                                             <i class="fa fa-video-camera text-muted"></i>
                                                                         </a>
                                                                     </li>
