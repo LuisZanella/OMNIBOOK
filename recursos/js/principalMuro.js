@@ -62,7 +62,7 @@ function Vocacion() {
 function CargarVocacion(Response) {
     for (var i = 0; i < Response.d.length; i++) {
         $("#vocacionUsuario").append(Response.d[i].Datos.Vocacion);
-        $("#vocacion").append('<small class="text-muted" >' + Response.d[i].Datos.Vocacion + '</small>');
+        $("#vocacion").append('<div class="_500">' + Response.d[i].Datos.Vocacion + '</div>');
     }
 }
 //Poner ubicacion del usuario

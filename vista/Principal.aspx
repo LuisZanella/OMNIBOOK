@@ -182,7 +182,7 @@
                                     <p class="text-md profile-status" id="estadoUsuario"></p>
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false" id="btnEditar">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
-                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="txtDescripcionPublicacion"></textarea>
+                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
                                         <div class="box-footer clearfix"> <button class="btn btn-info pull-left collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button></div>
                                     </div>
                                 </div>
@@ -266,20 +266,26 @@
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_4">
                                         <div class="row m-b">
-                                            <div class="col-xs-6" id="noTelefonico">
+                                            <div class="col-xs-6">
                                                 <small class="text-muted">Numero Telefónico</small>
+                                                <div id="noTelefonico"></div>
                                             </div>
-                                            <div class="col-xs-6" id="noCasa">
+                                            <div class="col-xs-6">
                                                 <small class="text-muted">Teléfono de casa</small>
+                                                <div id="noCasa"></div>
                                             </div>
                                         </div>
                                         <div class="row m-b">
-                                            <div class="col-xs-6" id="vocacion">
+                                          <div class="col-xs-6">
+                                            <small class="text-muted">Vocacion</small>
+                                            <div id="vocacion">
                                                 
                                             </div>
+                                          </div>
                                         </div>
-                                        <div id="biografia">
+                                        <div>
                                             <small class="text-muted">Biografia</small>
+                                            <div id="biografia"></div>
                                         </div>
                                     </div>
                                     <div class="tab-pane p-v-sm" id="tab_5">

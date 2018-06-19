@@ -1,6 +1,5 @@
 ﻿jQuery(document).ready(function () {
     $('#btnActualizarUsuario').click(function () {
-        debugger;
         var Nombre = $("#lblUpNombre").val();
         var Nick = $("#lblUpNick").val();
         var Correo = $("#lblUpCorreo").val();

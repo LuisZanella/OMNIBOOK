@@ -20,12 +20,12 @@ function iniciarSesion(response){
     if (response.d.Id_Usuario === 0) alert("Usuario o Contrase\u00f1a incorrectos");
 }
 function btnRegistrar() {
-    if (validacionCamposEnviarEmail()) btnRegistrarUsuario();
+    if (validacionCamposEnviarEmail($('#txtNombreRegistro').val(), $('#txtCorreoRegistro').val(), $('#txtContraseniaRegistro').val(), $('#txtCContraseniaRegistro').val(),$('#txtNickRegistro').val())) btnRegistrarUsuario();
 }
-function validacionCamposEnviarEmail(nombre, correo, mensaje, contrasenia, ccontrasenia, nick) {
+function validacionCamposEnviarEmail(nombre, correo, contrasenia, ccontrasenia, nick) {
     var emailVerficacion = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     var pase = false;
-    if (nombre.trim() !== "" && correo.trim() !== "" && mensaje.trim() !== "" && contrasenia !== "" && ccontrasenia !== "" && nick !== "") {
+    if ($.trim(nombre) && $.trim(correo) && $.trim(contrasenia) && $.trim(ccontrasenia) && $.trim(nick)) {
         if (nick.length <= 20) {
             if (emailVerficacion.test(correo) === true) {
                 if (contrasenia === ccontrasenia) {

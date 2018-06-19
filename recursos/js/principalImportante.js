@@ -1,4 +1,5 @@
-﻿function CargarComponentes() {
+﻿
+function CargarComponentes() {
     loadId();
     Notificaciones();
     ImagenPerfil();
@@ -19,8 +20,15 @@
     PublicacionRecientes();
     CargarTopPersona();
     PersonaFamosa();
+    setInterval();
+    $("a").prop('hidden', false);
 }
+var start = new Date;
+setInterval(function () {
+    $('.Timer').text((new Date - start) / 1000 + " Seconds");
+}, 1000);
 function RecargarComponentes() {
+    $("a").attr("hidden",true);
     $("#muroPrincipal").html("");
     $("#siguiendo").html("");
     $("#seguidores").html("");
