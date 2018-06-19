@@ -5,7 +5,6 @@ USE omnitrix
 GO
 
 
-
 CREATE TABLE Usuario(
 Id_Usuario BIGINT IDENTITY (1,1) PRIMARY KEY,
 Nombre NVARCHAR(50) NOT NULL,
@@ -28,8 +27,8 @@ Estado NVARCHAR(200),
 Seguidores BIGINT DEFAULT 0,
 Siguiendo BIGINT DEFAULT 0,
 NombreArtistico NVARCHAR(100),
-Imagen_Perfil NVARCHAR(80),
-Imagen_Portada NVARCHAR(80),
+Imagen_Perfil NVARCHAR(80) default '../recursos/img/logo.png',
+Imagen_Portada NVARCHAR(80) default '../recursos/img/logo.png',
 Telefono NVARCHAR(20),
 Telefono_Casa NVARCHAR(20),
 Biografia NVARCHAR(300)
@@ -118,8 +117,10 @@ AS
 UPDATE Comentario SET Comentario = @Variable 
 WHERE Id_Comentario = @Id
 GO
-
-
+SELECT * FROM Publicacion
+GO
+EXEC sp_TraerAmistades 1
+GO
 --crear sp para insertar publicacion tipo 1 (solo texto)
 CREATE PROCEDURE[dbo].[sp_InPublicacion1]
 @Id INT,
@@ -130,6 +131,7 @@ AS
 INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo, Fuente, Id_Amistad)
 VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1, @Fuente, @IdAmistad)
 GO
+
 -- Traer las id amistad de cada uno
 CREATE PROCEDURE [dbo].[sp_TraerAmistades]
 @Id INT
