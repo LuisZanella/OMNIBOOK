@@ -12,7 +12,7 @@ function btnIniciarSesion() {
 
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}";
+	user = "{'user':" + user + "}";
     ajax('OmniService.asmx', 'iniciarSesion', user);
 }
 function iniciarSesion(response){
@@ -60,8 +60,7 @@ function btnRegistrarUsuario() {
     };
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}";
-
+	user = "{'user':" + user + "}";
     ajax('OmniService.asmx', 'registrarUsuario', user,'registrarUsuario');
 
 }
@@ -71,7 +70,34 @@ function registrarUsuario(response) {
         alert("Has sido registrado en Omnitrix!!");
         window.location.href = "Principal.aspx?" + response.d;
     } else {
+        if (response.d = -300) {
+            VerificarRegistroError();
+        }
+        else {
         //no se registro bien
-        alert("Error al registrarte, trata mas tarde...");
+            alert("Error al registrarte, trata mas tarde");
+            }
     }
+}
+function VerificarRegistroError() {
+    var date = new Date($('#dtFechaNacimiento').val());
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    var userObj = {
+        "Nombre": $("#txtNombreRegistro").val(),
+        "Contrasenia": $("#txtContraseniaRegistro").val(),
+        "Fecha_Nacimiento": $('#dtFechaNacimiento').val(),
+        "Nick": $("#txtNickRegistro").val(),
+        "Correo": $("#txtCorreoRegistro").val(),
+        "Estatus": true
+    };
+    var user = JSON.stringify(userObj);
+
+    user = "{'user':" + user + "}";
+    ajax('OmniService.asmx', 'checarUsuario', user, 'NickCorreoYaUsados');
+
+}
+function NickCorreoYaUsados(Response) {
+    alert(Response.d)
 }

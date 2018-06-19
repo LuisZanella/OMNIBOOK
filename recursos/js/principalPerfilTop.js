@@ -136,7 +136,11 @@ function BuscarAmigo() {
 function BuscandoAmigo(Response) {
     $("#lstBuscarAmigo").html("");
     for (var i = 0; i < Response.d.length; i++) {
+        debugger;
+        if ($.trim(Response.d[i].Datos)) {
+            if (Response.d[i].Usuario.Id_Usuario > 0)
             $("#lstBuscarAmigo").append('<div class="col-md-8 col-lg-7 col-sm-5 col-xl-7 col-xs-12"><div class="list-item box r m-b" ><a herf="" class="list-left"><span class="w-40 avatar"><img src="' + Response.d[i].Datos.Imagen_Perfil + '" alt="..."> <i class="on b-white bottom"></i> </span></a><div class="list-body"><div class="text-ellipsis">' + Response.d[i].Usuario.Nick + '        <a class="pull-right btn btn-info"href="" onclick="Seguir(' + Response.d[i].Usuario.Id_Usuario + ')" class="btn btn-sm btn-rounded btn-info m-t-xs"> <i class= "fa fa-twitter m-t-xs" ></i > Follow </a></div><small class="text-muted text-ellipsis">' + '<p> Vocacion: ' + Response.d[i].Datos.Vocacion + '  Seguidores: ' + Response.d[i].Datos.Seguidores + '</small> </div></div></div >');
+        }
     }
 
 }

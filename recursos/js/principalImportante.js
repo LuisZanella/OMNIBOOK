@@ -6,11 +6,11 @@ function CargarComponentes() {
     Nombre();
     Ubicacion();
     Estado();
-    Personas();
     cargarCosasPrincipales();
     writeNext(4);
 }
 function cargarCosasPrincipales() {
+    Personas();
     Notificaciones();
     Vocacion();
     Seguidores();
@@ -43,11 +43,12 @@ function recargarcosasPrincipales() {
     $("#lstBuscarAmigo").html("");
     $("#friends").html("");
     $("#numNotificaciones").html("");
+    $('#noticias').html("");
     cargarCosasPrincipales();
 }
 function writeNext(i) {
     $("a").attr("hidden", true);
-    if (i == 5) {
+    if (i === 5) {
         $("a").prop('hidden', false);
         return;
     }
@@ -59,7 +60,7 @@ function writeNext(i) {
 }
 function wait(i) {
     $("#Refresh").attr("hidden", true);
-    if (i == 5) {
+    if (i === 5) {
         $("#Refresh").prop('hidden', false);
         return;
     }
@@ -94,7 +95,6 @@ function CargarTopPersona() {
 }
 function PersonaFamosa(Response) {
     if ($.trim(Response) && Response.d[0].Usuario.Id_Usuario !== -1) {
-        console.warn(Response);
         for (var i = 0; i < Response.d.length; i++) {
         
             if (Response.d[i].Datos.Usuario.Id_Usuario !== -1) {
@@ -147,7 +147,7 @@ function Seguir(IdUsarioDos) {
 function RespuestaSeguir(Response) {
     console.warn(Response);
     if (Response.d === "Registrado") {
-        RecargarComponentes();
+        recargarcosasPrincipales();
     }
     else {
         alert(Response.d);

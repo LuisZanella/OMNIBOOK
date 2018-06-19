@@ -30,6 +30,7 @@
 });
 function cargarPagina(Response) {
     if (Response.d == "actualizado") { RecargarComponentes(); };
+    if (Response.d == "Nick o Correo Ya registrados") { alert(Response.d) }
 }
 function constructorActualizar(spName, newData) {
     Obj = {

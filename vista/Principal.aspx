@@ -48,9 +48,16 @@
     <script src="../recursos/js/principalMuro.js"></script>
     <script src="../recursos/js/modalPerfil.js"></script>
     <script src="../recursos/js/principalPerfilTop.js"></script>
-
+    <script src="../recursos/js/WCF/buscar.js"></script>
+    <script src="../recursos/js/WCF/guardar.js"></script>
+    <script src="../recursos/js/WCF/MyUpload.js"></script>
 </head>
 <body>
+           <asp:ScriptManager ID="ScriptManager1" runat="server">
+              <Scripts>
+                    <asp:ScriptReference Path="../recursos/js/WCF/fileuploader.js" />
+              </Scripts>
+        </asp:ScriptManager>
     <div class="switcher box-color black lt ng-scope" id="sw-demo"><a id="Refresh" onclick="recargarcosasPrincipales()" ui-toggle-class="active" class="box-color dark-gray text-color sw-btn"><i class="material-icons dark-gray" >autorenew</i></a><div class="box-header"></div></div>
     <p style="visibility:hidden" id="IdUser"></p>
     <div class="app-header colorDegrade box-shadow navbar-md">
@@ -182,7 +189,7 @@
                                     <p class="text-md profile-status" id="estadoUsuario"></p>
                                     <button class="btn btn-sm white collapsed" data-toggle="collapse" data-target="#editor" aria-expanded="false" id="btnEditar">Editar</button>
                                     <div class="box m-t-sm collapse" id="editor" aria-expanded="false" style="height: 0px;">
-                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="textAreaEditarEstado"></textarea>
+                                        <textarea class="form-control no-border" style="border-radius:5px" rows="2" placeholder="Escribe algo..." id="txtDescripcionPublicacion"></textarea>
                                         <div class="box-footer clearfix"> <button class="btn btn-info pull-left collapsed" id="btnActualizarEstado" onclick="ActualizarEstadoEnBD() ">Actualizar Estado</button></div>
                                     </div>
                                 </div>
@@ -224,17 +231,20 @@
                                         <div class="row">
                                             <div class="box collapse in m-a-0" id="reply-2">
                                                             <form class="ng-pristine ng-valid">
-                                                                <textarea class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Titulo..." id="txtTituloPublicacion"></textarea>
+																<%-- aqui va la publicacion --%>
+                                                                <textarea id="txtTituloPublicacion" class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Titulo..." id="txtTituloPublicacion"></textarea>
                                                                 <div class="box-divider m-a-0"></div>
                                                                 <textarea id="txtPublicacion" class="form-control no-border" rows="3" placeholder="Escribe algo..."></textarea>
                                                                 <div class="box-divider m-a-0"></div>
-                                                                <textarea class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Fuente..." id="txtFuente"></textarea>
+                                                                <textarea id="txtFuentePublicacion" class="form-control no-border" style="border-radius:5px" rows="1" placeholder="Fuente..." id="txtFuente"></textarea>
                                                             </form>
                                                             <div class="box-footer clearfix">
-                                                                <button class="btn btn-info pull-right btn-sm" onclick="Publicar()">Publicar</button>
+                                                                <button id="btnPublicar" class="btn btn-info pull-right btn-sm" onclick="Publicar()">Publicar</button>
                                                                 <ul class="nav nav-pills nav-sm">
                                                                     <li class="nav-item">
-                                                                        <a class="nav-link" >
+                                                                        <a id="btnAdjuntar" class="nav-link" >
+                                                                             <input id="tokenHide" type="hidden" />
+                                                                             <input id="NameHide" type="hidden" />
                                                                             <i class="fa fa-camera text-muted"> </i>
                                                                         </a>
                                                                     </li>
@@ -297,12 +307,12 @@
                             </div>
                             <div class="col-sm-4 col-lg-3">
                                 <div>
-                                    <div class="box">
+<%--                                    <div class="box">
                                         <div class="box-header"><h3>A quien seguir</h3></div>
                                         <div class="box-divider m-a-0"></div>
                                         <ul class="list no-border p-b" id="seguir">
                                         </ul>
-                                    </div>
+                                    </div>--%>
                                     <div class="box info dk">
                                         <div class="box-header"><h3>Top Famoso</h3></div>
                                         <div class="box-divider m-a-0"></div>
