@@ -529,5 +529,83 @@ public class OmniService : System.Web.Services.WebService
         }
 
     }
+	[WebMethod(EnableSession = true)]
+	public string InsertarPublicaion(string spNombre, PublicacionModelo data, int Id)
+	{
+		SqlConexion _conexion = new SqlConexion();
+		List<SqlParameter> _Parametros = new List<SqlParameter>();
+		List<int> idAmistad = new List<int>();
+		DataTableReader _dtr = null;
+		_conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
+		try
+		{
+			_Parametros.Add(new SqlParameter("@Id", Id));
+			_conexion.PrepararProcedimiento("sp_TraerAmistades", _Parametros);
+			_dtr = _conexion.EjecutarTableReader();
+			if (_dtr.HasRows)
+			{
+				while (_dtr.Read())
+				{
+					idAmistad.Add(Int32.Parse(_dtr["Id_Amistad"].ToString()));
+				}
+			}
+		}
+		catch {
+			_conexion.Desconectar();
+			_conexion = null;
+			return "No existen Amistades";
+		}
+		_conexion = new SqlConexion();
+		_Parametros = new List<SqlParameter>();
+		try
+		{
+
+			//Abrir conexion
+			_conexion.Conectar(System.Configuration.ConfigurationManager.ConnectionStrings["MiBD"].ToString());
+			// Se agregan parámetros a la lista List <SqlParameter>, con los valores para cada parametro que se obtienen de los atributos
+			// del objeto Pej.Objeto . Atributo_x
+			for (int i = 0; i < idAmistad.Count; i++)
+			{ 
+				switch (data.Tipo)
+				{
+					case 1:
+						_Parametros.Add(new SqlParameter("@Id", Id));
+						_Parametros.Add(new SqlParameter("@Descripcion", data.Descripcion));
+						_Parametros.Add(new SqlParameter("@Fuente", data.Fuente));
+						_Parametros.Add(new SqlParameter("@IdAmistad", idAmistad[i]));
+						break;
+					case 2:
+						_Parametros.Add(new SqlParameter("@Id", Id));
+						_Parametros.Add(new SqlParameter("@Descripcion", data.Descripcion));
+						_Parametros.Add(new SqlParameter("@Imagen", data.Imagen));
+						_Parametros.Add(new SqlParameter("@Fuente", data.Fuente));
+						_Parametros.Add(new SqlParameter("@IdAmistad", idAmistad[i]));
+						break;
+					case 3:
+						_Parametros.Add(new SqlParameter("@Id", Id));
+						_Parametros.Add(new SqlParameter("@Descripcion", data.Descripcion));
+						_Parametros.Add(new SqlParameter("@Imagen", data.Imagen));
+						_Parametros.Add(new SqlParameter("@Titulo", data.Titulo));
+						_Parametros.Add(new SqlParameter("@Fuente", data.Fuente));
+						_Parametros.Add(new SqlParameter("@IdAmistad", idAmistad[i]));
+						break;
+				}
+				_conexion.PrepararProcedimiento(spNombre, _Parametros);
+				_conexion.EjecutarTableReader();
+			}
+			return "Publicado";
+
+		}
+		catch (Exception)
+		{
+			return "Error al Publicar";
+		}
+		finally
+		{
+			_conexion.Desconectar();
+			_conexion = null;
+		}
+
+	}
 }
 

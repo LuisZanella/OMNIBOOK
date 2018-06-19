@@ -12,7 +12,7 @@ function btnIniciarSesion() {
 
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}";
+	user = "{'user':" + user + "}";
     ajax('OmniService.asmx', 'iniciarSesion', user);
 }
 function iniciarSesion(response){
@@ -60,8 +60,7 @@ function btnRegistrarUsuario() {
     };
     var user = JSON.stringify(userObj);
 
-    user = "{'user':" + user + "}";
-
+	user = "{'user':" + user + "}";
     ajax('OmniService.asmx', 'registrarUsuario', user,'registrarUsuario');
 
 }

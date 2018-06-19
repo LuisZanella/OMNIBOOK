@@ -4,6 +4,8 @@ GO
 USE omnitrix
 GO
 
+
+
 CREATE TABLE Usuario(
 Id_Usuario BIGINT IDENTITY (1,1) PRIMARY KEY,
 Nombre NVARCHAR(50) NOT NULL,
@@ -121,29 +123,41 @@ GO
 --crear sp para insertar publicacion tipo 1 (solo texto)
 CREATE PROCEDURE[dbo].[sp_InPublicacion1]
 @Id INT,
-@Descripcion NVARCHAR(300)
+@Descripcion NVARCHAR(300),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo)
-VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Fecha_Publicacion, Tipo, Fuente, Id_Amistad)
+VALUES(@Id, @Descripcion, CURRENT_TIMESTAMP, 1, @Fuente, @IdAmistad)
+GO
+-- Traer las id amistad de cada uno
+CREATE PROCEDURE [dbo].[sp_TraerAmistades]
+@Id INT
+AS
+SELECT Id_Amistad FROM Amistad WHERE Id_Usuario = @Id 
 GO
 --crear sp para insertar publicacion tipo 2 (con imagen)
 CREATE PROCEDURE[dbo].[sp_InPublicacion2]
 @Id INT,
 @Descripcion NVARCHAR(300), 
-@Imagen NVARCHAR(80)
+@Imagen NVARCHAR(80),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo)
-VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 2)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Fuente, Id_Amistad)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 2, @Fuente, @IdAmistad)
 GO
 --crear sp para insertar publicacion tipo 3 (con imagen y titulo)
 CREATE PROCEDURE[dbo].[sp_InPublicacion3]
 @Id INT,
 @Descripcion NVARCHAR(300), 
 @Imagen NVARCHAR(80),
-@Titulo NVARCHAR(150)
+@Titulo NVARCHAR(150),
+@Fuente NVARCHAR (200),
+@IdAmistad INT
 AS
-INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Titulo)
-VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 3, @Titulo)
+INSERT INTO Publicacion(Id_Usuario, Descripcion, Imagen, Fecha_Publicacion, Tipo, Titulo, Fuente, Id_Amistad)
+VALUES(@Id, @Descripcion, @Imagen, CURRENT_TIMESTAMP, 3, @Titulo, @Fuente, @IdAmistad)
 GO
 /*CREATE PROCEDURE [dbo].[sp_InComentario]
 @Id INT,
@@ -556,3 +570,5 @@ BEGIN TRY
 		ROLLBACK TRANSACTION
 	END CATCH
 GO
+
+
