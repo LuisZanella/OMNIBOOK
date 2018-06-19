@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd863d7e-4f6d-4e82-8ab4-d5c5aec53142" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://192.168.0.103/Uploader/ServicioUploader.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicioUploader.xsd" MetadataType="Schema" ID="1ca08842-2360-4358-a4b8-ae26bec31fcb" SourceId="1" SourceUrl="http://localhost/Uploader/ServicioUploader.svc?xsd=xsd1" />
+    <MetadataFile FileName="ImplementacionUploader.wsdl" MetadataType="Wsdl" ID="b52452a8-f51f-4e30-b226-054dd5a6f908" SourceId="1" SourceUrl="http://localhost/Uploader/ServicioUploader.svc?wsdl" />
+    <MetadataFile FileName="ServicioUploader1.xsd" MetadataType="Schema" ID="beb830a0-0df0-49fd-b3d0-f8aa09fc544d" SourceId="1" SourceUrl="http://localhost/Uploader/ServicioUploader.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServicioUploader2.xsd" MetadataType="Schema" ID="3a34631e-2ea6-46e1-9821-4fdaa90e0a57" SourceId="1" SourceUrl="http://localhost/Uploader/ServicioUploader.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServicioUploader.disco" MetadataType="Disco" ID="f6e5a52f-213a-4510-b5d1-4d995118656b" SourceId="1" SourceUrl="http://localhost/Uploader/ServicioUploader.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
