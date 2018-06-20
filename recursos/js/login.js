@@ -5,9 +5,10 @@ $("#txtPswI").keyup(function (event) {
 });
 
 function btnIniciarSesion() {
+    var con = $("#txtPswI").val();
     var userObj = {
-        "Contrasenia": $("#txtPswI").val(),
-        "Nick": sha256($("#txtUsuarioI").val())
+        "Contrasenia": sha256(con),
+        "Nick": $("#txtUsuarioI").val()
     };
 
     var user = JSON.stringify(userObj);
